@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
+using System.Linq;
+using TextDashboard.Resource;
 using TextDashboard.UserControls;
 
 namespace TextDashboard
@@ -12,71 +15,95 @@ namespace TextDashboard
     public partial class MainWindow : Window
     {
         private const double MarginValue = 5;
-        private const double SmallSizePercent = 0.5;
-        private const double LargeSizePercent = 0.75;
-        private const double PositionMovePercent = 0.25;
-        private const double AnimationDuration = 0.5;
-        private double _originalXpostion = MarginValue;
-        private double _originalYpostion = MarginValue;
-        //private Control _shrinkControl;
-        private Control _growControl;
+        private const double AnimationDuration = 0.2;
+        private const double OpacityChange = 0.8;
+
+        readonly List<ControlPlacement> _contolList;
 
         public MainWindow()
         {
             InitializeComponent();
+            //_contolList = new List<ControlPlacement>
+            //                 {
+            //                     new ControlPlacement {Name="V1",HeightPercentage = 0.4, WidthPercentage = 0.2, InitialXPercentage = 0, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new FirstView()}, 
+            //                     new ControlPlacement {Name="V2",HeightPercentage = 0.4, WidthPercentage = 0.8, InitialXPercentage = 0.2, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new SecondView()}, 
+            //                     new ControlPlacement {Name="V3",HeightPercentage = 0.35, WidthPercentage = 0.5, InitialXPercentage = 0, InitialYPercentage = 0.4,GrowPercentage = 0.25, ViewControl = new ThirdView()}, 
+            //                     new ControlPlacement {Name="V4",HeightPercentage = 0.35, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0.4,GrowPercentage = 0.20, ViewControl = new ThirdView()}, 
+            //                     new ControlPlacement {Name="V5",HeightPercentage = 0.25, WidthPercentage = 0.8, InitialXPercentage = 0, InitialYPercentage = 0.75,GrowPercentage = .80, ViewControl = new ForthView()},
+            //                     new ControlPlacement {Name="V6",HeightPercentage = 0.25, WidthPercentage = 0.2, InitialXPercentage = .8, InitialYPercentage = 0.75,GrowPercentage = .30, ViewControl = new ForthView()}
+            //                 };
+            //_contolList = new List<ControlPlacement>
+            //                 {
+            //                     new ControlPlacement {Name="V1",HeightPercentage = 0.6, WidthPercentage = 0.4, InitialXPercentage = 0, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new FirstView()}, 
+            //                     new ControlPlacement {Name="V2",HeightPercentage = 0.6, WidthPercentage = 0.6, InitialXPercentage = 0.4, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new SecondView()}, 
+            //                     new ControlPlacement {Name="V3",HeightPercentage = 0.4, WidthPercentage = 0.5, InitialXPercentage = 0, InitialYPercentage = 0.6,GrowPercentage = 0.25, ViewControl = new ThirdView()}, 
+            //                     new ControlPlacement {Name="V4",HeightPercentage = 0.4, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0.6,GrowPercentage = 0.20, ViewControl = new ForthView()}, 
+            //                 };
+
+            _contolList = new List<ControlPlacement>
+                             {
+                                 new ControlPlacement {Name="V1",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new FirstView()}, 
+                                 new ControlPlacement {Name="V2",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new SecondView()}, 
+                                 new ControlPlacement {Name="V3",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0, InitialYPercentage = 0.5,GrowPercentage = 0.25, ViewControl = new ThirdView()}, 
+                                 new ControlPlacement {Name="V4",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0.5,GrowPercentage = 0.20, ViewControl = new ForthView()}, 
+                             };
+
+            Events.IncreaseSizeEvent += OnIncreaseSizeEvent;
+            Events.DecreaseSizeEvent += OnDecreaseSizeEvent;
+        }
+
+        void OnDecreaseSizeEvent(object control)
+        {
+            var view = control as Control;
+            if (view != null)
+                Shrink(view);
+        }
+
+        void OnIncreaseSizeEvent(object control, double percent)
+        {
+            var view = control as Control;
+            if (view != null)
+                Grow(view, percent);
         }
 
         private void UpdateControls(object sender, RoutedEventArgs e)
         {
-            var centerPointX = RootCanvas.ActualWidth / 2;
-            var centerPointY = RootCanvas.ActualHeight / 2;
-
-            foreach (Control control in RootCanvas.Children)
+            for (var index = 0; index < RootCanvas.Children.Count; index++)
             {
-                control.BeginAnimation(Canvas.LeftProperty, null);
-                control.BeginAnimation(Canvas.TopProperty, null);
-                control.BeginAnimation(WidthProperty, null);
-                control.BeginAnimation(HeightProperty, null);
-
-                if (Canvas.GetLeft(control) > MarginValue)
-                    Canvas.SetLeft(control, centerPointX + MarginValue);
-
-                if (Canvas.GetTop(control) > MarginValue)
-                    Canvas.SetTop(control, centerPointY + MarginValue);
-
-                control.Width = RootCanvas.ActualWidth * SmallSizePercent - MarginValue * 2;
-                control.Height = RootCanvas.ActualHeight * SmallSizePercent - MarginValue * 2;
+                var control = RootCanvas.Children[index] as Control;
+                if (control == null) continue;
+                UpdateControlPlacement(control, index);
             }
+        }
+
+        private void UpdateControlPlacement(Control control,int index)
+        {
+            control.BeginAnimation(Canvas.LeftProperty, null);
+            control.BeginAnimation(Canvas.TopProperty, null);
+            control.BeginAnimation(WidthProperty, null);
+            control.BeginAnimation(HeightProperty, null);
+
+            control.Width = RootCanvas.ActualWidth * _contolList[index].WidthPercentage - MarginValue * 2;
+            control.Height = RootCanvas.ActualHeight * _contolList[index].HeightPercentage - MarginValue * 2;
+            Canvas.SetLeft(control, _contolList[index].InitialXPercentage * RootCanvas.ActualWidth + MarginValue);
+            Canvas.SetTop(control, _contolList[index].InitialYPercentage * RootCanvas.ActualHeight + MarginValue);
         }
 
         private void LoadControls(object sender, RoutedEventArgs e)
         {
-            var centerPointX = RootCanvas.ActualWidth / 2;
-            var centerPointY = RootCanvas.ActualHeight / 2;
-
-            var firstControl = new FirstView { Width = RootCanvas.ActualWidth * SmallSizePercent - MarginValue * 2, Height = RootCanvas.ActualHeight * SmallSizePercent - MarginValue * 2 };
-            firstControl.MouseDown += Grow;
-            RootCanvas.Children.Add(firstControl);
-            Canvas.SetLeft(firstControl, MarginValue);
-            Canvas.SetTop(firstControl, MarginValue);
-
-            var secondControl = new SecondView { Width = RootCanvas.ActualWidth * SmallSizePercent - MarginValue * 2, Height = RootCanvas.ActualHeight * SmallSizePercent - MarginValue * 2 };
-            secondControl.MouseDown += Grow;
-            RootCanvas.Children.Add(secondControl);
-            Canvas.SetLeft(secondControl, centerPointX + MarginValue);
-            Canvas.SetTop(secondControl, MarginValue);
-
-            var thirdControl = new ThirdView { Width = RootCanvas.ActualWidth * SmallSizePercent - MarginValue * 2, Height = RootCanvas.ActualHeight * SmallSizePercent - MarginValue * 2 };
-            thirdControl.MouseDown += Grow;
-            RootCanvas.Children.Add(thirdControl);
-            Canvas.SetLeft(thirdControl, MarginValue);
-            Canvas.SetTop(thirdControl, centerPointY + MarginValue);
-
-            var forthControl = new ForthView { Width = RootCanvas.ActualWidth * SmallSizePercent - MarginValue * 2, Height = RootCanvas.ActualHeight * SmallSizePercent - MarginValue * 2 };
-            forthControl.MouseDown += Grow;
-            RootCanvas.Children.Add(forthControl);
-            Canvas.SetLeft(forthControl, centerPointX + MarginValue);
-            Canvas.SetTop(forthControl, centerPointY + MarginValue); 
+            foreach (var controlPlacement in _contolList)
+            {
+                controlPlacement.ViewControl.Width = RootCanvas.ActualWidth * controlPlacement.WidthPercentage - MarginValue * 2;
+                controlPlacement.ViewControl.Height = RootCanvas.ActualHeight * controlPlacement.HeightPercentage - MarginValue * 2;
+                controlPlacement.ViewControl.Name = controlPlacement.Name;
+                RegisterName(controlPlacement.Name, controlPlacement.ViewControl); 
+                //controlPlacement.ViewControl.MouseLeftButtonDown += Grow;
+                controlPlacement.ViewControl.LostFocus += Shrink;
+                //controlPlacement.ViewControl.Opacity = 1;
+                RootCanvas.Children.Add(controlPlacement.ViewControl);
+                Canvas.SetLeft(controlPlacement.ViewControl, controlPlacement.InitialXPercentage * RootCanvas.ActualWidth + MarginValue);
+                Canvas.SetTop(controlPlacement.ViewControl, controlPlacement.InitialYPercentage * RootCanvas.ActualHeight + MarginValue);
+            }
         }
 
         private void Grow(object sender, RoutedEventArgs routedEventArgs)
@@ -86,223 +113,167 @@ namespace TextDashboard
 
             content.MouseRightButtonDown += Shrink;
 
-            foreach (Control control in RootCanvas.Children)
-            {
-                if (control != content && _growControl == control)
-                {
-                    var originalX = MarginValue;
-                    if (Math.Abs(Canvas.GetLeft(_growControl) - MarginValue) > 1)
-                        originalX = Canvas.GetLeft(_growControl) +
-                                     RootCanvas.ActualWidth * PositionMovePercent;
-                    var originalY = MarginValue;
-                    if (Math.Abs(Canvas.GetTop(_growControl) - MarginValue) > 1)
-                        originalY = Canvas.GetTop(_growControl) +
-                                    RootCanvas.ActualHeight * PositionMovePercent;
-                    Shrink(control, originalX,originalY);
-                }
-            }
-            
-           Grow(content);
+            Grow(content);
 
         }
 
-        private void Grow(Control content)
+        private void ShrinkControls(Control currentControl)
         {
-            _growControl = content;
+            for (var index = 0; index < RootCanvas.Children.Count; index++)
+            {
+                var control = RootCanvas.Children[index] as Control;
+                if (control == null || currentControl.Name == control.Name)
+                    continue;
 
-            var controlWidth = content.ActualWidth;
-            var controlHeight = content.ActualHeight;
-
-            foreach (Control control in RootCanvas.Children)
                 Panel.SetZIndex(control, 0);
 
-            Panel.SetZIndex(content, Panel.GetZIndex(content) + 1);
+                var originalWidth = RootCanvas.ActualWidth * _contolList[index].WidthPercentage - MarginValue * 2;
+                if (control.Width != originalWidth)
+                    Shrink(control);
 
-            var newControlWidth = RootCanvas.ActualWidth * LargeSizePercent - MarginValue * 2;
-            var newControlHeight = RootCanvas.ActualHeight * LargeSizePercent - MarginValue * 2;
+                //control.BeginAnimation(OpacityProperty, null);
+                //var opacityDecreaseAnimation = new DoubleAnimation { From = 1, To = OpacityChange, Duration = new Duration(TimeSpan.FromSeconds(AnimationDuration)) };
+                //control.BeginAnimation(OpacityProperty, opacityDecreaseAnimation);
+            }
+        }
 
-            var widthDiff = newControlWidth - controlWidth;
-
-            var widthMove = RootCanvas.ActualWidth * PositionMovePercent;
-            var heightMove = RootCanvas.ActualHeight * PositionMovePercent;
-
-            if (widthDiff < 1)
+        private void Grow(Control control,double percent=0)
+        {
+            var controlPlacement = _contolList.FirstOrDefault(c => c.Name == control.Name);
+            if (controlPlacement == null)
                 return;
 
-            //content.Width = newControlWidth;
-            //content.Height = newControlHeight;
-            //if (Canvas.GetLeft(content) > Margin)
-            //Canvas.SetLeft(content, Canvas.GetLeft(content) - widthDiff);
-            //if (Canvas.GetTop(content) > Margin)
-            //Canvas.SetTop(content, Canvas.GetTop(content) - heightDiff);
+            if (percent == 0)
+                percent = controlPlacement.GrowPercentage;
 
-            _originalXpostion = Canvas.GetLeft(content);
-            _originalYpostion = Canvas.GetTop(content);
+            var controlWidth = control.ActualWidth;
+            var controlHeight = control.ActualHeight;
+
+            Panel.SetZIndex(control, Panel.GetZIndex(control) + 1);
+
+            var newControlWidth = control.ActualWidth * (1 + percent);
+            var newControlHeight = control.ActualHeight * (1 + percent);
+
+            if (newControlWidth > RootCanvas.ActualWidth - MarginValue * 2)
+                newControlWidth = RootCanvas.ActualWidth - MarginValue * 2;
+
+            if (newControlHeight > RootCanvas.ActualHeight - MarginValue * 2)
+                newControlHeight = RootCanvas.ActualHeight - MarginValue * 2;
+
+
+            var widthMove = control.ActualWidth * percent;
+            var heightMove = control.ActualHeight * percent;
+
+            var originalWidth = RootCanvas.ActualWidth * controlPlacement.WidthPercentage - MarginValue * 2;
+            if (widthMove > originalWidth * percent)
+                return;
+
+            var newX = Canvas.GetLeft(control) - widthMove;
+            if (newX < MarginValue)
+                newX = MarginValue;
+
+            var newY = Canvas.GetTop(control) - heightMove;
+            if (newY < MarginValue)
+                newY = MarginValue;
+
             //Canvas positions
-            if (Canvas.GetLeft(content) > MarginValue)
+            var pointXAnimation = new DoubleAnimation
             {
-                var buttonAnimation = new DoubleAnimation
-                {
-                    From = Canvas.GetLeft(content),
-                    To = Canvas.GetLeft(content) - widthMove,
-                    Duration = new Duration(TimeSpan.FromSeconds(AnimationDuration))
-                };
-                //buttonAnimation.Completed += CanvasLargeLeftAnimationCompleted;
-                content.BeginAnimation(Canvas.LeftProperty, buttonAnimation);
+                From = Canvas.GetLeft(control),
+                To = newX,
+                Duration = new Duration(TimeSpan.FromSeconds(AnimationDuration))
+            };
+            control.BeginAnimation(Canvas.LeftProperty, pointXAnimation);
 
-            }
-
-            if (Canvas.GetTop(content) > MarginValue)
+            var pointYAnimation = new DoubleAnimation
             {
-                var buttonAnimation = new DoubleAnimation
-                {
-                    From = Canvas.GetTop(content),
-                    To = Canvas.GetTop(content) - heightMove,
-                    Duration = new Duration(TimeSpan.FromSeconds(AnimationDuration))
-                };
-                //buttonAnimation.Completed += CanvasLargeTopAnimationCompleted;
-                content.BeginAnimation(Canvas.TopProperty, buttonAnimation);
-
-            }
+                From = Canvas.GetTop(control),
+                To = newY,
+                Duration = new Duration(TimeSpan.FromSeconds(AnimationDuration))
+            };
+            control.BeginAnimation(Canvas.TopProperty, pointYAnimation);
 
 
             var myDoubleAnimation = new DoubleAnimation { From = controlHeight, To = newControlHeight, Duration = new Duration(TimeSpan.FromSeconds(AnimationDuration)) };
             var myDoubleAnimation2 = new DoubleAnimation { From = controlWidth, To = newControlWidth, Duration = new Duration(TimeSpan.FromSeconds(AnimationDuration)) };
-            //myDoubleAnimation.Completed += HeightLargeAnimationCompleted;
-            myDoubleAnimation2.Completed += WidthLargeAnimationCompleted;
 
-            content.BeginAnimation(HeightProperty, myDoubleAnimation);
-            content.BeginAnimation(WidthProperty, myDoubleAnimation2);
+            control.BeginAnimation(HeightProperty, myDoubleAnimation);
+            control.BeginAnimation(WidthProperty, myDoubleAnimation2);
 
-            
+
+
+            ShrinkControls(control);
         }
 
         private void Shrink(object sender, RoutedEventArgs routedEventArgs)
         {
             var content = (Control)sender;
 
-            Shrink(content,_originalXpostion,_originalYpostion);
+            Shrink(content);
         }
 
 
-        private void Shrink(Control content,double originalX,double originalY)
+        private void Shrink(Control control)
         {
-            //_shrinkControl = content;
-
-            var controlWidth = content.ActualWidth;
-            var controlHeight = content.ActualHeight;
-
-            var newControlWidth = RootCanvas.ActualWidth * SmallSizePercent - MarginValue * 2;
-            var newControlHeight = RootCanvas.ActualHeight * SmallSizePercent - MarginValue * 2;
-
-            var widthDiff = controlWidth - newControlWidth;
-
-            var widthMove = RootCanvas.ActualWidth * PositionMovePercent;
-            var heightMove = RootCanvas.ActualHeight * PositionMovePercent;
-
-            if (widthDiff < 1)
+            var controlPlacement = _contolList.Where(c => c.Name == control.Name).FirstOrDefault();
+            if(controlPlacement==null)
                 return;
 
-            //content.Width = newControlWidth;
-            //content.Height = newControlHeight;
-            //if (originalXpostion > Margin)
-            //Canvas.SetLeft(content,Canvas.GetLeft(content) + widthDiff);
-            //if (originalYpostion > Margin)
-            //Canvas.SetTop(content, Canvas.GetTop(content) + heightDiff);
+            var originalWidth = RootCanvas.ActualWidth * controlPlacement.WidthPercentage - MarginValue * 2;
+            if (control.Width == originalWidth)
+                return;
+
+            //for (var index = 0; index < RootCanvas.Children.Count; index++)
+            //{
+            //    var otherControls = RootCanvas.Children[index] as Control;
+            //    if (otherControls == null) continue;
+            //    otherControls.BeginAnimation(OpacityProperty, null);
+            //    otherControls.Opacity = 1;
+            //}
+
+            var newControlWidth = RootCanvas.ActualWidth * controlPlacement.WidthPercentage - MarginValue * 2;
+            var newControlHeight = RootCanvas.ActualHeight * controlPlacement.HeightPercentage - MarginValue * 2;
+            var newX = controlPlacement.InitialXPercentage * RootCanvas.ActualWidth + MarginValue;
+            var newY = controlPlacement.InitialYPercentage * RootCanvas.ActualHeight + MarginValue;
+
+            var controlWidth = control.ActualWidth;
+            var controlHeight = control.ActualHeight;
+
             var myDoubleAnimation = new DoubleAnimation { From = controlHeight, To = newControlHeight, Duration = new Duration(TimeSpan.FromSeconds(AnimationDuration)) };
             var myDoubleAnimation2 = new DoubleAnimation { From = controlWidth, To = newControlWidth, Duration = new Duration(TimeSpan.FromSeconds(AnimationDuration)) };
 
-            content.BeginAnimation(HeightProperty, myDoubleAnimation);
-            content.BeginAnimation(WidthProperty, myDoubleAnimation2);
-            //myDoubleAnimation.Completed += HeightSmallAnimationCompleted;
-            //myDoubleAnimation2.Completed += WidthSmallAnimationCompleted;
+            control.BeginAnimation(HeightProperty, myDoubleAnimation);
+            control.BeginAnimation(WidthProperty, myDoubleAnimation2);
 
             //Canvas positions
-            if (originalX > MarginValue)
+            var pointXAnimation = new DoubleAnimation
             {
-                var buttonAnimation = new DoubleAnimation
-                {
-                    From = Canvas.GetLeft(content),
-                    To = Canvas.GetLeft(content) + widthMove,
-                    Duration = new Duration(TimeSpan.FromSeconds(AnimationDuration))
-                };
-                //buttonAnimation.Completed += CanvasSmallLeftAnimationCompleted;
-                content.BeginAnimation(Canvas.LeftProperty, buttonAnimation);
+                From = Canvas.GetLeft(control),
+                To = newX,
+                Duration = new Duration(TimeSpan.FromSeconds(AnimationDuration))
+            };
+            control.BeginAnimation(Canvas.LeftProperty, pointXAnimation);
 
-            }
-
-            if (originalY > MarginValue)
+            var pointYAnimation = new DoubleAnimation
             {
-                var buttonAnimation = new DoubleAnimation
-                {
-                    From = Canvas.GetTop(content),
-                    To = Canvas.GetTop(content) + heightMove,
-                    Duration = new Duration(TimeSpan.FromSeconds(AnimationDuration))
-                };
-                //buttonAnimation.Completed += CanvasSmallTopAnimationCompleted;
-                content.BeginAnimation(Canvas.TopProperty, buttonAnimation);
-
-            }
+                From = Canvas.GetTop(control),
+                To = newY,
+                Duration = new Duration(TimeSpan.FromSeconds(AnimationDuration))
+            };
+            control.BeginAnimation(Canvas.TopProperty, pointYAnimation);
         }
-
-        //void CanvasLargeLeftAnimationCompleted(object sender, EventArgs e)
-        //{
-        //    var left = _originalXpostion - (RootCanvas.ActualWidth * PositionMovePercent); 
-        //    _growControl.BeginAnimation(Canvas.LeftProperty, null);
-        //    Canvas.SetLeft(_growControl, left);
-        //}
-
-        //void CanvasLargeTopAnimationCompleted(object sender, EventArgs e)
-        //{
-
-        //    var top = _originalYpostion - (RootCanvas.ActualHeight * PositionMovePercent); 
-        //    _growControl.BeginAnimation(Canvas.TopProperty, null);
-        //    Canvas.SetTop(_growControl,top);
-        //}
-
-        //void CanvasSmallLeftAnimationCompleted(object sender, EventArgs e)
-        //{
-        //    var left = RootCanvas.ActualWidth/2 + MarginValue;
-        //    _shrinkControl.BeginAnimation(Canvas.LeftProperty, null);
-        //    Canvas.SetLeft(_shrinkControl, left);
-        //}
-
-        //void CanvasSmallTopAnimationCompleted(object sender, EventArgs e)
-        //{
-
-        //    var top = RootCanvas.ActualHeight/2 + MarginValue;
-        //    _shrinkControl.BeginAnimation(Canvas.TopProperty, null);
-        //    Canvas.SetTop(_shrinkControl, top);
-        //}
-        void WidthLargeAnimationCompleted(object sender, EventArgs e)
-        {
-            //var width = RootCanvas.ActualWidth * LargeSizePercent - MarginValue * 2;
-            //_growControl.BeginAnimation(WidthProperty, null);
-            //_growControl.Width = width;
-            _growControl.MouseRightButtonDown += Shrink;
-        }
-
-        //void HeightLargeAnimationCompleted(object sender, EventArgs e)
-        //{
-        //    var height = RootCanvas.ActualHeight * LargeSizePercent - MarginValue * 2;
-        //    _growControl.BeginAnimation(HeightProperty, null);
-        //    _growControl.Height = height;
-        //}
-
-        //void WidthSmallAnimationCompleted(object sender, EventArgs e)
-        //{
-        //    var width = RootCanvas.ActualWidth * SmallSizePercent - MarginValue * 2;
-        //    _shrinkControl.BeginAnimation(WidthProperty, null);
-        //    _shrinkControl.Width = width;
-        //}
-
-        //void HeightSmallAnimationCompleted(object sender, EventArgs e)
-        //{
-        //    var height = RootCanvas.ActualHeight * SmallSizePercent - MarginValue * 2;
-        //    _shrinkControl.BeginAnimation(HeightProperty, null);
-        //    _shrinkControl.Height = height;
-        //}
 
   
+    }
+
+    public class ControlPlacement
+    {
+        public string Name { get; set; }
+        public double WidthPercentage { get; set; }
+        public double HeightPercentage { get; set; }
+        public double InitialXPercentage { get; set; }
+        public double InitialYPercentage { get; set; }
+        public double GrowPercentage { get; set; }
+        public Control ViewControl { get; set; }
     }
 }

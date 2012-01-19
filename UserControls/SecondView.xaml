@@ -6,31 +6,106 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Border
-        Margin="2"
-        BorderThickness="1"
-        BorderBrush="Gray"
-            Background="LightGreen">
-        <Border.Effect>
-            <DropShadowEffect
-                Color="LightGray"
-                ShadowDepth="1"></DropShadowEffect>
-        </Border.Effect>
-        <StackPanel
-            Margin="5">
+        Style="{StaticResource SimpleBorderStyle}">
+        <StackPanel>
             <TextBlock
-                Margin="5"
+                Style="{StaticResource HeaderTextBlockStyle}"
+                Text="Find Account" />
+            <Label
+                Style="{StaticResource FieldLabelStyle}"
+                Content="Account Access Information" />
+            <ComboBox
+                Width="170"
                 HorizontalAlignment="Left"
-                Text="Search"></TextBlock>
+                x:Name="cboAccount"
+                IsReadOnly="True"
+                SelectedIndex="0">
+                <ComboBoxItem>Phone Number</ComboBoxItem>
+                <ComboBoxItem>Name</ComboBoxItem>
+                <ComboBoxItem>Equipment ID</ComboBoxItem>
+            </ComboBox>
+            <Label
+                Style="{StaticResource FieldLabelStyle}"
+                Content="{Binding ElementName=cboAccount, Path=SelectionBoxItem}"/>
             <TextBox
-                Width="200"
-                Margin="5"
-                HorizontalAlignment="Left">
-            </TextBox>
-            <Button
-                Margin="5"
+                x:Name="field"
+                Style="{StaticResource StandardTextBoxStyle}"
+                Width="170"
+                HorizontalAlignment="Left" />
+            <StackPanel
+                Orientation="Horizontal">
+                <Button
+                    Style="{StaticResource StandardButtonStyle}"
+                    HorizontalAlignment="Left"
+                    Width="85"
+                    Content="Find"
+                    Click="ButtonClick" />
+
+                <Button
+                    Style="{StaticResource StandardButtonStyle}"
+                    HorizontalAlignment="Left"
+                    Width="85"
+                    Content="Clear"
+                    Click="Button_Click" />
+            </StackPanel>
+                
+
+            <DataGrid
+                Margin="0,30,0,0"
+                x:Name="PlainDataGridSprintStyle"
+                Style="{StaticResource PlainDataGridSprintStyle}"
+                ItemsSource="{Binding Path=PortInNumbers}"
+                HorizontalScrollBarVisibility="Disabled"
+                MaxWidth="300"
                 HorizontalAlignment="Left"
-                Content="Search..."
-                Width="100"></Button>
+                CanUserAddRows="False"
+                CanUserDeleteRows="False"
+                CanUserResizeRows="False"
+                CanUserSortColumns="False"
+                AutoGenerateColumns="False"
+                Visibility="Collapsed">
+                <DataGrid.ToolTip>
+                    <ToolTip
+                        DataContext="{Binding Path=PlacementTarget,RelativeSource={x:Static RelativeSource.Self}}"
+                        Content="{Binding Path=Name}" />
+                </DataGrid.ToolTip>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn
+                        IsReadOnly="True"
+                        Header="Phone Number"
+                        Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="{Binding PhoneNumber}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn
+                        IsReadOnly="True"
+                        Header="Text"
+                        Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="{Binding Text}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn
+                        IsReadOnly="True"
+                        Header="Data"
+                        Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="{Binding Data}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
         </StackPanel>
     </Border>
 </UserControl>

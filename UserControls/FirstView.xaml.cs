@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TextDashboard.Resource;
 
 namespace TextDashboard.UserControls
 {
@@ -24,12 +25,9 @@ namespace TextDashboard.UserControls
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (Test.Visibility == Visibility.Collapsed)
-                Test.Visibility = Visibility.Visible;
-            else
-                Test.Visibility = Visibility.Collapsed;
+
         }
     }
 }

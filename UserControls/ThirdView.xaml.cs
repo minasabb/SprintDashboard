@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TextDashboard.Resource;
 
 namespace TextDashboard.UserControls
 {
@@ -22,6 +23,22 @@ namespace TextDashboard.UserControls
         public ThirdView()
         {
             InitializeComponent();
+        }
+
+        private void ButtonClick(object sender, RoutedEventArgs e)
+        {
+            stack1.Visibility = Visibility.Collapsed;
+            stack2.Visibility= Visibility.Visible;
+            Events.IncreaseSize(this,0.5);
+            this.Refresh();
+        }
+
+        private void ButtonBackClick(object sender, RoutedEventArgs e)
+        {
+            Events.DecreaseSize(this);
+            stack1.Visibility = Visibility.Visible;
+            stack2.Visibility = Visibility.Collapsed;
+            this.Refresh();
         }
     }
 }

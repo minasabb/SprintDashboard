@@ -6,39 +6,62 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Border
-        Margin="2"
-        BorderThickness="1"
-        BorderBrush="Gray"
-            Background="Lavender">
-        <Border.Effect>
-            <DropShadowEffect
-                Color="LightGray" ShadowDepth="1"></DropShadowEffect>
-        </Border.Effect>
-        <StackPanel
-            Margin="5">
-            <TextBlock
-                Margin="5"
-                HorizontalAlignment="Left"
-                Text="Home Phone Number"></TextBlock>
-            <TextBox
-                Width="200"
-                Margin="5"
-                HorizontalAlignment="Left">
-            </TextBox>
-            <TextBlock
-                Margin="5"
-                HorizontalAlignment="Left"
-                Text="Cell Phone Number"></TextBlock>
-            <TextBox
-                Width="200"
-                Margin="5"
-                HorizontalAlignment="Left">
-            </TextBox>
-            <Button
-                Margin="5"
-                HorizontalAlignment="Left"
-                Content="Submit"
-                Width="100"></Button>
-        </StackPanel>
+        Style="{StaticResource SimpleBorderStyle}">
+        <Grid>
+            <StackPanel
+                x:Name="stack1">
+                <TextBlock
+                    Style="{StaticResource HeaderTextBlockStyle}"
+                    Text="Upgrade" />
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="Account Number" />
+                <TextBox
+                    Style="{StaticResource StandardTextBoxStyle}"
+                    Width="170"
+                    HorizontalAlignment="Left" />
+                <Button
+                    Style="{StaticResource StandardButtonStyle}"
+                    HorizontalAlignment="Left"
+                    Width="170"
+                    Content="Find"
+                    Click="ButtonClick" />
+
+            </StackPanel>
+
+            <StackPanel
+                x:Name="stack2"
+                Visibility="Collapsed">
+                <TextBlock
+                    Style="{StaticResource HeaderTextBlockStyle}"
+                    Text="Upgrade" />
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="First Name" />
+                <TextBox
+                    Style="{StaticResource StandardTextBoxStyle}"
+                    Width="170"
+                    HorizontalAlignment="Left" />
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="Last Name" />
+                <TextBox
+                    Style="{StaticResource StandardTextBoxStyle}"
+                    Width="170"
+                    HorizontalAlignment="Left" />
+
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="This is a very long text which requires more space in this view" />
+                
+                <Button
+                    Style="{StaticResource StandardButtonStyle}"
+                    HorizontalAlignment="Left"
+                    Width="70"
+                    Content="Back"
+                    Click="ButtonBackClick" />
+
+            </StackPanel>
+        </Grid>
     </Border>
 </UserControl>

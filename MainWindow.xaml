@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:UserControls="clr-namespace:TextDashboard.UserControls" xmlns:Controls="clr-namespace:TextDashboard"
-        Title="MainWindow" Height="350" Width="525"
+        Title="MainWindow" Height="700" Width="700"
         Name="Main"
         SizeChanged="UpdateControls"
         Loaded="LoadControls">
@@ -19,7 +19,7 @@
                     KeyTime="0"
                     Value="{Binding ElementName=RootCanvas, Path=ActualWidth, Converter={StaticResource WidthPercentageConverter}, ConverterParameter=0.50}" />
                 <EasingDoubleKeyFrame
-                    KeyTime="0:0:0.5"
+                    KeyTime="0:0:0.2"
                     Value="{Binding ElementName=RootCanvas, Path=ActualWidth, Converter={StaticResource WidthPercentageConverter}, ConverterParameter=0.75}" />
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames
@@ -29,7 +29,7 @@
                     KeyTime="0"
                     Value="106" />
                 <EasingDoubleKeyFrame
-                    KeyTime="0:0:0.5"
+                    KeyTime="0:0:0.2"
                     Value="200" />
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
