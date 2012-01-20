@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\
+C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\
 TextDashboard
 none
 false
 DEBUG;TRACE
-C:\Users\mina.sabbagian\git\SprintDashboard\App.xaml
+C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\App.xaml
 6-1694876227
 
-121953502476
-17766241559
+12-1040348313
+1857260378
 MainWindow.xaml;Resource\Generic.xaml;UserControls\FirstView.xaml;UserControls\ForthView.xaml;UserControls\SecondView.xaml;UserControls\ThirdView.xaml;
 
 True

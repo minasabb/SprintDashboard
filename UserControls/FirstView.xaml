@@ -14,8 +14,7 @@
             <TextBox
                 Style="{StaticResource StandardTextBoxStyle}"
                 Width="170"
-                HorizontalAlignment="Left"
-                TextChanged="TextBox_TextChanged" />
+                HorizontalAlignment="Left" />
         </StackPanel>
     </Border>
 </UserControl>
