@@ -36,6 +36,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IQ.Core.Windows.Animation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\IQ.Core.Windows.Animation.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -63,6 +67,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Custom Control\ResizableContentControl.cs" />
     <Compile Include="Resource\Events.cs" />
     <Compile Include="UserControls\FirstView.xaml.cs">
       <DependentUpon>FirstView.xaml</DependentUpon>
@@ -136,12 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AnimatinLibrary\AnimatinLibrary.csproj">
-      <Project>{FDBFCC05-E025-4ED5-9549-A4A17C397387}</Project>
-      <Name>AnimatinLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

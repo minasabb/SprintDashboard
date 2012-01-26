@@ -14,7 +14,7 @@ namespace TextDashboard
     /// </summary>
     public partial class MainWindow : Window
     {
-        private const double MarginValue = 5;
+        private const double MarginValue = 0;
         private const double AnimationDuration = 0.2;
         private const double OpacityChange = 0.8;
 
@@ -40,31 +40,31 @@ namespace TextDashboard
             //                     new ControlPlacement {Name="V4",HeightPercentage = 0.4, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0.6,GrowPercentage = 0.20, ViewControl = new ForthView()}, 
             //                 };
 
-            _contolList = new List<ControlPlacement>
-                             {
-                                 new ControlPlacement {Name="V1",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new FirstView()}, 
-                                 new ControlPlacement {Name="V2",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new SecondView()}, 
-                                 new ControlPlacement {Name="V3",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0, InitialYPercentage = 0.5,GrowPercentage = 0.25, ViewControl = new ThirdView()}, 
-                                 new ControlPlacement {Name="V4",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0.5,GrowPercentage = 0.20, ViewControl = new ForthView()}, 
-                             };
+            //_contolList = new List<ControlPlacement>
+            //                 {
+            //                     new ControlPlacement {Name="V1",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0.5,GrowPercentage = 0.50, ViewControl = new FirstView() {Margin = new Thickness(5),Width = 200,Height = 200}}, 
+            //                     //new ControlPlacement {Name="V2",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new SecondView()}, 
+            //                     //new ControlPlacement {Name="V3",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0, InitialYPercentage = 0.5,GrowPercentage = 0.25, ViewControl = new ThirdView()}, 
+            //                     //new ControlPlacement {Name="V4",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0.5,GrowPercentage = 0.20, ViewControl = new ForthView()}, 
+            //                 };
 
-            Events.IncreaseSizeEvent += OnIncreaseSizeEvent;
-            Events.DecreaseSizeEvent += OnDecreaseSizeEvent;
+            //Events.IncreaseSizeEvent += OnIncreaseSizeEvent;
+            //Events.DecreaseSizeEvent += OnDecreaseSizeEvent;
         }
 
-        void OnDecreaseSizeEvent(object control)
-        {
-            var view = control as Control;
-            if (view != null)
-                Shrink(view);
-        }
+        //void OnDecreaseSizeEvent(object control)
+        //{
+        //    var view = control as Control;
+        //    if (view != null)
+        //        Shrink(view);
+        //}
 
-        void OnIncreaseSizeEvent(object control, double percent)
-        {
-            var view = control as Control;
-            if (view != null)
-                Grow(view, percent);
-        }
+        //void OnIncreaseSizeEvent(object control, double percent)
+        //{
+        //    var view = control as Control;
+        //    if (view != null)
+        //        Grow(view, percent);
+        //}
 
         private void UpdateControls(object sender, RoutedEventArgs e)
         {
@@ -78,27 +78,27 @@ namespace TextDashboard
 
         private void UpdateControlPlacement(Control control,int index)
         {
-            control.BeginAnimation(Canvas.LeftProperty, null);
-            control.BeginAnimation(Canvas.TopProperty, null);
-            control.BeginAnimation(WidthProperty, null);
-            control.BeginAnimation(HeightProperty, null);
+            //control.BeginAnimation(Canvas.LeftProperty, null);
+            //control.BeginAnimation(Canvas.TopProperty, null);
+            //control.BeginAnimation(WidthProperty, null);
+            //control.BeginAnimation(HeightProperty, null);
 
-            control.Width = RootCanvas.ActualWidth * _contolList[index].WidthPercentage - MarginValue * 2;
-            control.Height = RootCanvas.ActualHeight * _contolList[index].HeightPercentage - MarginValue * 2;
-            Canvas.SetLeft(control, _contolList[index].InitialXPercentage * RootCanvas.ActualWidth + MarginValue);
-            Canvas.SetTop(control, _contolList[index].InitialYPercentage * RootCanvas.ActualHeight + MarginValue);
+            //control.Width = RootCanvas.ActualWidth * _contolList[index].WidthPercentage - MarginValue * 2;
+            //control.Height = RootCanvas.ActualHeight * _contolList[index].HeightPercentage - MarginValue * 2;
+            //Canvas.SetLeft(control, _contolList[index].InitialXPercentage * RootCanvas.ActualWidth + MarginValue);
+            //Canvas.SetTop(control, _contolList[index].InitialYPercentage * RootCanvas.ActualHeight + MarginValue);
         }
 
         private void LoadControls(object sender, RoutedEventArgs e)
         {
             foreach (var controlPlacement in _contolList)
             {
-                controlPlacement.ViewControl.Width = RootCanvas.ActualWidth * controlPlacement.WidthPercentage - MarginValue * 2;
-                controlPlacement.ViewControl.Height = RootCanvas.ActualHeight * controlPlacement.HeightPercentage - MarginValue * 2;
+                //controlPlacement.ViewControl.Width = RootCanvas.ActualWidth * controlPlacement.WidthPercentage - MarginValue * 2;
+                //controlPlacement.ViewControl.Height = RootCanvas.ActualHeight * controlPlacement.HeightPercentage - MarginValue * 2;
                 controlPlacement.ViewControl.Name = controlPlacement.Name;
-                RegisterName(controlPlacement.Name, controlPlacement.ViewControl); 
+                RegisterName(controlPlacement.Name, controlPlacement.ViewControl);
                 //controlPlacement.ViewControl.MouseLeftButtonDown += Grow;
-                controlPlacement.ViewControl.LostFocus += Shrink;
+                //controlPlacement.ViewControl.LostFocus += Shrink;
                 //controlPlacement.ViewControl.Opacity = 1;
                 RootCanvas.Children.Add(controlPlacement.ViewControl);
                 Canvas.SetLeft(controlPlacement.ViewControl, controlPlacement.InitialXPercentage * RootCanvas.ActualWidth + MarginValue);

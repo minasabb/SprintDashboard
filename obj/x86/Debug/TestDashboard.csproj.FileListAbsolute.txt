@@ -99,3 +99,4 @@ C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\GenerateReso
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\bin\Debug\AnimatinLibrary.dll
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\bin\Debug\AnimatinLibrary.pdb
+C:\Users\mina.sabbagian\git\SprintDashboard\bin\Debug\IQ.Core.Windows.Animation.pdb
