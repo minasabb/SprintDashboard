@@ -24,6 +24,12 @@ namespace TextDashboard.UserControls
             NewHeight = ActualHeight + 100;
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //NewWidth = ActualWidth - 100;
+            //NewHeight = ActualHeight - 100;
+        }
+
         
     }
 }

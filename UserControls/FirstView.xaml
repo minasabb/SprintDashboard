@@ -19,6 +19,12 @@
                 Width="85"
                 Content="Find"
                 Click="Button_Click"/>
+            <Button
+                Style="{StaticResource StandardButtonStyle}"
+                HorizontalAlignment="Left"
+                Width="85"
+                Content="Clear"
+                Click="Button_Click_1" />
         </StackPanel>
     </Border>
 </Custom_Control:ResizableContentControl>
