@@ -17,8 +17,51 @@
                 Style="{StaticResource StandardButtonStyle}"
                 HorizontalAlignment="Left"
                 Width="85"
-                Content="Find"
-                Click="Button_Click"/>
+                Click="Button_Click"
+                Content="Find"/>
+            <Button
+                Style="{StaticResource StandardButtonStyle}"
+                HorizontalAlignment="Left"
+                Width="85"
+                Click="Button_Click_1"
+                Content="Clear"/>
+
+            <ContentControl
+                x:Name="Loading"
+                Margin="10,0,0,0"
+                Visibility="Collapsed"
+                Style="{DynamicResource SmallLoadingIndicatorStyle}" />
+
+            <StackPanel
+                x:Name="stack2"
+                Visibility="Collapsed">
+
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="This is a very long text which requires more space in this view" />
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="This is a very long text which requires more space in this view" />
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="This is a very long text which requires more space in this view" />
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="This is a very long text which requires more space in this view" />
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="This is a very long text which requires more space in this view" />
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="This is a very long text which requires more space in this view" />
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="This is a very long text which requires more space in this view" />
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="This is a very long text which requires more space in this view" />
+
+            </StackPanel>
         </StackPanel>
     </Border>
 </Custom_Control:ResizableContentControl>

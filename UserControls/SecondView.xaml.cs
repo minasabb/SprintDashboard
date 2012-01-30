@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using TextDashboard.Custom_Control;
 using TextDashboard.Resource;
 
 namespace TextDashboard.UserControls
@@ -19,20 +9,32 @@ namespace TextDashboard.UserControls
     /// <summary>
     /// Interaction logic for SecondView.xaml
     /// </summary>
-    public partial class SecondView : UserControl
+    public partial class SecondView : ResizableContentControl
     {
         public SecondView()
         {
             InitializeComponent();
             SetupDesignTimeModel();
+            Events.UpdateContentEvent+= UpdateContentEvent;
+        }
+
+        void UpdateContentEvent(object sender)
+        {
+            var control = sender as ResizableContentControl;
+            if (control == null || control.Name != Name || PlainDataGridSprintStyle.Visibility != Visibility.Hidden)
+                return;
+            PlainDataGridSprintStyle.Visibility = Visibility.Visible;
+            Loading.Visibility = Visibility.Collapsed;
         }
 
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(field.Text)) //&& PlainDataGridSprintStyle.Visibility == Visibility.Collapsed)
             {
-                PlainDataGridSprintStyle.Visibility = Visibility.Visible;
-                Events.IncreaseSize(this, 1);
+                Loading.Visibility = Visibility.Visible;
+                PlainDataGridSprintStyle.Visibility = Visibility.Hidden;
+
+                //Loading.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -84,15 +86,21 @@ namespace TextDashboard.UserControls
             #endregion
         }
 
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            field.Text = "";
+            //field.Text = "";
             //if (PlainDataGridSprintStyle.Visibility != Visibility.Collapsed)
             //{
-                PlainDataGridSprintStyle.Visibility = Visibility.Collapsed;
-                Events.DecreaseSize(this);
-                this.Refresh();
+            PlainDataGridSprintStyle.Visibility = Visibility.Collapsed;
+            //Loading.Visibility=Visibility.Collapsed;
             //}
+        }
+
+        private void TextBlock_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            //if((bool)e.NewValue)
+            //    UpdatedContent = true;
         }
     }
 }

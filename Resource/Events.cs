@@ -7,31 +7,32 @@ using System.Windows.Threading;
 
 namespace TextDashboard.Resource
 {
-    public delegate void IncreaseSizeDelegate(object sender, double percent);
+    public delegate void IncreaseSizeDelegate(object sender);
 
-    public delegate void DecreaseSizeDelegate(object sender);
+    public delegate void UpdateOriginalSizeDelegate();
+    public delegate void UpdateContentDelegate(object sender);
 
     public static class Events
     {
         public static event IncreaseSizeDelegate IncreaseSizeEvent;
-        public static void IncreaseSize(object control, double percent)
+        public static void IncreaseSize(object control)
         {
             if (IncreaseSizeEvent != null)
-                IncreaseSizeEvent(control, percent);
+                IncreaseSizeEvent(control);
         }
 
-        public static event DecreaseSizeDelegate DecreaseSizeEvent;
-        public static void DecreaseSize(object control)
+        public static event UpdateOriginalSizeDelegate UpdateOriginalSizeEvent;
+        public static void UpdateOriginalSize()
         {
-            if (DecreaseSizeEvent != null)
-                DecreaseSizeEvent(control);
+            if (UpdateOriginalSizeEvent != null)
+                UpdateOriginalSizeEvent();
         }
 
-        private static Action EmptyDelegate = delegate() { };
-
-        public static void Refresh(this UIElement uiElement)
+        public static event UpdateContentDelegate UpdateContentEvent;
+        public static void UpdateContent(object control)
         {
-            uiElement.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
+            if (UpdateContentEvent != null)
+                UpdateContentEvent(control);
         }
     }
 

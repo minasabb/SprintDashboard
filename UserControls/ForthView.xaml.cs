@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using TextDashboard.Custom_Control;
 using TextDashboard.Resource;
 
 namespace TextDashboard.UserControls
@@ -19,22 +8,31 @@ namespace TextDashboard.UserControls
     /// <summary>
     /// Interaction logic for ForthView.xaml
     /// </summary>
-    public partial class ForthView : UserControl
+    public partial class ForthView : ResizableContentControl
     {
         public ForthView()
         {
             InitializeComponent();
             SetupDesignTimeModel();
+            Events.UpdateContentEvent += UpdateContentEvent;
+        }
+
+        void UpdateContentEvent(object sender)
+        {
+            var control = sender as ResizableContentControl;
+            if (control == null || control.Name != Name || PlainDataGridSprintStyle.Visibility != Visibility.Hidden)
+                return;
+            PlainDataGridSprintStyle.Visibility = Visibility.Visible;
+            Loading.Visibility = Visibility.Collapsed;
         }
 
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
             if(!string.IsNullOrEmpty(field.Text)) //&& PlainDataGridSprintStyle.Visibility==Visibility.Collapsed)
             {
-                PlainDataGridSprintStyle.Visibility = Visibility.Visible;
-                Events.IncreaseSize(this,0.5);
+                PlainDataGridSprintStyle.Visibility = Visibility.Hidden;
+                Loading.Visibility=Visibility.Visible;
             }
-            this.Refresh();
         }
 
         private void SetupDesignTimeModel()
@@ -86,8 +84,6 @@ namespace TextDashboard.UserControls
             //if (PlainDataGridSprintStyle.Visibility != Visibility.Collapsed)
             //{
                 PlainDataGridSprintStyle.Visibility = Visibility.Collapsed;
-                Events.DecreaseSize(this);
-            this.Refresh();
             //}
         }
     }

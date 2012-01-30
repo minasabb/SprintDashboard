@@ -7,9 +7,6 @@
         Loaded="LoadControls">
 
     <Canvas Name="RootCanvas">
-        <UserControls:FirstView
-            Canvas.Left="229"
-            Canvas.Top="98" />
     </Canvas>
 
 </Window>
