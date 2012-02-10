@@ -7,18 +7,34 @@ using System.Windows.Threading;
 
 namespace TextDashboard.Resource
 {
-    public delegate void IncreaseSizeDelegate(object sender);
+    public delegate void MoveControlToTopDelegate(object sender);
+    public delegate void ShowCurtainDelegate(object sender);
+    public delegate void HideCurtainDelegate(object sender);
 
     public delegate void UpdateOriginalSizeDelegate();
     public delegate void UpdateContentDelegate(object sender);
 
     public static class Events
     {
-        public static event IncreaseSizeDelegate IncreaseSizeEvent;
-        public static void IncreaseSize(object control)
+        public static event MoveControlToTopDelegate MoveControlToTopEvent;
+        public static void MoveControlToTop(object control)
         {
-            if (IncreaseSizeEvent != null)
-                IncreaseSizeEvent(control);
+            if (MoveControlToTopEvent != null)
+                MoveControlToTopEvent(control);
+        }
+
+        public static event ShowCurtainDelegate ShowCurtainEvent;
+        public static void ShowCurtain(object control)
+        {
+            if (ShowCurtainEvent != null)
+                ShowCurtainEvent(control);
+        }
+
+        public static event HideCurtainDelegate HideCurtainEvent;
+        public static void HideCurtain(object control)
+        {
+            if (HideCurtainEvent != null)
+                HideCurtainEvent(control);
         }
 
         public static event UpdateOriginalSizeDelegate UpdateOriginalSizeEvent;

@@ -37,18 +37,35 @@ namespace TextDashboard
             //                     new ControlPlacement {Name="V4",HeightPercentage = 0.4, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0.6,GrowPercentage = 0.20, ViewControl = new ForthView()}, 
             //                 };
 
-            _contolList = new List<ControlPlacement>
-                             {
-                                 new ControlPlacement {Name="V1",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new FirstView {Margin = new Thickness(MarginValue)}}, 
-                                 new ControlPlacement {Name="V2",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new SecondView {Margin = new Thickness(MarginValue)}}, 
-                                 new ControlPlacement {Name="V3",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0, InitialYPercentage = 0.5,GrowPercentage = 0.25, ViewControl = new ThirdView {Margin = new Thickness(MarginValue)}}, 
-                                 new ControlPlacement {Name="V4",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0.5,GrowPercentage = 0.20, ViewControl = new ForthView {Margin = new Thickness(MarginValue)}}, 
-                             };
+            //_contolList = new List<ControlPlacement>
+            //                 {
+            //                     new ControlPlacement {Name="V1",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new FirstView {Margin = new Thickness(MarginValue)}}, 
+            //                     new ControlPlacement {Name="V2",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new SecondView {Margin = new Thickness(MarginValue)}}, 
+            //                     new ControlPlacement {Name="V3",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0, InitialYPercentage = 0.5,GrowPercentage = 0.25, ViewControl = new ThirdView {Margin = new Thickness(MarginValue)}}, 
+            //                     new ControlPlacement {Name="V4",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0.5,GrowPercentage = 0.20, ViewControl = new ForthView {Margin = new Thickness(MarginValue)}}, 
+            //                 };
 
-            Events.IncreaseSizeEvent += OnIncreaseSizeEvent;
+            Events.MoveControlToTopEvent += OnMoveControlToTopEvent;
+            Events.HideCurtainEvent += OnHideCurtainEvent;
+            Events.ShowCurtainEvent += OnShowCurtainEvent;
         }
 
-        void OnIncreaseSizeEvent(object control)
+        void OnShowCurtainEvent(object sender)
+        {
+            CurtainScreenBorder.Visibility = Visibility.Visible;
+        }
+
+        void OnHideCurtainEvent(object sender)
+        {
+            for (var index = 0; index < RootCanvas.Children.Count; index++)
+            {
+                var control = RootCanvas.Children[index] as Control;
+                if (control != null) Panel.SetZIndex(control, 0);
+            }
+            CurtainScreenBorder.Visibility = Visibility.Collapsed;
+        }
+
+        void OnMoveControlToTopEvent(object control)
         {
             var view = control as Control;
             if (view != null)
@@ -62,22 +79,22 @@ namespace TextDashboard
                 var control = RootCanvas.Children[index] as Control;
                 if (control == null || currentControl.Name == control.Name)
                 {
-                    Panel.SetZIndex(currentControl, Panel.GetZIndex(currentControl) + 1);
+                    if (Panel.GetZIndex(currentControl)<1)
+                        Panel.SetZIndex(currentControl, Panel.GetZIndex(currentControl) + 1);
                     continue;
                 }
-
                 Panel.SetZIndex(control, 0);
             }
         }
 
         private void UpdateControls(object sender, RoutedEventArgs e)
         {
-            for (var index = 0; index < RootCanvas.Children.Count; index++)
-            {
-                var control = RootCanvas.Children[index] as Control;
-                if (control == null) continue;
-                UpdateControlPlacement(control, index);
-            }
+            //for (var index = 0; index < RootCanvas.Children.Count; index++)
+            //{
+            //    var control = RootCanvas.Children[index] as Control;
+            //    if (control == null) continue;
+            //    UpdateControlPlacement(control, index);
+            //}
             Events.UpdateOriginalSize();
         }
 

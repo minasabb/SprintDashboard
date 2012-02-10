@@ -7,39 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-
-    <ControlTemplate
-        x:Key="ResizableContentControlTemplate"
-        TargetType="{x:Type Custom_Control:ResizableContentControl}">
-
-
-        <ScrollViewer
-            x:Name="PART_MainScrolViewer"
-            HorizontalScrollBarVisibility="Hidden"
-            VerticalScrollBarVisibility="Hidden">
-            <Grid
-                
-                x:Name="LayoutRoot">
-
-                <ContentPresenter
-                    x:Name="PART_ContentPresenter"
-                    Content="{TemplateBinding Content}" />
-
-            </Grid>
-        </ScrollViewer>
-
-    </ControlTemplate>
-
-    <Style
-        x:Key="ResizableContentControlStyle"
-        TargetType="{x:Type Custom_Control:ResizableContentControl}">
-        <Setter
-            Property="Template"
-            Value="{DynamicResource ResizableContentControlTemplate}" />
-
-    </Style>
-
-
     <!-- Border Style -->
     <Style
         x:Key="SimpleBorderStyle"
@@ -47,7 +14,7 @@
         <Style.Resources>
             <Storyboard
                 x:Key="StoryboardFocus">
-                <ThicknessAnimationUsingKeyFrames
+                <!--<ThicknessAnimationUsingKeyFrames
                     Storyboard.TargetProperty="(Border.BorderThickness)"
                     Storyboard.TargetName="{x:Null}">
                     <EasingThicknessKeyFrame
@@ -56,7 +23,7 @@
                     <EasingThicknessKeyFrame
                         KeyTime="0:0:0.1"
                         Value="1.5" />
-                </ThicknessAnimationUsingKeyFrames>
+                </ThicknessAnimationUsingKeyFrames>-->
                 <ColorAnimationUsingKeyFrames
                     Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
                     Storyboard.TargetName="{x:Null}">
@@ -67,20 +34,10 @@
                         KeyTime="0:0:0.1"
                         Value="#FF5A5A5A" />
                 </ColorAnimationUsingKeyFrames>
-                <ThicknessAnimationUsingKeyFrames
-                    Storyboard.TargetProperty="(Border.Padding)"
-                    Storyboard.TargetName="{x:Null}">
-                    <EasingThicknessKeyFrame
-                        KeyTime="0"
-                        Value="5" />
-                    <EasingThicknessKeyFrame
-                        KeyTime="0:0:0.1"
-                        Value="4" />
-                </ThicknessAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard
                 x:Key="StoryboardLostFocus">
-                <ThicknessAnimationUsingKeyFrames
+                <!--<ThicknessAnimationUsingKeyFrames
                     Storyboard.TargetProperty="(Border.BorderThickness)"
                     Storyboard.TargetName="{x:Null}">
                     <EasingThicknessKeyFrame
@@ -89,7 +46,7 @@
                     <EasingThicknessKeyFrame
                         KeyTime="0:0:0.1"
                         Value="0.5" />
-                </ThicknessAnimationUsingKeyFrames>
+                </ThicknessAnimationUsingKeyFrames>-->
                 <ColorAnimationUsingKeyFrames
                     Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
                     Storyboard.TargetName="{x:Null}">
@@ -100,16 +57,6 @@
                         KeyTime="0:0:0.1"
                         Value="#FFBDBCBC" />
                 </ColorAnimationUsingKeyFrames>
-                <ThicknessAnimationUsingKeyFrames
-                    Storyboard.TargetProperty="(Border.Padding)"
-                    Storyboard.TargetName="{x:Null}">
-                    <EasingThicknessKeyFrame
-                        KeyTime="0"
-                        Value="4" />
-                    <EasingThicknessKeyFrame
-                        KeyTime="0:0:0.1"
-                        Value="5" />
-                </ThicknessAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard
                 x:Key="StoryboardMouseEnter">
@@ -122,16 +69,6 @@
                     <EasingThicknessKeyFrame
                         KeyTime="0:0:0.1"
                         Value="1.5" />
-                </ThicknessAnimationUsingKeyFrames>
-                <ThicknessAnimationUsingKeyFrames
-                    Storyboard.TargetProperty="(Border.Padding)"
-                    Storyboard.TargetName="{x:Null}">
-                    <EasingThicknessKeyFrame
-                        KeyTime="0"
-                        Value="5" />
-                    <EasingThicknessKeyFrame
-                        KeyTime="0:0:0.1"
-                        Value="4" />
                 </ThicknessAnimationUsingKeyFrames>
                 <ColorAnimationUsingKeyFrames
                     Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
@@ -155,16 +92,6 @@
                     <EasingThicknessKeyFrame
                         KeyTime="0:0:0.1"
                         Value="0.5" />
-                </ThicknessAnimationUsingKeyFrames>
-                <ThicknessAnimationUsingKeyFrames
-                    Storyboard.TargetProperty="(Border.Padding)"
-                    Storyboard.TargetName="{x:Null}">
-                    <EasingThicknessKeyFrame
-                        KeyTime="0"
-                        Value="4" />
-                    <EasingThicknessKeyFrame
-                        KeyTime="0:0:0.1"
-                        Value="5" />
                 </ThicknessAnimationUsingKeyFrames>
                 <ColorAnimationUsingKeyFrames
                     Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
@@ -209,7 +136,7 @@
             Value="3" />
         <Setter
             Property="Padding"
-            Value="5" />
+            Value="0" />
         <Setter
             Property="Margin"
             Value="2" />
@@ -233,6 +160,40 @@
             Property="BorderThickness"
             Value="0.5" />
     </Style>
+    
+    
+    <ControlTemplate
+        x:Key="ResizableContentControlTemplate"
+        TargetType="{x:Type Custom_Control:ResizableContentControl}">
+
+        <!--<Border
+            Style="{StaticResource SimpleBorderStyle}">-->
+        <!--<Border
+            Margin="0"
+            Padding="0">-->   
+            <ScrollViewer
+                x:Name="PART_MainScrolViewer"
+                HorizontalScrollBarVisibility="Hidden"
+                VerticalScrollBarVisibility="Hidden">
+                <ContentPresenter
+                    Margin="2"
+                    x:Name="PART_ContentPresenter"
+                    Content="{TemplateBinding Content}" />
+            </ScrollViewer>
+        <!--</Border>-->
+    </ControlTemplate>
+
+    <Style
+        x:Key="ResizableContentControlStyle"
+        TargetType="{x:Type Custom_Control:ResizableContentControl}">
+        <Setter
+            Property="Template"
+            Value="{DynamicResource ResizableContentControlTemplate}" />
+
+    </Style>
+
+
+    
 
     <!-- Button Style -->
     <LinearGradientBrush
@@ -535,6 +496,141 @@
     </Style>
 
 
+    <Style
+        x:Key="ButtonFocusVisual">
+        <Setter
+            Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle
+                        Margin="2"
+                        SnapsToDevicePixels="true"
+                        Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                        StrokeThickness="1"
+                        StrokeDashArray="1 2" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <LinearGradientBrush
+        x:Key="ButtonNormalBackground"
+        EndPoint="0,1"
+        StartPoint="0,0">
+        <GradientStop
+            Color="#F3F3F3"
+            Offset="0" />
+        <GradientStop
+            Color="#EBEBEB"
+            Offset="0.5" />
+        <GradientStop
+            Color="#DDDDDD"
+            Offset="0.5" />
+        <GradientStop
+            Color="#CDCDCD"
+            Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush
+        x:Key="ButtonNormalBorder"
+        Color="#FF707070" />
+    <Style
+        x:Key="DashboardButtonStyle"
+        TargetType="{x:Type Button}">
+        <Setter
+            Property="Width"
+            Value="240" />
+        <Setter
+            Property="Height"
+            Value="100" />
+        <Setter
+            Property="FontFamily"
+            Value="Segoe UI" />
+        <Setter
+            Property="Foreground"
+            Value="Gray" />
+        <Setter
+            Property="FontSize"
+            Value="18" />
+        <Setter
+            Property="FocusVisualStyle"
+            Value="{StaticResource ButtonFocusVisual}" />
+        <Setter
+            Property="Background"
+            Value="{StaticResource ButtonNormalBackground}" />
+        <Setter
+            Property="BorderBrush"
+            Value="{StaticResource ButtonNormalBorder}" />
+        <Setter
+            Property="BorderThickness"
+            Value="1" />
+        <Setter
+            Property="Foreground"
+            Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter
+            Property="HorizontalContentAlignment"
+            Value="Center" />
+        <Setter
+            Property="VerticalContentAlignment"
+            Value="Center" />
+        <Setter
+            Property="Padding"
+            Value="1" />
+        <Setter
+            Property="Cursor"
+            Value="Hand" />
+        <Setter
+            Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="{x:Type Button}">
+                    <Border
+                        Style="{StaticResource SimpleBorderStyle}">
+                        <Border.Background>
+                            <LinearGradientBrush
+                                EndPoint="0.5,1"
+                                StartPoint="0.5,0">
+                                <GradientStop
+                                    Color="Black" />
+                                <GradientStop
+                                    Color="White"
+                                    Offset="1" />
+                                <GradientStop
+                                    Color="#FF555555" />
+                                <GradientStop
+                                    Color="#FF262626" />
+                                <GradientStop
+                                    Color="#FFE6E7E7" />
+                                <GradientStop
+                                    Color="#FFE0E0E0"
+                                    Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <ContentPresenter
+                            TextBlock.FontSize="{TemplateBinding FontSize}"
+                            TextBlock.Foreground="{TemplateBinding Foreground}"
+                            TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Margin="{TemplateBinding Padding}"
+                            RecognizesAccessKey="True"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            OpacityMask="White" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger
+                            Property="IsEnabled"
+                            Value="false">
+                            <Setter
+                                Property="Foreground"
+                                Value="#ADADAD" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
     <!--TextBox -->
     <ControlTemplate
         x:Key="StandardTextBoxTemplate"
@@ -719,9 +815,6 @@
         <Setter
             Property="FontSize"
             Value="18" />
-        <Setter
-            Property="Margin"
-            Value="0,5" />
         <Setter
             Property="HorizontalAlignment"
             Value="Left" />
@@ -2168,4 +2261,5 @@
             Property="Height"
             Value="23.8" />
     </Style>
+
 </ResourceDictionary>

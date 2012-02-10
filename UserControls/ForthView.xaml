@@ -9,9 +9,145 @@
     d:DesignWidth="300"
     xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit"
     xmlns:Custom_Control="clr-namespace:TextDashboard.Custom_Control">
-    <Border
-        Style="{StaticResource SimpleBorderStyle}">
-        <StackPanel>
+
+    <Grid>
+        <ContentControl
+            Visibility="Collapsed"
+            x:Name="Loading"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Style="{DynamicResource SmallLoadingIndicatorStyle}" />
+
+        <Button
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="0"
+            x:Name="CheckNumberButton"
+            Click="CheckNumberButton_OnClick"
+            Content="Check Number Portability"
+            Style="{DynamicResource DashboardButtonStyle}" />
+
+        <Border
+            MinWidth="200"
+            MinHeight="200"
+            Style="{StaticResource SimpleBorderStyle}"
+            x:Name="CheckNumberBorder"
+            Visibility="Collapsed">
+            <StackPanel
+                Margin="5"
+                Background="White"
+                x:Name="CheckNumberStackPanel">
+                <TextBlock
+                    Style="{StaticResource HeaderTextBlockStyle}"
+                    Text="Check Number Portability" />
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="Phone Number" />
+                <TextBox
+                    x:Name="field"
+                    Style="{StaticResource StandardTextBoxStyle}"
+                    Width="160"
+                    HorizontalAlignment="Left" />
+                <StackPanel
+                    Orientation="Horizontal">  
+                    <Button
+                        Style="{StaticResource StandardButtonStyle}"
+                        HorizontalAlignment="Left"
+                        Width="85"
+                        Click="CloseButton_OnClick"
+                        Content="Close" /> 
+                    
+                    <Button
+                        Style="{StaticResource StandardButtonStyle}"
+                        HorizontalAlignment="Left"
+                        Width="85"
+                        Click="Button_Click_1"
+                        Content="Clear" />
+                    
+                    <Button
+                        Style="{StaticResource PrimaryActionButtonStyle}"
+                        HorizontalAlignment="Left"
+                        Width="85"
+                        Click="Button_Click"
+                        Content="Find" />
+
+                </StackPanel>
+                <Grid>
+                    <ContentControl
+                        Visibility="Collapsed"
+                        x:Name="LoadingResult"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Style="{DynamicResource SmallLoadingIndicatorStyle}" />
+                    <StackPanel
+                        Margin="10"
+                        x:Name="StackPanelSearchResult"
+                        Visibility="Collapsed">
+
+                        <DataGrid
+                            Margin="0,20,0,0"
+                            x:Name="PlainDataGridSprintStyle"
+                            Style="{StaticResource DataGridWithHorizontalLinesSprintStyle}"
+                            ItemsSource="{Binding Path=PortInNumbers}"
+                            HorizontalScrollBarVisibility="Disabled"
+                            MaxWidth="300"
+                            HorizontalAlignment="Left"
+                            CanUserAddRows="False"
+                            CanUserDeleteRows="False"
+                            CanUserResizeRows="False"
+                            CanUserSortColumns="False"
+                            AutoGenerateColumns="False">
+                            <DataGrid.ToolTip>
+                                <ToolTip
+                                    DataContext="{Binding Path=PlacementTarget,RelativeSource={x:Static RelativeSource.Self}}"
+                                    Content="{Binding Path=Name}" />
+                            </DataGrid.ToolTip>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn
+                                    IsReadOnly="True"
+                                    Header="Phone Number"
+                                    Width="*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Text="{Binding PhoneNumber}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn
+                                    IsReadOnly="True"
+                                    Header="Text"
+                                    Width="*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Text="{Binding Text}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn
+                                    IsReadOnly="True"
+                                    Header="Data"
+                                    Width="*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Text="{Binding Data}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </StackPanel>
+                </Grid>
+
+            </StackPanel>
+        </Border>
+
+    </Grid>
+
+    <!--<StackPanel>
             <TextBlock
                 Style="{StaticResource HeaderTextBlockStyle}"
                 Text="Check Number Portability" />
@@ -98,6 +234,5 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-        </StackPanel>
-    </Border>
+        </StackPanel>-->
 </Custom_Control:ResizableContentControl>
