@@ -1,5 +1,5 @@
 ﻿<Custom_Control:ResizableContentControl
-    x:Class="TextDashboard.UserControls.SecondView"
+    x:Class="TextDashboard.UserControls.FindExisitngAccountView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -27,9 +27,6 @@
             Style="{DynamicResource DashboardButtonStyle}" />
 
         <Border
-            MinWidth="200"
-            MinHeight="200"
-            Style="{StaticResource SimpleBorderStyle}"
             x:Name="FindAccountBorder"
             Visibility="Collapsed">
             <StackPanel

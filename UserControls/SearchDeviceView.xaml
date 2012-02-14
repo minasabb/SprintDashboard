@@ -1,11 +1,12 @@
 ﻿<Custom_Control:ResizableContentControl
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:Custom_Control="clr-namespace:TextDashboard.Custom_Control"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Custom_Control="clr-namespace:TextDashboard.Custom_Control"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="TextDashboard.UserControls.FirstView"
-    mc:Ignorable="d"
-    >
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+    x:Class="TextDashboard.UserControls.SearchDeviceView"
+    mc:Ignorable="d">
     <Grid>
         <ContentControl
             Visibility="Collapsed"
@@ -13,26 +14,25 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             Style="{DynamicResource SmallLoadingIndicatorStyle}" />
-        
+
         <Button
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Margin="0"
             x:Name="ScanDeviceButton"
             Click="DeviceScanButton_OnClick"
-            Content="Scan Device" Style="{DynamicResource DashboardButtonStyle}" />
+            Content="Scan Device"
+            Style="{DynamicResource DashboardButtonStyle}" />
 
         <Border
             MinWidth="200"
             MinHeight="200"
-            Style="{StaticResource SimpleBorderStyle}"
             x:Name="ScanDeviceBorder"
             Visibility="Collapsed">
             <StackPanel
                 Margin="5"
                 Background="White"
-                x:Name="ScanDeviceStackPanel"
-                >
+                x:Name="ScanDeviceStackPanel">
                 <TextBlock
                     Style="{StaticResource HeaderTextBlockStyle}"
                     Text="Scan Device" />
@@ -49,7 +49,7 @@
                         Width="85"
                         Click="CloseButton_OnClick"
                         Content="Close" />
-                    
+
                     <Button
                         Style="{StaticResource StandardButtonStyle}"
                         HorizontalAlignment="Left"
@@ -63,7 +63,7 @@
                         Width="85"
                         Click="Button_Click"
                         Content="Find" />
-                    
+
                 </StackPanel>
                 <Grid>
                     <ContentControl
@@ -73,43 +73,43 @@
                         HorizontalAlignment="Center"
                         Style="{DynamicResource SmallLoadingIndicatorStyle}" />
                     <StackPanel
-                    Margin="10"
-                    x:Name="StackPanelSearchResult"
-                    Visibility="Collapsed">
+                        Margin="10"
+                        x:Name="StackPanelSearchResult"
+                        Visibility="Collapsed">
 
-                    <Label
-                        Style="{StaticResource FieldLabelStyle}"
-                        Content="This is a very long text which requires more space in this view" />
-                    <Label
-                        Style="{StaticResource FieldLabelStyle}"
-                        Content="This is a very long text which requires more space in this view" />
-                    <Label
-                        Style="{StaticResource FieldLabelStyle}"
-                        Content="This is a very long text which requires more space in this view" />
-                    <Label
-                        Style="{StaticResource FieldLabelStyle}"
-                        Content="This is a very long text which requires more space in this view" />
-                    <Label
-                        Style="{StaticResource FieldLabelStyle}"
-                        Content="This is a very long text which requires more space in this view" />
-                    <Label
-                        Style="{StaticResource FieldLabelStyle}"
-                        Content="This is a very long text which requires more space in this view" />
-                    <Label
-                        Style="{StaticResource FieldLabelStyle}"
-                        Content="This is a very long text which requires more space in this view" />
-                    <Label
-                        Style="{StaticResource FieldLabelStyle}"
-                        Content="This is a very long text which requires more space in this view" />
+                        <Label
+                            Style="{StaticResource FieldLabelStyle}"
+                            Content="This is a very long text which requires more space in this view" />
+                        <Label
+                            Style="{StaticResource FieldLabelStyle}"
+                            Content="This is a very long text which requires more space in this view" />
+                        <Label
+                            Style="{StaticResource FieldLabelStyle}"
+                            Content="This is a very long text which requires more space in this view" />
+                        <Label
+                            Style="{StaticResource FieldLabelStyle}"
+                            Content="This is a very long text which requires more space in this view" />
+                        <Label
+                            Style="{StaticResource FieldLabelStyle}"
+                            Content="This is a very long text which requires more space in this view" />
+                        <Label
+                            Style="{StaticResource FieldLabelStyle}"
+                            Content="This is a very long text which requires more space in this view" />
+                        <Label
+                            Style="{StaticResource FieldLabelStyle}"
+                            Content="This is a very long text which requires more space in this view" />
+                        <Label
+                            Style="{StaticResource FieldLabelStyle}"
+                            Content="This is a very long text which requires more space in this view" />
 
-                </StackPanel> 
+                    </StackPanel>
                 </Grid>
-                
+
             </StackPanel>
         </Border>
-           
+
     </Grid>
-    
+
 
 
     <!--<StackPanel>

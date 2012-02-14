@@ -1,53 +1,56 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:ForthView.xaml" caret="4548" fromTop="12" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:ThirdView.xaml" caret="3100" fromTop="15" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Properties/f:AssemblyInfo.cs" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:SecondView.xaml" caret="5146" fromTop="12" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/f:MainWindow.xaml" caret="514" fromTop="11" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="16179" fromTop="29" />
-    <File id="A7B3B072-38BD-474E-AF84-374148692D97/f:AnimationFactory.cs" caret="1733" fromTop="29" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Resource/f:Events.cs" caret="1169" fromTop="36" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/f:MainWindow.xaml.cs" caret="5053" fromTop="19" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:ForthView.xaml.cs" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:ThirdView.xaml.cs" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:SecondView.xaml.cs" caret="0" fromTop="0" />
-    <File id="A7B3B072-38BD-474E-AF84-374148692D97/f:TransformGroupHelper.cs" caret="0" fromTop="0" />
     <File id="A7B3B072-38BD-474E-AF84-374148692D97/f:packages.config" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml" caret="889" fromTop="11" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="4349" fromTop="25" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Resource/f:Generic.xaml" caret="13273" fromTop="20" />
+    <File id="A7B3B072-38BD-474E-AF84-374148692D97/f:TransformGroupHelper.cs" caret="480" fromTop="13" />
+    <File id="A7B3B072-38BD-474E-AF84-374148692D97/f:AnimationFactory.cs" caret="1993" fromTop="21" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/f:MainWindow.xaml.cs" caret="3479" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:AnimationWhiteboard.xaml.cs" caret="633" fromTop="18" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/f:App.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Properties/f:AssemblyInfo.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:SecondView.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:ThirdView.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:ForthView.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Resource/f:Events.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="15237" fromTop="34" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml" caret="1556" fromTop="35" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/f:MainWindow.xaml" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/f:App.xaml" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:ForthView.xaml" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:SecondView.xaml" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:ThirdView.xaml" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Resource/f:Generic.xaml" caret="0" fromTop="0" />
   </RecentFiles>
   <RecentEdits>
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml" caret="479" fromTop="6" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/f:MainWindow.xaml" caret="514" fromTop="11" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml" caret="1878" fromTop="18" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml" caret="1878" fromTop="18" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="3152" fromTop="8" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml" caret="1233" fromTop="20" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="4843" fromTop="19" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="5662" fromTop="36" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="5021" fromTop="24" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="5787" fromTop="40" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="584" fromTop="14" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="2973" fromTop="24" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Resource/f:Generic.xaml" caret="7288" fromTop="28" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml" caret="753" fromTop="13" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml" caret="1166" fromTop="12" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml" caret="1167" fromTop="16" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml" caret="1707" fromTop="16" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="2973" fromTop="27" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml" caret="2238" fromTop="12" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="1364" fromTop="20" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="2316" fromTop="36" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="2305" fromTop="37" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="1846" fromTop="29" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="2402" fromTop="28" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml" caret="1856" fromTop="17" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml" caret="1166" fromTop="15" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="3355" fromTop="35" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="3064" fromTop="20" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml.cs" caret="4477" fromTop="32" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FirstView.xaml" caret="889" fromTop="11" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="9966" fromTop="35" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="11389" fromTop="34" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="13726" fromTop="21" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="14852" fromTop="23" />
+    <File id="A7B3B072-38BD-474E-AF84-374148692D97/f:AnimationFactory.cs" caret="1340" fromTop="25" />
+    <File id="A7B3B072-38BD-474E-AF84-374148692D97/f:AnimationFactory.cs" caret="2541" fromTop="31" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="1560" fromTop="31" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="10064" fromTop="18" />
+    <File id="A7B3B072-38BD-474E-AF84-374148692D97/f:AnimationFactory.cs" caret="637" fromTop="12" />
+    <File id="A7B3B072-38BD-474E-AF84-374148692D97/f:AnimationFactory.cs" caret="1090" fromTop="21" />
+    <File id="A7B3B072-38BD-474E-AF84-374148692D97/f:AnimationFactory.cs" caret="321" fromTop="8" />
+    <File id="A7B3B072-38BD-474E-AF84-374148692D97/f:AnimationFactory.cs" caret="2318" fromTop="23" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="14350" fromTop="22" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Resource/f:Generic.xaml" caret="7954" fromTop="19" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Resource/f:Generic.xaml" caret="8450" fromTop="32" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="9474" fromTop="18" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="9197" fromTop="19" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="10535" fromTop="28" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="10635" fromTop="32" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="10825" fromTop="36" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="9950" fromTop="19" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="12770" fromTop="14" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="13999" fromTop="36" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="13038" fromTop="14" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="13444" fromTop="21" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="14138" fromTop="35" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:ResizableContentControl.cs" caret="15237" fromTop="34" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Resource/f:Generic.xaml" caret="7010" fromTop="13" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Resource/f:Generic.xaml" caret="7274" fromTop="19" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Resource/f:Generic.xaml" caret="7677" fromTop="30" />
   </RecentEdits>
 </RecentFiles>

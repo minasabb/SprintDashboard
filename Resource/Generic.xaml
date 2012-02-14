@@ -37,16 +37,6 @@
             </Storyboard>
             <Storyboard
                 x:Key="StoryboardLostFocus">
-                <!--<ThicknessAnimationUsingKeyFrames
-                    Storyboard.TargetProperty="(Border.BorderThickness)"
-                    Storyboard.TargetName="{x:Null}">
-                    <EasingThicknessKeyFrame
-                        KeyTime="0"
-                        Value="1.5" />
-                    <EasingThicknessKeyFrame
-                        KeyTime="0:0:0.1"
-                        Value="0.5" />
-                </ThicknessAnimationUsingKeyFrames>-->
                 <ColorAnimationUsingKeyFrames
                     Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
                     Storyboard.TargetName="{x:Null}">
@@ -60,16 +50,6 @@
             </Storyboard>
             <Storyboard
                 x:Key="StoryboardMouseEnter">
-                <ThicknessAnimationUsingKeyFrames
-                    Storyboard.TargetProperty="(Border.BorderThickness)"
-                    Storyboard.TargetName="{x:Null}">
-                    <EasingThicknessKeyFrame
-                        KeyTime="0"
-                        Value="0.5" />
-                    <EasingThicknessKeyFrame
-                        KeyTime="0:0:0.1"
-                        Value="1.5" />
-                </ThicknessAnimationUsingKeyFrames>
                 <ColorAnimationUsingKeyFrames
                     Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
                     Storyboard.TargetName="{x:Null}">
@@ -83,16 +63,6 @@
             </Storyboard>
             <Storyboard
                 x:Key="StoryboardMouseLeave">
-                <ThicknessAnimationUsingKeyFrames
-                    Storyboard.TargetProperty="(Border.BorderThickness)"
-                    Storyboard.TargetName="{x:Null}">
-                    <EasingThicknessKeyFrame
-                        KeyTime="0"
-                        Value="1.5" />
-                    <EasingThicknessKeyFrame
-                        KeyTime="0:0:0.1"
-                        Value="0.5" />
-                </ThicknessAnimationUsingKeyFrames>
                 <ColorAnimationUsingKeyFrames
                     Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
                     Storyboard.TargetName="{x:Null}">
@@ -160,32 +130,181 @@
             Property="BorderThickness"
             Value="0.5" />
     </Style>
-    
-    
+
+
+    <!-- Expander -->
+    <!--<ControlTemplate
+        x:Key="ExpanderNotExpandingHeaderSprintTemplate"
+        TargetType="{x:Type ToggleButton}">
+        <Border
+            Padding="{TemplateBinding Padding}"
+            Background="{TemplateBinding Background}"
+            CornerRadius="3,3,0,0">
+            <ContentPresenter
+                RecognizesAccessKey="True"
+                SnapsToDevicePixels="True"
+                VerticalAlignment="Center" />
+        </Border>
+    </ControlTemplate>
+
+    <Style
+        x:Key="ExpanderNotExpandingHeaderSprintStyle"
+        TargetType="{x:Type ToggleButton}">
+        <Setter
+            Property="Template"
+            Value="{StaticResource ExpanderNotExpandingHeaderSprintTemplate}">
+        </Setter>
+    </Style>
+
+    <ControlTemplate
+        x:Key="ExpanderHeaderFocusVisualSprintTemplate">
+        <Border>
+            <Rectangle
+                Margin="0"
+                SnapsToDevicePixels="true"
+                Stroke="Black"
+                StrokeThickness="1"
+                StrokeDashArray="1 2" />
+        </Border>
+    </ControlTemplate>
+
+    <Style
+        x:Key="ExpanderHeaderFocusVisualSprint">
+        <Setter
+            Property="Control.Template"
+            Value="{DynamicResource ExpanderHeaderFocusVisualSprintTemplate}">
+        </Setter>
+    </Style>
+
+    <ControlTemplate
+        x:Key="PlainNotExpandingExpanderSprintTemplate"
+        TargetType="{x:Type Expander}">
+        <Border
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            CornerRadius="3"
+            SnapsToDevicePixels="true">
+            <DockPanel>
+                <ToggleButton
+                    x:Name="HeaderSite"
+                    Background="{TemplateBinding Background}"
+                    ContentTemplate="{TemplateBinding HeaderTemplate}"
+                    ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                    Content="{TemplateBinding Header}"
+                    DockPanel.Dock="Top"
+                    Foreground="{TemplateBinding AttachedProperties:ExpanderAttachedProperties.HeaderForeground}"
+                    FontWeight="{TemplateBinding FontWeight}"
+                    FocusVisualStyle="{StaticResource ExpanderHeaderFocusVisualSprint}"
+                    FontStyle="{TemplateBinding FontStyle}"
+                    FontStretch="{TemplateBinding FontStretch}"
+                    FontSize="{TemplateBinding FontSize}"
+                    FontFamily="{TemplateBinding FontFamily}"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                    Padding="{TemplateBinding Padding}"
+                    Style="{StaticResource ExpanderNotExpandingHeaderSprintStyle}"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                <Border
+                    TextElement.Foreground="{DynamicResource BlackBrush}"
+                    x:Name="ExpandSiteBorder"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="0,1,0,0"
+                    Visibility="Visible"
+                    Focusable="false"
+                    DockPanel.Dock="Bottom">
+                    <ContentPresenter
+                        x:Name="ExpandSite"
+                        Focusable="false"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        Margin="{TemplateBinding Padding}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Border>
+            </DockPanel>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger
+                Property="IsEnabled"
+                Value="false">
+                <Setter
+                    Property="Foreground"
+                    Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style
+        x:Key="DarkNotExpandingExpanderSprintStyle"
+        TargetType="{x:Type Expander}">
+        <Setter
+            Property="Foreground"
+            Value="{DynamicResource BlackBrush}" />
+        <Setter
+            Property="AttachedProperties:ExpanderAttachedProperties.HeaderForeground"
+            Value="{DynamicResource SprintYellowBrush}" />
+        <Setter
+            Property="Background"
+            Value="{DynamicResource DarkGrayBrush}" />
+        <Setter
+            Property="Padding"
+            Value="10,5,5,5" />
+        <Setter
+            Property="Template"
+            Value="{DynamicResource PlainNotExpandingExpanderSprintTemplate}">
+        </Setter>
+    </Style>-->
+
+    <!-- End of Expander Style-->
+
+
+    <!--<ControlTemplate
+        x:Key="ResizableContentControlTemplate"
+        TargetType="{x:Type Custom_Control:ResizableContentControl}">
+
+        <Border
+            Padding="{TemplateBinding Margin}"
+            Style="{StaticResource SimpleBorderStyle}">
+        <ScrollViewer
+            x:Name="PART_MainScrolViewer"
+            HorizontalScrollBarVisibility="Hidden"
+            VerticalScrollBarVisibility="Hidden">
+            <ContentPresenter
+                Margin="2"
+                x:Name="PART_ContentPresenter"
+                Content="{TemplateBinding Content}" />
+        </ScrollViewer>
+        </Border>
+    </ControlTemplate>-->
+
+
     <ControlTemplate
         x:Key="ResizableContentControlTemplate"
         TargetType="{x:Type Custom_Control:ResizableContentControl}">
 
-        <!--<Border
-            Style="{StaticResource SimpleBorderStyle}">-->
-        <!--<Border
+        <Border
+            Padding="{TemplateBinding Margin}"
+            Style="{StaticResource SimpleBorderStyle}">
+            <!--<Border
             Margin="0"
-            Padding="0">-->   
+            Padding="0"
+            BorderBrush="Gray"
+            BorderThickness="1">-->
             <ScrollViewer
                 x:Name="PART_MainScrolViewer"
                 HorizontalScrollBarVisibility="Hidden"
                 VerticalScrollBarVisibility="Hidden">
                 <ContentPresenter
-                    Margin="2"
                     x:Name="PART_ContentPresenter"
                     Content="{TemplateBinding Content}" />
             </ScrollViewer>
-        <!--</Border>-->
+        </Border>
     </ControlTemplate>
 
     <Style
         x:Key="ResizableContentControlStyle"
         TargetType="{x:Type Custom_Control:ResizableContentControl}">
+        <Setter
+            Property="Margin"
+            Value="5" />
         <Setter
             Property="Template"
             Value="{DynamicResource ResizableContentControlTemplate}" />
@@ -193,7 +312,7 @@
     </Style>
 
 
-    
+
 
     <!-- Button Style -->
     <LinearGradientBrush
@@ -575,6 +694,9 @@
             Property="Padding"
             Value="1" />
         <Setter
+            Property="Margin"
+            Value="0" />
+        <Setter
             Property="Cursor"
             Value="Hand" />
         <Setter
@@ -583,7 +705,7 @@
                 <ControlTemplate
                     TargetType="{x:Type Button}">
                     <Border
-                        Style="{StaticResource SimpleBorderStyle}">
+                        Margin="0">
                         <Border.Background>
                             <LinearGradientBrush
                                 EndPoint="0.5,1"

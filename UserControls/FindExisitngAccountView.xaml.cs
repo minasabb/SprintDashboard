@@ -9,13 +9,13 @@ using TextDashboard.Resource;
 namespace TextDashboard.UserControls
 {
     /// <summary>
-    /// Interaction logic for SecondView.xaml
+    /// Interaction logic for FindExisitngAccountView.xaml
     /// </summary>
-    public partial class SecondView : ResizableContentControl
+    public partial class FindExisitngAccountView : ResizableContentControl
     {
         
 
-        public SecondView()
+        public FindExisitngAccountView()
         {
             InitializeComponent();
             SetupDesignTimeModel();

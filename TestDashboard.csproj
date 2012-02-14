@@ -15,6 +15,8 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -69,14 +71,17 @@
     </ApplicationDefinition>
     <Compile Include="Custom Control\ResizableContentControl.cs" />
     <Compile Include="Resource\Events.cs" />
-    <Compile Include="UserControls\FirstView.xaml.cs">
-      <DependentUpon>FirstView.xaml</DependentUpon>
+    <Compile Include="UserControls\AnimationWhiteboard.xaml.cs">
+      <DependentUpon>AnimationWhiteboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SearchDeviceView.xaml.cs">
+      <DependentUpon>SearchDeviceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ForthView.xaml.cs">
       <DependentUpon>ForthView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SecondView.xaml.cs">
-      <DependentUpon>SecondView.xaml</DependentUpon>
+    <Compile Include="UserControls\FindExisitngAccountView.xaml.cs">
+      <DependentUpon>FindExisitngAccountView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ThirdView.xaml.cs">
       <DependentUpon>ThirdView.xaml</DependentUpon>
@@ -98,7 +103,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\FirstView.xaml">
+    <Page Include="UserControls\AnimationWhiteboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\SearchDeviceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -106,7 +115,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\SecondView.xaml">
+    <Page Include="UserControls\FindExisitngAccountView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

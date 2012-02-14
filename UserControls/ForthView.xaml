@@ -24,7 +24,7 @@
             Margin="0"
             x:Name="CheckNumberButton"
             Click="CheckNumberButton_OnClick"
-            Content="Check Number Portability"
+            Content="Check Upgrade Eligibility"
             Style="{DynamicResource DashboardButtonStyle}" />
 
         <Border
@@ -39,7 +39,7 @@
                 x:Name="CheckNumberStackPanel">
                 <TextBlock
                     Style="{StaticResource HeaderTextBlockStyle}"
-                    Text="Check Number Portability" />
+                    Text="Phone Number" />
                 <Label
                     Style="{StaticResource FieldLabelStyle}"
                     Content="Phone Number" />
@@ -69,7 +69,7 @@
                         HorizontalAlignment="Left"
                         Width="85"
                         Click="Button_Click"
-                        Content="Find" />
+                        Content="Check Upgrade Eligibility" />
 
                 </StackPanel>
                 <Grid>
@@ -84,60 +84,17 @@
                         x:Name="StackPanelSearchResult"
                         Visibility="Collapsed">
 
-                        <DataGrid
-                            Margin="0,20,0,0"
-                            x:Name="PlainDataGridSprintStyle"
-                            Style="{StaticResource DataGridWithHorizontalLinesSprintStyle}"
-                            ItemsSource="{Binding Path=PortInNumbers}"
-                            HorizontalScrollBarVisibility="Disabled"
-                            MaxWidth="300"
-                            HorizontalAlignment="Left"
-                            CanUserAddRows="False"
-                            CanUserDeleteRows="False"
-                            CanUserResizeRows="False"
-                            CanUserSortColumns="False"
-                            AutoGenerateColumns="False">
-                            <DataGrid.ToolTip>
-                                <ToolTip
-                                    DataContext="{Binding Path=PlacementTarget,RelativeSource={x:Static RelativeSource.Self}}"
-                                    Content="{Binding Path=Name}" />
-                            </DataGrid.ToolTip>
-                            <DataGrid.Columns>
-                                <DataGridTemplateColumn
-                                    IsReadOnly="True"
-                                    Header="Phone Number"
-                                    Width="*">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock
-                                                Text="{Binding PhoneNumber}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn
-                                    IsReadOnly="True"
-                                    Header="Text"
-                                    Width="*">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock
-                                                Text="{Binding Text}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn
-                                    IsReadOnly="True"
-                                    Header="Data"
-                                    Width="*">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock
-                                                Text="{Binding Data}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <TextBlock 
+                            Text="Todays's Eligibility"
+                            Foreground="Gray"
+                            Style="{StaticResource HeaderTextBlockStyle}"
+                            Margin="0,0,0,5"></TextBlock>
+
+                        <TextBlock
+                            Text="Todays's Eligibility"
+                            Foreground="Gray"
+                            Style="{StaticResource HeaderTextBlockStyle}"
+                            Margin="0,0,0,5"></TextBlock>
 
                     </StackPanel>
                 </Grid>

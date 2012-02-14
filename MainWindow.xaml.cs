@@ -22,8 +22,8 @@ namespace TextDashboard
             InitializeComponent();
             //_contolList = new List<ControlPlacement>
             //                 {
-            //                     new ControlPlacement {Name="V1",HeightPercentage = 0.4, WidthPercentage = 0.2, InitialXPercentage = 0, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new FirstView {Margin = new Thickness(MarginValue)}}, 
-            //                     new ControlPlacement {Name="V2",HeightPercentage = 0.4, WidthPercentage = 0.8, InitialXPercentage = 0.2, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new SecondView {Margin = new Thickness(MarginValue)}}, 
+            //                     new ControlPlacement {Name="V1",HeightPercentage = 0.4, WidthPercentage = 0.2, InitialXPercentage = 0, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new SearchDeviceView {Margin = new Thickness(MarginValue)}}, 
+            //                     new ControlPlacement {Name="V2",HeightPercentage = 0.4, WidthPercentage = 0.8, InitialXPercentage = 0.2, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new FindExisitngAccountView {Margin = new Thickness(MarginValue)}}, 
             //                     new ControlPlacement {Name="V3",HeightPercentage = 0.35, WidthPercentage = 0.5, InitialXPercentage = 0, InitialYPercentage = 0.4,GrowPercentage = 0.25, ViewControl = new ThirdView {Margin = new Thickness(MarginValue)}}, 
             //                     new ControlPlacement {Name="V4",HeightPercentage = 0.35, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0.4,GrowPercentage = 0.20, ViewControl = new ThirdView {Margin = new Thickness(MarginValue)}}, 
             //                     new ControlPlacement {Name="V5",HeightPercentage = 0.25, WidthPercentage = 0.8, InitialXPercentage = 0, InitialYPercentage = 0.75,GrowPercentage = .80, ViewControl = new ForthView {Margin = new Thickness(MarginValue)}},
@@ -31,16 +31,16 @@ namespace TextDashboard
             //                 };
             //_contolList = new List<ControlPlacement>
             //                 {
-            //                     new ControlPlacement {Name="V1",HeightPercentage = 0.6, WidthPercentage = 0.4, InitialXPercentage = 0, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new FirstView()}, 
-            //                     new ControlPlacement {Name="V2",HeightPercentage = 0.6, WidthPercentage = 0.6, InitialXPercentage = 0.4, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new SecondView()}, 
+            //                     new ControlPlacement {Name="V1",HeightPercentage = 0.6, WidthPercentage = 0.4, InitialXPercentage = 0, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new SearchDeviceView()}, 
+            //                     new ControlPlacement {Name="V2",HeightPercentage = 0.6, WidthPercentage = 0.6, InitialXPercentage = 0.4, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new FindExisitngAccountView()}, 
             //                     new ControlPlacement {Name="V3",HeightPercentage = 0.4, WidthPercentage = 0.5, InitialXPercentage = 0, InitialYPercentage = 0.6,GrowPercentage = 0.25, ViewControl = new ThirdView()}, 
             //                     new ControlPlacement {Name="V4",HeightPercentage = 0.4, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0.6,GrowPercentage = 0.20, ViewControl = new ForthView()}, 
             //                 };
 
             //_contolList = new List<ControlPlacement>
             //                 {
-            //                     new ControlPlacement {Name="V1",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new FirstView {Margin = new Thickness(MarginValue)}}, 
-            //                     new ControlPlacement {Name="V2",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new SecondView {Margin = new Thickness(MarginValue)}}, 
+            //                     new ControlPlacement {Name="V1",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new SearchDeviceView {Margin = new Thickness(MarginValue)}}, 
+            //                     new ControlPlacement {Name="V2",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0,GrowPercentage = 0.50, ViewControl = new FindExisitngAccountView {Margin = new Thickness(MarginValue)}}, 
             //                     new ControlPlacement {Name="V3",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0, InitialYPercentage = 0.5,GrowPercentage = 0.25, ViewControl = new ThirdView {Margin = new Thickness(MarginValue)}}, 
             //                     new ControlPlacement {Name="V4",HeightPercentage = 0.5, WidthPercentage = 0.5, InitialXPercentage = 0.5, InitialYPercentage = 0.5,GrowPercentage = 0.20, ViewControl = new ForthView {Margin = new Thickness(MarginValue)}}, 
             //                 };
