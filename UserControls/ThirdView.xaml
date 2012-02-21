@@ -1,4 +1,4 @@
-﻿<Custom_Control:ResizableContentControl
+﻿<Custom_Control:SelfExpandableControl
     x:Class="TextDashboard.UserControls.ThirdView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -29,7 +29,6 @@
         <Border
             MinWidth="200"
             MinHeight="200"
-            Style="{StaticResource SimpleBorderStyle}"
             x:Name="UpgradeBorder"
             Visibility="Collapsed">
             <StackPanel
@@ -173,4 +172,4 @@
 
             </StackPanel>
         </Grid>-->
-</Custom_Control:ResizableContentControl>
+</Custom_Control:SelfExpandableControl>

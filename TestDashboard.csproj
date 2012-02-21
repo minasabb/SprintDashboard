@@ -69,8 +69,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Custom Control\ResizableContentControl.cs" />
+    <Compile Include="Custom Control\SelfExpandableControl.cs" />
+    <Compile Include="Custom Control\SelfExpandablePanel.cs" />
     <Compile Include="Resource\Events.cs" />
+    <Compile Include="Resource\State.cs" />
     <Compile Include="UserControls\AnimationWhiteboard.xaml.cs">
       <DependentUpon>AnimationWhiteboard.xaml</DependentUpon>
     </Compile>

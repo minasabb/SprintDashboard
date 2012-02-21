@@ -258,7 +258,7 @@
 
     <!--<ControlTemplate
         x:Key="ResizableContentControlTemplate"
-        TargetType="{x:Type Custom_Control:ResizableContentControl}">
+        TargetType="{x:Type Custom_Control:SelfExpandableControl}">
 
         <Border
             Padding="{TemplateBinding Margin}"
@@ -278,7 +278,7 @@
 
     <ControlTemplate
         x:Key="ResizableContentControlTemplate"
-        TargetType="{x:Type Custom_Control:ResizableContentControl}">
+        TargetType="{x:Type Custom_Control:SelfExpandableControl}">
 
         <Border
             Padding="{TemplateBinding Margin}"
@@ -301,7 +301,7 @@
 
     <Style
         x:Key="ResizableContentControlStyle"
-        TargetType="{x:Type Custom_Control:ResizableContentControl}">
+        TargetType="{x:Type Custom_Control:SelfExpandableControl}">
         <Setter
             Property="Margin"
             Value="5" />

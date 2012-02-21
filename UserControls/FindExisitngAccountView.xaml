@@ -1,4 +1,4 @@
-﻿<Custom_Control:ResizableContentControl
+﻿<Custom_Control:SelfExpandableControl
     x:Class="TextDashboard.UserControls.FindExisitngAccountView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -261,4 +261,4 @@
             </DataGrid>
 
         </StackPanel>-->
-</Custom_Control:ResizableContentControl>
+</Custom_Control:SelfExpandableControl>

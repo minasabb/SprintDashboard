@@ -11,7 +11,7 @@ namespace TextDashboard.UserControls
     /// <summary>
     /// Interaction logic for ForthView.xaml
     /// </summary>
-    public partial class ForthView : ResizableContentControl
+    public partial class ForthView : SelfExpandableControl
     {
 
         public ForthView()
@@ -31,6 +31,7 @@ namespace TextDashboard.UserControls
             var animation = AnimationFactory.CreateDoubleAnimation(StackPanelSearchResult, OpacityProperty, 1, 0, durationSpan: TimeSpan.FromMilliseconds(600), easingFuction: EasingFunction);
             animation.Completed += StackPanelSearchResultFadeInAnimationCompleted;
             StackPanelSearchResult.BeginAnimation(OpacityProperty, animation);
+            Events.UpdateControlState(this, State.Active);
         }
 
         void StackPanelSearchResultFadeInAnimationCompleted(object sender, EventArgs e)
@@ -46,6 +47,7 @@ namespace TextDashboard.UserControls
             var animation = AnimationFactory.CreateDoubleAnimation(StackPanelSearchResult, OpacityProperty, 0, 1, durationSpan: TimeSpan.FromMilliseconds(200), easingFuction: EasingFunction);
             animation.Completed += StackPanelFadeOutAnimationCompleted;
             StackPanelSearchResult.BeginAnimation(OpacityProperty, animation);
+            Events.UpdateControlState(this, State.Active);
         }
 
         void StackPanelFadeOutAnimationCompleted(object sender, EventArgs e)
@@ -68,6 +70,7 @@ namespace TextDashboard.UserControls
             var animation = AnimationFactory.CreateDoubleAnimation(button, OpacityProperty, 0, 1, durationSpan: TimeSpan.FromMilliseconds(200), easingFuction: EasingFunction);
             animation.Completed += ButtonClickedAnimationCompleted;
             button.BeginAnimation(OpacityProperty, animation);
+            Events.UpdateControlState(this, State.Active);
         }
 
         void ButtonClickedAnimationCompleted(object sender, EventArgs e)
@@ -98,6 +101,7 @@ namespace TextDashboard.UserControls
             var animation = AnimationFactory.CreateDoubleAnimation(CheckNumberStackPanel, OpacityProperty, 0, 1, durationSpan: TimeSpan.FromMilliseconds(100), easingFuction: EasingFunction);
             animation.Completed += CheckNumberStackPanelFadeOutAnimationCompleted;
             CheckNumberStackPanel.BeginAnimation(OpacityProperty, animation);
+            Events.UpdateControlState(this, State.Normal);
 
         }
 

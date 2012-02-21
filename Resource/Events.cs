@@ -7,6 +7,8 @@ using System.Windows.Threading;
 
 namespace TextDashboard.Resource
 {
+    public delegate void UpdateControlStateDelegate(object sender,State state);
+
     public delegate void MoveControlToTopDelegate(object sender);
     public delegate void ShowCurtainDelegate(object sender);
     public delegate void HideCurtainDelegate(object sender);
@@ -16,6 +18,13 @@ namespace TextDashboard.Resource
 
     public static class Events
     {
+        public static event UpdateControlStateDelegate UpdateControlStateEvent;
+        public static void UpdateControlState(object control, State state)
+        {
+            if (UpdateControlStateEvent != null)
+                UpdateControlStateEvent(control,state);
+        }
+
         public static event MoveControlToTopDelegate MoveControlToTopEvent;
         public static void MoveControlToTop(object control)
         {

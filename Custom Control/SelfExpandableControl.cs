@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using IQ.Core.Windows.Animation;
@@ -8,14 +9,12 @@ using TextDashboard.Resource;
 
 namespace TextDashboard.Custom_Control
 {
+    
     [TemplatePart(Name = PartMainScrolViewer, Type = typeof(ScrollViewer))]
-    public class ResizableContentControl: ContentControl
+    public class SelfExpandableControl: ContentControl
     {
 
         private const string PartMainScrolViewer = "PART_MainScrolViewer";
-
-        bool _widthChanged;
-        bool _heightChanged;
         double _currentXoffSet;
         double _currentYoffSet;
         double _currentScrollbarExtentWidth;
@@ -28,18 +27,17 @@ namespace TextDashboard.Custom_Control
         const int AnimationTranformPositiveValueTimeSpan = 600;
         const int ExtraSpacing = 5;
 
-        static ResizableContentControl()
+        static SelfExpandableControl()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(ResizableContentControl), new FrameworkPropertyMetadata(typeof(ResizableContentControl)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(SelfExpandableControl), new FrameworkPropertyMetadata(typeof(SelfExpandableControl)));
+            
         }
 
-        public ResizableContentControl()
+        public SelfExpandableControl()
         {
             SetResourceReference(StyleProperty, "ResizableContentControlStyle");
             _currentXoffSet = 0;
             _currentYoffSet = 0;
-            CurrentMinWidth = ActualWidth;
-            CurrentMinHeight = ActualHeight;
             RenderTransform = new TranslateTransform(_currentXoffSet, _currentYoffSet);
 
             EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut };
@@ -52,28 +50,28 @@ namespace TextDashboard.Custom_Control
             DependencyProperty.Register(
                 "OriginalPoint",
                 typeof(Point),
-                typeof(ResizableContentControl),
+                typeof(SelfExpandableControl),
                 new PropertyMetadata(new Point(0, 0)));
 
         public static readonly DependencyProperty CurrentPointProperty =
             DependencyProperty.Register(
                 "CurrentPoint",
                 typeof(Point),
-                typeof(ResizableContentControl),
+                typeof(SelfExpandableControl),
                 new PropertyMetadata(new Point(0, 0)));
 
         public static readonly DependencyProperty EndPointProperty =
             DependencyProperty.Register(
                 "EndPoint",
                 typeof(Point),
-                typeof(ResizableContentControl),
+                typeof(SelfExpandableControl),
                 new PropertyMetadata(new Point(0,0)));
 
         public static readonly DependencyProperty NewWidthProperty =
             DependencyProperty.Register(
                 "NewWidth",
                 typeof(double),
-                typeof(ResizableContentControl),
+                typeof(SelfExpandableControl),
                 new UIPropertyMetadata(OnNewWidthChanged));
 
 
@@ -81,28 +79,28 @@ namespace TextDashboard.Custom_Control
             DependencyProperty.Register(
                 "CurrentMaxWidth",
                 typeof(double),
-                typeof(ResizableContentControl),
+                typeof(SelfExpandableControl),
                 new UIPropertyMetadata(0.0));
 
         public static readonly DependencyProperty CurrentMinWidthProperty =
             DependencyProperty.Register(
                 "CurrentMinWidth",
                 typeof(double),
-                typeof(ResizableContentControl),
+                typeof(SelfExpandableControl),
                 new UIPropertyMetadata(0.0));
 
         public static readonly DependencyProperty NewHeightProperty =
             DependencyProperty.Register(
                 "NewHeight",
                 typeof(double),
-                typeof(ResizableContentControl),
+                typeof(SelfExpandableControl),
                 new UIPropertyMetadata(OnNewHeightChanged));
 
         public static readonly DependencyProperty CurrentMaxHeightProperty =
             DependencyProperty.Register(
                 "CurrentMaxHeight",
                 typeof(double),
-                typeof(ResizableContentControl),
+                typeof(SelfExpandableControl),
                 new UIPropertyMetadata(0.0));
 
 
@@ -110,7 +108,7 @@ namespace TextDashboard.Custom_Control
             DependencyProperty.Register(
                 "CurrentMinHeight",
                 typeof(double),
-                typeof(ResizableContentControl),
+                typeof(SelfExpandableControl),
                 new UIPropertyMetadata(0.0));
 
 
@@ -118,14 +116,14 @@ namespace TextDashboard.Custom_Control
             DependencyProperty.Register(
                 "ParentWidth",
                 typeof(double),
-                typeof(ResizableContentControl),
+                typeof(SelfExpandableControl),
                 new PropertyMetadata(0.0));
 
         public static readonly DependencyProperty ParentHeightProperty =
             DependencyProperty.Register(
                 "ParentHeight",
                 typeof(double),
-                typeof(ResizableContentControl),
+                typeof(SelfExpandableControl),
                 new PropertyMetadata(0.0));
 
         public Point OriginalPoint
@@ -201,11 +199,12 @@ namespace TextDashboard.Custom_Control
             var scrollbar = sender as ScrollViewer;
             if (scrollbar == null) return;
 
+            GetCurrentValues();
+
             if (Math.Abs(scrollbar.ExtentWidth - _currentScrollbarExtentWidth) > 1)
             {  
                 Events.MoveControlToTop(this);
-                NewWidth = scrollbar.ExtentWidth + ExtraSpacing;
-                
+                NewWidth = scrollbar.ExtentWidth + ExtraSpacing;  
             }
 
             if (Math.Abs(scrollbar.ExtentHeight - _currentScrollbarExtentHeight) > 1)
@@ -226,31 +225,26 @@ namespace TextDashboard.Custom_Control
 
         static void OnNewWidthChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var control = (ResizableContentControl)sender;
+            var control = (SelfExpandableControl)sender;
             control.UpdateXTransform();
 
         }
 
         static void OnNewHeightChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var control = (ResizableContentControl)sender;
-            
-           control.UpdateYTransform();
+            var control = (SelfExpandableControl)sender;
+            control.UpdateYTransform();
         }
 
-        void UpdateXTransform()
+        private void UpdateXTransform()
         {
-            _widthChanged = true;
-
-            GetCurrentValues();
-
             if (NewWidth > CurrentMaxWidth)
             {
                 NewWidth = CurrentMaxWidth;
-               
+                return;
             }
 
-            if (NewWidth < CurrentMinWidth)
+            if (NewWidth < CurrentMinWidth && State != State.Inactive)
             {
                 NewWidth = CurrentMinWidth;
                 return;
@@ -258,7 +252,6 @@ namespace TextDashboard.Custom_Control
 
             var animationTimeSpan = AnimationWidthGrowTimeSpan;
             double animationTranformTimeSpan=AnimationTranformNegativeValueTimeSpan;
-            KeySpline fromKeySpline;
             KeySpline toKeySpline;
             var diffValue = (NewWidth - ActualWidth);
             double valueChange;
@@ -267,7 +260,6 @@ namespace TextDashboard.Custom_Control
             {
                 valueChange= GetNegativeChange(ParentWidth, EndPoint.X, diffValue, CurrentPoint.X);
                 Console.WriteLine(valueChange);
-                fromKeySpline = null;
                 toKeySpline = new KeySpline(0.32, 0.13, 0.18, 1);
             }
             else
@@ -275,23 +267,28 @@ namespace TextDashboard.Custom_Control
                 animationTimeSpan = AnimationWidthShrinkTimeSpan;
                 animationTranformTimeSpan = AnimationTranformPositiveValueTimeSpan;
                 valueChange = GetPositiveChange(ParentWidth, _currentXoffSet, NewWidth, OriginalPoint.X);
-                fromKeySpline = null;
                 toKeySpline = new KeySpline(0.38, 0.38, 0.15, 0.98);
             }
                                
             _currentXoffSet = _currentXoffSet + valueChange;
 
-            ResizeWidth(animationTimeSpan,toKeySpline,fromKeySpline);
+            ResizeWidth(animationTimeSpan,toKeySpline,null);
 
-            var positionAnimation = AnimationFactory.CreateDoubleAnimation(this, TranslateTransform.XProperty, -_currentXoffSet, 0, durationSpan: TimeSpan.FromMilliseconds(animationTranformTimeSpan), easingFuction: EasingFunction,beginTimeSpan: TimeSpan.FromMilliseconds(50));
+            //var widthChangeAnimation = AnimationFactory.CreateDoubleAnimation(this, WidthProperty, toKeySpline, NewWidth, ActualWidth, durationSpan: TimeSpan.FromMilliseconds(animationTimeSpan), beginTimeSpan: TimeSpan.FromMilliseconds(50));
+            //widthChangeAnimation.Completed += WidthChangeAnimationCompleted;
+
+            var positionAnimation = AnimationFactory.CreateDoubleAnimation(this, TranslateTransform.XProperty, -_currentXoffSet, durationSpan: TimeSpan.FromMilliseconds(animationTranformTimeSpan), easingFuction: EasingFunction,beginTimeSpan: TimeSpan.FromMilliseconds(50));
             positionAnimation.Completed += PositionXAnimationCompleted;
             RenderTransform.BeginAnimation(TranslateTransform.XProperty, positionAnimation);
 
+            //var storyboard = new Storyboard();
+            //storyboard.Children.Add(widthChangeAnimation);
+            //storyboard.Children.Add(positionAnimation);
         }
 
         void ResizeWidth(double animationTimeSpan,KeySpline toKeySpline,KeySpline fromKeySpline)
         {
-            var widthChangeAnimation = AnimationFactory.CreateDoubleAnimation(this, WidthProperty, toKeySpline, NewWidth, ActualWidth, fromKeySpline, durationSpan: TimeSpan.FromMilliseconds(animationTimeSpan), beginTimeSpan: TimeSpan.FromMilliseconds(100));
+            var widthChangeAnimation = AnimationFactory.CreateDoubleAnimation(this, WidthProperty, toKeySpline, NewWidth, ActualWidth, fromKeySpline, durationSpan: TimeSpan.FromMilliseconds(animationTimeSpan), beginTimeSpan: TimeSpan.FromMilliseconds(50));
             widthChangeAnimation.Completed += WidthChangeAnimationCompleted;
             BeginAnimation(WidthProperty, widthChangeAnimation);
         }
@@ -315,18 +312,15 @@ namespace TextDashboard.Custom_Control
             if (scrollbar != null) scrollbar.HorizontalScrollBarVisibility = scrollbar.ExtentWidth - ActualWidth > 5 ? ScrollBarVisibility.Auto : ScrollBarVisibility.Hidden;
         }
 
-        void UpdateYTransform()
+        private void UpdateYTransform()
         {
-            GetCurrentValues();
-
-
             if (NewHeight > CurrentMaxHeight)
-            {    
+            {
                 NewHeight = CurrentMaxHeight;
                 return;
             }
 
-            if (NewHeight < CurrentMinHeight)
+            if (NewHeight < CurrentMinHeight && State != State.Inactive)
             {
                 NewHeight = CurrentMinHeight;
                 return;
@@ -355,19 +349,23 @@ namespace TextDashboard.Custom_Control
 
             _currentYoffSet = _currentYoffSet + valueChange;
 
-            ResizeHeight(animationTimeSpan,toKeySpline,fromKeySpline);
+            ResizeHeight(animationTimeSpan, toKeySpline, fromKeySpline);
 
-            var positionAnimation = AnimationFactory.CreateDoubleAnimation(this, TranslateTransform.YProperty, -_currentYoffSet, 0, durationSpan: TimeSpan.FromMilliseconds(animationTranformTimeSpan), easingFuction: EasingFunction, beginTimeSpan: TimeSpan.FromMilliseconds(100));
+            //var heightChangeAnimation = AnimationFactory.CreateDoubleAnimation(this, HeightProperty, toKeySpline, NewHeight, ActualHeight, fromKeySpline, durationSpan: TimeSpan.FromMilliseconds(animationTimeSpan), beginTimeSpan: TimeSpan.FromMilliseconds(150));
+            //heightChangeAnimation.Completed += HeightChangeAnimationCompleted;
+
+            var positionAnimation = AnimationFactory.CreateDoubleAnimation(this, TranslateTransform.YProperty, -_currentYoffSet, durationSpan: TimeSpan.FromMilliseconds(animationTranformTimeSpan), easingFuction: EasingFunction, beginTimeSpan: TimeSpan.FromMilliseconds(150));
             positionAnimation.Completed += PositionYAnimationCompleted;
             RenderTransform.BeginAnimation(TranslateTransform.YProperty, positionAnimation);
 
-            
-            
+            //var storyboard = new Storyboard();
+            //storyboard.Children.Add(heightChangeAnimation);
+            //storyboard.Children.Add(positionAnimation); 
         }
 
         void ResizeHeight(double animationTimeSpan,KeySpline toKeySpline,KeySpline fromKeySpline)
         {
-            var heightChangeAnimation = AnimationFactory.CreateDoubleAnimation(this, HeightProperty, toKeySpline, NewHeight, ActualHeight, fromKeySpline, durationSpan: TimeSpan.FromMilliseconds(animationTimeSpan), beginTimeSpan: TimeSpan.FromMilliseconds(100));
+            var heightChangeAnimation = AnimationFactory.CreateDoubleAnimation(this, HeightProperty, toKeySpline, NewHeight, ActualHeight, fromKeySpline, durationSpan: TimeSpan.FromMilliseconds(animationTimeSpan), beginTimeSpan: TimeSpan.FromMilliseconds(150));
             heightChangeAnimation.Completed += HeightChangeAnimationCompleted;
             BeginAnimation(HeightProperty, heightChangeAnimation);
         }
@@ -377,7 +375,6 @@ namespace TextDashboard.Custom_Control
             RenderTransform = new TranslateTransform(-_currentXoffSet, -_currentYoffSet);
             BeginAnimation(TranslateTransform.XProperty, null);
             BeginAnimation(TranslateTransform.YProperty, null);
-            _heightChanged = false;
         }
 
         void HeightChangeAnimationCompleted(object sender, EventArgs e)
@@ -387,8 +384,6 @@ namespace TextDashboard.Custom_Control
 
             var scrollbar = GetTemplateChild(PartMainScrolViewer) as ScrollViewer;
             if (scrollbar != null) scrollbar.VerticalScrollBarVisibility = scrollbar.ExtentHeight - ActualHeight > 5 ? ScrollBarVisibility.Auto : ScrollBarVisibility.Hidden;
-
-            _widthChanged = false;
             Events.UpdateContent(this);
         }
 
@@ -445,7 +440,9 @@ namespace TextDashboard.Custom_Control
         {
             var positionInParent = GetPositionInParent();
             OriginalPoint = positionInParent;
-            
+            CurrentMinWidth = ActualWidth;
+            CurrentMinHeight = ActualHeight;
+
             var scrollViewer = GetTemplateChild(PartMainScrolViewer) as ScrollViewer;
 
             if (scrollViewer != null)
@@ -459,7 +456,74 @@ namespace TextDashboard.Custom_Control
             }
         }
 
-        
+
+
+        private void GoToState(bool useTransitions)
+        {
+            if (State == State.Normal)
+            {
+                VisualStateManager.GoToState(this, "Normal", useTransitions);
+            }
+            else if (State == State.Active)
+            {
+                VisualStateManager.GoToState(this, "Active", useTransitions);
+            }
+            else
+            {
+                VisualStateManager.GoToState(this, "Inactive", useTransitions);
+            }
+        }
+
+
+        public static readonly DependencyProperty StateProperty = DependencyProperty.Register("State", typeof(State)
+            , typeof(SelfExpandableControl), new PropertyMetadata(OnStatePropertyChanged));
+
+        static void OnStatePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as SelfExpandableControl;
+            var newValue = (State)e.NewValue;
+            if (control != null) control.OnStateOfControlChange(newValue);
+        }
+
+        public State State
+        {
+            get
+            {
+                return (State)GetValue(StateProperty);
+            }
+
+            set
+            {
+                SetValue(StateProperty, value);
+            }
+        }
+
+        protected virtual void OnStateOfControlChange(State state)
+        {
+           if(state==State.Active) 
+               return;
+
+            switch (state)
+            {
+                case State.Active:
+                    IsEnabled = true;
+                    break;
+                case State.Inactive:
+                    IsEnabled = false;
+                    NewWidth = 0.95 * ActualWidth;
+                    NewHeight = 0.95 * ActualHeight;
+                    break;
+                default:
+                    IsEnabled = true;
+                    NewWidth = CurrentMinWidth;
+                    NewHeight = CurrentMinHeight;
+                    break;
+            }
+
+        }
+
+
+
 
     }
 }

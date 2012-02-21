@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using TextDashboard.Custom_Control;
 using TextDashboard.Resource;
 using TextDashboard.UserControls;
 
@@ -46,8 +47,24 @@ namespace TextDashboard
             //                 };
 
             Events.MoveControlToTopEvent += OnMoveControlToTopEvent;
-            Events.HideCurtainEvent += OnHideCurtainEvent;
-            Events.ShowCurtainEvent += OnShowCurtainEvent;
+            //Events.HideCurtainEvent += OnHideCurtainEvent;
+            //Events.ShowCurtainEvent += OnShowCurtainEvent;
+            Events.UpdateControlStateEvent += OnUpdateStateEvent;
+        }
+
+        void OnUpdateStateEvent(object sender, State state)
+        {
+            var currentControl = sender as SelfExpandableControl;
+            if(currentControl==null)
+                return;
+            for (var index = 0; index < RootCanvas.Children.Count; index++)
+            {
+                var control = RootCanvas.Children[index] as SelfExpandableControl;
+                if (control == null || currentControl.Name == control.Name)
+                    currentControl.State = state;
+                else
+                    control.State = state == State.Active ? State.Inactive : State.Normal;
+            }
         }
 
         void OnShowCurtainEvent(object sender)

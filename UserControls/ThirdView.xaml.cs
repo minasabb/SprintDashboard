@@ -11,7 +11,7 @@ namespace TextDashboard.UserControls
     /// <summary>
     /// Interaction logic for ThirdView.xaml
     /// </summary>
-    public partial class ThirdView : ResizableContentControl
+    public partial class ThirdView : SelfExpandableControl
     {
 
         public ThirdView()
@@ -29,6 +29,7 @@ namespace TextDashboard.UserControls
             var animation = AnimationFactory.CreateDoubleAnimation(StackPanelSearchResult, OpacityProperty, 1, 0, durationSpan: TimeSpan.FromMilliseconds(600), easingFuction: EasingFunction);
             animation.Completed += StackPanelSearchResultFadeInAnimationCompleted;
             StackPanelSearchResult.BeginAnimation(OpacityProperty, animation);
+            Events.UpdateControlState(this, State.Active);
         }
 
         void StackPanelSearchResultFadeInAnimationCompleted(object sender, EventArgs e)
@@ -44,6 +45,7 @@ namespace TextDashboard.UserControls
             var animation = AnimationFactory.CreateDoubleAnimation(StackPanelSearchResult, OpacityProperty, 0, 1, durationSpan: TimeSpan.FromMilliseconds(200), easingFuction: EasingFunction);
             animation.Completed += StackPanelFadeOutAnimationCompleted;
             StackPanelSearchResult.BeginAnimation(OpacityProperty, animation);
+            Events.UpdateControlState(this, State.Active);
         }
 
         void StackPanelFadeOutAnimationCompleted(object sender, EventArgs e)
@@ -66,6 +68,7 @@ namespace TextDashboard.UserControls
             var animation = AnimationFactory.CreateDoubleAnimation(button, OpacityProperty, 0, 1, durationSpan: TimeSpan.FromMilliseconds(200), easingFuction: EasingFunction);
             animation.Completed += ButtonClickedAnimationCompleted;
             button.BeginAnimation(OpacityProperty, animation);
+            Events.UpdateControlState(this, State.Active);
         }
 
         void ButtonClickedAnimationCompleted(object sender, EventArgs e)
@@ -96,6 +99,7 @@ namespace TextDashboard.UserControls
             var animation = AnimationFactory.CreateDoubleAnimation(UpgradeStackPanel, OpacityProperty, 0, 1, durationSpan: TimeSpan.FromMilliseconds(100), easingFuction: EasingFunction);
             animation.Completed += UpgradeStackPanelFadeOutAnimationCompleted;
             UpgradeStackPanel.BeginAnimation(OpacityProperty, animation);
+            Events.UpdateControlState(this, State.Normal);
 
         }
 
