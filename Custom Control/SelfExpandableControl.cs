@@ -126,6 +126,8 @@ namespace TextDashboard.Custom_Control
                 typeof(SelfExpandableControl),
                 new PropertyMetadata(0.0));
 
+        //Add Icon, Title, Tile Size, Tile Color, Content Color
+
         public Point OriginalPoint
         {
             get { return (Point)GetValue(OriginalPointProperty); }
@@ -498,6 +500,8 @@ namespace TextDashboard.Custom_Control
             }
         }
 
+
+        //
         protected virtual void OnStateOfControlChange(State state)
         {
            if(state==State.Active) 
@@ -506,14 +510,20 @@ namespace TextDashboard.Custom_Control
             switch (state)
             {
                 case State.Active:
+                    //Activated State
+                    //Change from button/tile content to search/response content
                     IsEnabled = true;
                     break;
                 case State.Inactive:
                     IsEnabled = false;
+                    //Run scale animation (down in scale)
                     NewWidth = 0.95 * ActualWidth;
                     NewHeight = 0.95 * ActualHeight;
                     break;
                 default:
+                    //Change to normal
+                    //Reset Scale
+                    //Reset Size
                     IsEnabled = true;
                     NewWidth = CurrentMinWidth;
                     NewHeight = CurrentMinHeight;
@@ -523,7 +533,7 @@ namespace TextDashboard.Custom_Control
         }
 
 
-
+        
 
     }
 }

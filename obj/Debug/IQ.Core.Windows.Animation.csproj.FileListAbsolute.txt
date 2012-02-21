@@ -11,3 +11,8 @@ C:\Users\mina.sabbagian\git\SprintDashboard\bin\Debug\IQ.Core.Windows.Animation.
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\Debug\IQ.Core.Windows.Animation.dll
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\Debug\IQ.Core.Windows.Animation.pdb
+C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\bin\Debug\IQ.Core.Windows.Animation.dll
+C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\bin\Debug\IQ.Core.Windows.Animation.pdb
+C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\Debug\ResolveAssemblyReference.cache
+C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\Debug\IQ.Core.Windows.Animation.dll
+C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\Debug\IQ.Core.Windows.Animation.pdb

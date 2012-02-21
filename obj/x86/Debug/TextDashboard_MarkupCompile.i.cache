@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\
+C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\
 TextDashboard
 none
 false
 DEBUG;TRACE
-C:\Users\mina.sabbagian\git\SprintDashboard\App.xaml
+C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\App.xaml
 7-740112354
 
-162092042070
-18-1797320235
+16-901808719
+18-450168405
 MainWindow.xaml;Resource\Generic.xaml;UserControls\AnimationWhiteboard.xaml;UserControls\SearchDeviceView.xaml;UserControls\ForthView.xaml;UserControls\FindExisitngAccountView.xaml;UserControls\ThirdView.xaml;
 
 True

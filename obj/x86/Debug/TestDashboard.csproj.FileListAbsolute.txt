@@ -42,15 +42,11 @@ C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\bin\Debug\zh-Hans\System.W
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\Resource\Generic.baml
-C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\UserControls\FirstView.baml
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\UserControls\ForthView.baml
-C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\UserControls\SecondView.baml
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\UserControls\ThirdView.baml
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\App.baml
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\MainWindow.g.cs
-C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\UserControls\FirstView.g.cs
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\UserControls\ForthView.g.cs
-C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\UserControls\SecondView.g.cs
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\UserControls\ThirdView.g.cs
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\App.g.cs
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
@@ -61,8 +57,6 @@ C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\TextDashboar
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\TextDashboard.Properties.Resources.resources
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\bin\Debug\AnimatinLibrary.dll
-C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\bin\Debug\AnimatinLibrary.pdb
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\UserControls\AnimationWhiteboard.baml
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\App.baml
@@ -102,3 +96,10 @@ C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\GenerateResource.read.
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\TextDashboard.exe
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\TextDashboard.pdb
+C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\bin\Debug\IQ.Core.Windows.Animation.pdb
+C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\UserControls\AnimationWhiteboard.baml
+C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\UserControls\AnimationWhiteboard.g.cs
+C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\UserControls\SearchDeviceView.g.cs
+C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\UserControls\FindExisitngAccountView.g.cs
+C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\UserControls\SearchDeviceView.baml
+C:\Code\iQ\Prototypes\SprintDashboard\SprintDashboard\obj\x86\Debug\UserControls\FindExisitngAccountView.baml

@@ -288,6 +288,8 @@
             Padding="0"
             BorderBrush="Gray"
             BorderThickness="1">-->
+            <!-- Add Icon & Title here -->
+            <!-- Use state to show/hide both tile and the content *use a generic converter that takes the enum as a parameter ConverterParameter="Activated|Noraml" -->
             <ScrollViewer
                 x:Name="PART_MainScrolViewer"
                 HorizontalScrollBarVisibility="Hidden"
