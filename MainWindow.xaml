@@ -9,45 +9,61 @@
     <Canvas Name="RootCanvas"> 
         <UserControls:SearchDeviceView
             x:Name="v1"
+            Title="Test 1"
+            Icon="Star-full-icon.png"
             Width="244" Height="104"/>
         <UserControls:FindExisitngAccountView
             x:Name="v2"
             Width="244"
             Height="104"
+            Title="Test 2"
+            Icon="Star-full-icon.png"
             Canvas.Top="106" />
         <UserControls:ForthView
             x:Name="v3"
             Width="244"
             Height="104"
+            Title="Test 3"
+            Icon="Star-full-icon.png"
             Canvas.Left="490" />
         <UserControls:ThirdView
             x:Name="v4"
             Width="244"
             Height="104"
+            Title="Test 4"
+            Icon="Star-full-icon.png"
             Canvas.Left="245" />
         <UserControls:ThirdView
             Canvas.Left="245"
             Canvas.Top="106"
             Height="104"
             x:Name="thirdView1"
+            Title="Test 5"
+            Icon="Star-full-icon.png"
             Width="244" />
         <UserControls:ForthView
             Canvas.Left="490"
             Canvas.Top="106"
             Height="104"
             x:Name="forthView1"
+            Title="Test 6"
+            Icon="Star-full-icon.png"
             Width="244" />
         <UserControls:SearchDeviceView
             Canvas.Top="210"
             Height="104"
             x:Name="firstView1"
+            Title="Test 7"
+            Icon="Star-full-icon.png"
             Width="244" />
         <UserControls:FindExisitngAccountView
             Canvas.Left="245"
             Canvas.Top="210"
             Height="104"
+            Title="Test 8"
+            Icon="Star-full-icon.png"
             x:Name="secondView1"
-            Width="244" />
+            Width="244" />    
         
         
         <Border

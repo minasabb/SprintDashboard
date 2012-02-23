@@ -17,18 +17,8 @@
             HorizontalAlignment="Center"
             Style="{DynamicResource SmallLoadingIndicatorStyle}" />
 
-        <Button
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Margin="0"
-            x:Name="FindAccountButton"
-            Click="FindAccountButton_OnClick"
-            Content="Find Account"
-            Style="{DynamicResource DashboardButtonStyle}" />
-
         <Border
-            x:Name="FindAccountBorder"
-            Visibility="Collapsed">
+            x:Name="FindAccountBorder">
             <StackPanel
                 Margin="5"
                 Background="White"

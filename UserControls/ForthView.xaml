@@ -18,20 +18,10 @@
             HorizontalAlignment="Center"
             Style="{DynamicResource SmallLoadingIndicatorStyle}" />
 
-        <Button
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Margin="0"
-            x:Name="CheckNumberButton"
-            Click="CheckNumberButton_OnClick"
-            Content="Check Upgrade Eligibility"
-            Style="{DynamicResource DashboardButtonStyle}" />
-
         <Border
             MinWidth="200"
             MinHeight="200"
-            x:Name="CheckNumberBorder"
-            Visibility="Collapsed">
+            x:Name="CheckNumberBorder">
             <StackPanel
                 Margin="5"
                 Background="White"

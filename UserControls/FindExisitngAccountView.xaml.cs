@@ -32,7 +32,7 @@ namespace TextDashboard.UserControls
             animation.Completed += StackPanelSearchResultFadeInAnimationCompleted;
             StackPanelSearchResult.BeginAnimation(OpacityProperty, animation);
 
-            Events.UpdateControlState(this,State.Active);
+            Events.UpdateControlState(this,State.Activated);
         }
 
         void StackPanelSearchResultFadeInAnimationCompleted(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace TextDashboard.UserControls
             var animation = AnimationFactory.CreateDoubleAnimation(StackPanelSearchResult, OpacityProperty, 0, 1, durationSpan: TimeSpan.FromMilliseconds(200), easingFuction: EasingFunction);
             animation.Completed += StackPanelFadeOutAnimationCompleted;
             StackPanelSearchResult.BeginAnimation(OpacityProperty, animation);
-            Events.UpdateControlState(this, State.Active);
+            Events.UpdateControlState(this, State.Activated);
         }
 
         void StackPanelFadeOutAnimationCompleted(object sender, EventArgs e)
@@ -58,84 +58,13 @@ namespace TextDashboard.UserControls
             StackPanelSearchResult.BeginAnimation(OpacityProperty, null);
         }
 
-        void FindAccountButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            var button = sender as Button;
-            if (button == null)
-                return;
-
-            Events.ShowCurtain(this);
-
-            Loading.Visibility = Visibility.Visible;
-
-            var animation = AnimationFactory.CreateDoubleAnimation(button, OpacityProperty, 0, 1, durationSpan: TimeSpan.FromMilliseconds(200), easingFuction: EasingFunction);
-            animation.Completed += ButtonClickedAnimationCompleted;
-            button.BeginAnimation(OpacityProperty, animation);
-            Events.UpdateControlState(this, State.Active);
-        }
-
-        void ButtonClickedAnimationCompleted(object sender, EventArgs e)
-        {
-            FindAccountButton.Visibility = Visibility.Hidden;
-            FindAccountButton.Opacity = 1;
-            FindAccountButton.BeginAnimation(OpacityProperty, null);
-
-            FindAccountStackPanel.Opacity = 0;
-            FindAccountStackPanel.Visibility = Visibility.Visible;
-            FindAccountBorder.Visibility = Visibility.Visible;
-
-            var animation = AnimationFactory.CreateDoubleAnimation(FindAccountStackPanel, OpacityProperty, 1, 0, durationSpan: TimeSpan.FromMilliseconds(200), easingFuction: EasingFunction);
-            animation.Completed += FindAccountStackPanelFadeInAnimationCompleted;
-            FindAccountStackPanel.BeginAnimation(OpacityProperty, animation);
-
-            Loading.Visibility = Visibility.Collapsed;
-        }
-
-        void FindAccountStackPanelFadeInAnimationCompleted(object sender, EventArgs e)
-        {
-            FindAccountStackPanel.Opacity = 1;
-            FindAccountStackPanel.BeginAnimation(OpacityProperty, null);
-        }
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var animation = AnimationFactory.CreateDoubleAnimation(FindAccountStackPanel, OpacityProperty, 0, 1, durationSpan: TimeSpan.FromMilliseconds(100), easingFuction: EasingFunction);
-            animation.Completed += FindAccountStackPanelFadeOutAnimationCompleted;
-            FindAccountStackPanel.BeginAnimation(OpacityProperty, animation);
             Events.UpdateControlState(this, State.Normal);
         }
 
-        void FindAccountStackPanelFadeOutAnimationCompleted(object sender, EventArgs e)
-        {
-            FindAccountStackPanel.Visibility = Visibility.Collapsed;
-            FindAccountStackPanel.Opacity = 1;
-            FindAccountStackPanel.BeginAnimation(OpacityProperty, null);
-
-            var animation = AnimationFactory.CreateDoubleAnimation(FindAccountBorder, OpacityProperty, 0, 1, durationSpan: TimeSpan.FromMilliseconds(500), easingFuction: EasingFunction);
-            animation.Completed += FindAccountBorderFadeOutAnimationCompleted;
-            FindAccountBorder.BeginAnimation(OpacityProperty, animation);
-
-            FindAccountButton.Opacity = 0;
-            FindAccountButton.Visibility = Visibility.Visible;
-            var animation2 = AnimationFactory.CreateDoubleAnimation(FindAccountButton, OpacityProperty, 1, 0, durationSpan: TimeSpan.FromMilliseconds(700), easingFuction: EasingFunction);
-            animation2.Completed += FindAccountButtonFadeInAnimationCompleted;
-            FindAccountButton.BeginAnimation(OpacityProperty, animation2);
-        }
-
-        void FindAccountBorderFadeOutAnimationCompleted(object sender, EventArgs e)
-        {
-            FindAccountBorder.Visibility = Visibility.Collapsed;
-            Events.HideCurtain(this);
-            FindAccountBorder.Opacity = 1;
-            FindAccountBorder.BeginAnimation(OpacityProperty, null);
-        }
-
-        void FindAccountButtonFadeInAnimationCompleted(object sender, EventArgs e)
-        {
-            FindAccountBorder.Visibility = Visibility.Collapsed;
-            FindAccountButton.Opacity = 1;
-            FindAccountButton.BeginAnimation(OpacityProperty, null);
-        }
+        
 
         private void SetupDesignTimeModel()
         {

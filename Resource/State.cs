@@ -5,9 +5,8 @@ using System.Text;
 
 namespace TextDashboard.Resource
 {
-    //Normal, Activated, Deactivated 
     public enum State
     {
-        Normal, Active,Activated, Inactive
+        Normal, Activated, Deactivated 
     }
 }

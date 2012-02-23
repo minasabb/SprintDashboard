@@ -16,21 +16,10 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             Style="{DynamicResource SmallLoadingIndicatorStyle}" />
-
-        <Button
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Margin="0"
-            x:Name="UpgradeButton"
-            Click="DeviceScanButton_OnClick"
-            Content="Upgrade"
-            Style="{DynamicResource DashboardButtonStyle}" />
-
         <Border
             MinWidth="200"
             MinHeight="200"
-            x:Name="UpgradeBorder"
-            Visibility="Collapsed">
+            x:Name="UpgradeBorder">
             <StackPanel
                 Margin="5"
                 Background="White"

@@ -5,6 +5,7 @@
     xmlns:Custom_Control="clr-namespace:TextDashboard.Custom_Control"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Converter="clr-namespace:TextDashboard.Converter" xmlns:Resource="clr-namespace:TextDashboard.Resource"
     mc:Ignorable="d">
 
     <!-- Border Style -->
@@ -275,6 +276,142 @@
         </Border>
     </ControlTemplate>-->
 
+    <Style
+        x:Key="ButtonFocusVisual">
+        <Setter
+            Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle
+                        Margin="2"
+                        SnapsToDevicePixels="true"
+                        Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                        StrokeThickness="1"
+                        StrokeDashArray="1 2" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <LinearGradientBrush
+        x:Key="ButtonNormalBackground"
+        EndPoint="0,1"
+        StartPoint="0,0">
+        <GradientStop
+            Color="#F3F3F3"
+            Offset="0" />
+        <GradientStop
+            Color="#EBEBEB"
+            Offset="0.5" />
+        <GradientStop
+            Color="#DDDDDD"
+            Offset="0.5" />
+        <GradientStop
+            Color="#CDCDCD"
+            Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush
+        x:Key="ButtonNormalBorder"
+        Color="#FF707070" />
+    <Style
+        x:Key="DashboardButtonStyle"
+        TargetType="{x:Type Button}">
+        <Setter
+            Property="Width"
+            Value="240" />
+        <Setter
+            Property="Height"
+            Value="100" />
+        <Setter
+            Property="FontFamily"
+            Value="Segoe UI" />
+        <Setter
+            Property="Foreground"
+            Value="Gray" />
+        <Setter
+            Property="FontSize"
+            Value="18" />
+        <Setter
+            Property="FocusVisualStyle"
+            Value="{StaticResource ButtonFocusVisual}" />
+        <Setter
+            Property="Background"
+            Value="{StaticResource ButtonNormalBackground}" />
+        <Setter
+            Property="BorderBrush"
+            Value="{StaticResource ButtonNormalBorder}" />
+        <Setter
+            Property="BorderThickness"
+            Value="1" />
+        <Setter
+            Property="Foreground"
+            Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter
+            Property="HorizontalContentAlignment"
+            Value="Center" />
+        <Setter
+            Property="VerticalContentAlignment"
+            Value="Center" />
+        <Setter
+            Property="Padding"
+            Value="1" />
+        <Setter
+            Property="Margin"
+            Value="0" />
+        <Setter
+            Property="Cursor"
+            Value="Hand" />
+        <Setter
+            Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="{x:Type Button}">
+                    <Border
+                        Margin="0">
+                        <Border.Background>
+                            <LinearGradientBrush
+                                EndPoint="0.5,1"
+                                StartPoint="0.5,0">
+                                <GradientStop
+                                    Color="Black" />
+                                <GradientStop
+                                    Color="White"
+                                    Offset="1" />
+                                <GradientStop
+                                    Color="#FF555555" />
+                                <GradientStop
+                                    Color="#FF262626" />
+                                <GradientStop
+                                    Color="#FFE6E7E7" />
+                                <GradientStop
+                                    Color="#FFE0E0E0"
+                                    Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <ContentPresenter
+                            TextBlock.FontSize="{TemplateBinding FontSize}"
+                            TextBlock.Foreground="{TemplateBinding Foreground}"
+                            TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Margin="{TemplateBinding Padding}"
+                            RecognizesAccessKey="True"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            OpacityMask="White" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger
+                            Property="IsEnabled"
+                            Value="false">
+                            <Setter
+                                Property="Foreground"
+                                Value="#ADADAD" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
     <ControlTemplate
         x:Key="ResizableContentControlTemplate"
@@ -288,18 +425,84 @@
             Padding="0"
             BorderBrush="Gray"
             BorderThickness="1">-->
+
             <!-- Add Icon & Title here -->
             <!-- Use state to show/hide both tile and the content *use a generic converter that takes the enum as a parameter ConverterParameter="Activated|Noraml" -->
             <ScrollViewer
                 x:Name="PART_MainScrolViewer"
                 HorizontalScrollBarVisibility="Hidden"
                 VerticalScrollBarVisibility="Hidden">
-                <ContentPresenter
-                    x:Name="PART_ContentPresenter"
-                    Content="{TemplateBinding Content}" />
+
+                <Grid x:Name="PART_MainGrid">
+                    <Button 
+                        x:Name="PART_Tile"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource DashboardButtonStyle}">
+
+                      <Button.Visibility>
+                            <TemplateBinding
+                                Property="State"
+                                Converter="{x:Static Converter:StateToVisibilityConverter.Instance}" >
+
+                                <TemplateBinding.ConverterParameter>
+                                    <x:Array
+                                        Type="{x:Type Resource:State}">
+                                        <Resource:State>Normal</Resource:State>
+                                        <Resource:State>Deactivated</Resource:State>
+                                    </x:Array>
+                                </TemplateBinding.ConverterParameter>
+
+                            </TemplateBinding>
+                        </Button.Visibility>
+                      <StackPanel
+                            Margin="5">
+                            <Image
+                                Width="20"
+                                Height="20"
+                                Margin="0,0,0,5"
+                                Source="{Binding Path=Icon, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <TextBlock
+                                Text="{Binding Path=Title, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </StackPanel>
+                    </Button>
+                    <ContentPresenter
+                        Margin="5"
+                        x:Name="PART_ContentPresenter"
+                        Content="{TemplateBinding Content}">
+                      <ContentPresenter.Visibility>
+                            <TemplateBinding
+                                Property="State"
+                                Converter="{x:Static Converter:StateToVisibilityConverter.Instance}">
+                                <TemplateBinding.ConverterParameter>
+                                    <x:Array
+                                        Type="{x:Type Resource:State}">
+                                        <Resource:State>Activated</Resource:State>
+                                    </x:Array>
+                                </TemplateBinding.ConverterParameter>
+                            </TemplateBinding>
+                        </ContentPresenter.Visibility>
+                    </ContentPresenter>
+                </Grid>
+
+
             </ScrollViewer>
         </Border>
     </ControlTemplate>
+
+    <!--<ControlTemplate
+        x:Key="SelfExpandablePanelTemplate"
+        TargetType="{x:Type Custom_Control:SelfExpandablePanel}">
+
+        <Canvas
+            x:Name="PART_RootPanel">
+
+            <ContentPresenter
+                x:Name="PART_ContentPresenter"
+                Content="{TemplateBinding Content}" />
+
+        </Canvas>
+    </ControlTemplate>-->
 
     <Style
         x:Key="ResizableContentControlStyle"
@@ -313,7 +516,14 @@
 
     </Style>
 
+    <!--<Style
+        x:Key="SelfExpandablePanelStyle"
+        TargetType="{x:Type Custom_Control:SelfExpandablePanel}">
+        <Setter
+            Property="Template"
+            Value="{DynamicResource SelfExpandablePanelTemplate}" />
 
+    </Style>-->
 
 
     <!-- Button Style -->
@@ -617,141 +827,7 @@
     </Style>
 
 
-    <Style
-        x:Key="ButtonFocusVisual">
-        <Setter
-            Property="Control.Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Rectangle
-                        Margin="2"
-                        SnapsToDevicePixels="true"
-                        Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
-                        StrokeThickness="1"
-                        StrokeDashArray="1 2" />
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <LinearGradientBrush
-        x:Key="ButtonNormalBackground"
-        EndPoint="0,1"
-        StartPoint="0,0">
-        <GradientStop
-            Color="#F3F3F3"
-            Offset="0" />
-        <GradientStop
-            Color="#EBEBEB"
-            Offset="0.5" />
-        <GradientStop
-            Color="#DDDDDD"
-            Offset="0.5" />
-        <GradientStop
-            Color="#CDCDCD"
-            Offset="1" />
-    </LinearGradientBrush>
-    <SolidColorBrush
-        x:Key="ButtonNormalBorder"
-        Color="#FF707070" />
-    <Style
-        x:Key="DashboardButtonStyle"
-        TargetType="{x:Type Button}">
-        <Setter
-            Property="Width"
-            Value="240" />
-        <Setter
-            Property="Height"
-            Value="100" />
-        <Setter
-            Property="FontFamily"
-            Value="Segoe UI" />
-        <Setter
-            Property="Foreground"
-            Value="Gray" />
-        <Setter
-            Property="FontSize"
-            Value="18" />
-        <Setter
-            Property="FocusVisualStyle"
-            Value="{StaticResource ButtonFocusVisual}" />
-        <Setter
-            Property="Background"
-            Value="{StaticResource ButtonNormalBackground}" />
-        <Setter
-            Property="BorderBrush"
-            Value="{StaticResource ButtonNormalBorder}" />
-        <Setter
-            Property="BorderThickness"
-            Value="1" />
-        <Setter
-            Property="Foreground"
-            Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
-        <Setter
-            Property="HorizontalContentAlignment"
-            Value="Center" />
-        <Setter
-            Property="VerticalContentAlignment"
-            Value="Center" />
-        <Setter
-            Property="Padding"
-            Value="1" />
-        <Setter
-            Property="Margin"
-            Value="0" />
-        <Setter
-            Property="Cursor"
-            Value="Hand" />
-        <Setter
-            Property="Template">
-            <Setter.Value>
-                <ControlTemplate
-                    TargetType="{x:Type Button}">
-                    <Border
-                        Margin="0">
-                        <Border.Background>
-                            <LinearGradientBrush
-                                EndPoint="0.5,1"
-                                StartPoint="0.5,0">
-                                <GradientStop
-                                    Color="Black" />
-                                <GradientStop
-                                    Color="White"
-                                    Offset="1" />
-                                <GradientStop
-                                    Color="#FF555555" />
-                                <GradientStop
-                                    Color="#FF262626" />
-                                <GradientStop
-                                    Color="#FFE6E7E7" />
-                                <GradientStop
-                                    Color="#FFE0E0E0"
-                                    Offset="1" />
-                            </LinearGradientBrush>
-                        </Border.Background>
-                        <ContentPresenter
-                            TextBlock.FontSize="{TemplateBinding FontSize}"
-                            TextBlock.Foreground="{TemplateBinding Foreground}"
-                            TextBlock.FontFamily="{TemplateBinding FontFamily}"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            Margin="{TemplateBinding Padding}"
-                            RecognizesAccessKey="True"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            OpacityMask="White" />
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger
-                            Property="IsEnabled"
-                            Value="false">
-                            <Setter
-                                Property="Foreground"
-                                Value="#ADADAD" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+    
 
 
 

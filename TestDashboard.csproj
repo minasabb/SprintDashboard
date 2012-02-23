@@ -69,6 +69,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\StateToVisibilityConverter.cs" />
+    <Compile Include="Custom Control\SelfExpandableBase.cs" />
     <Compile Include="Custom Control\SelfExpandableControl.cs" />
     <Compile Include="Custom Control\SelfExpandablePanel.cs" />
     <Compile Include="Resource\Events.cs" />
@@ -152,6 +154,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Star-full-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

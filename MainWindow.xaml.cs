@@ -63,7 +63,7 @@ namespace TextDashboard
                 if (control == null || currentControl.Name == control.Name)
                     currentControl.State = state;
                 else
-                    control.State = state == State.Active ? State.Inactive : State.Normal;
+                    control.State = state == State.Activated ? State.Deactivated : State.Normal;
             }
         }
 
