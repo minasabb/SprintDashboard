@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using TextDashboard.Custom_Control;
 using TextDashboard.Resource;
 
@@ -15,6 +16,21 @@ namespace TextDashboard.UserControls
             InitializeComponent();
             Events.UpdateControlStateEvent += OnUpdateStateEvent;
         }
+
+
+        public static readonly DependencyProperty BaseTileSizeProperty =
+            DependencyProperty.Register(
+                "BaseTileSize",
+                typeof(double),
+                typeof(SelfExpandablePanel),
+                new PropertyMetadata(100.0));
+
+        public double BaseTileSize
+        {
+            get { return (double)GetValue(BaseTileSizeProperty); }
+            set { SetValue(BaseTileSizeProperty, value); }
+        }
+
 
         void OnUpdateStateEvent(object sender, State state)
         {
@@ -41,7 +57,7 @@ namespace TextDashboard.UserControls
 
         private void UpdateControls(object sender, RoutedEventArgs e)
         {
-            Events.UpdateOriginalSize();
+            Events.UpdateOriginalSize(BaseTileSize);
         }
     }
 }

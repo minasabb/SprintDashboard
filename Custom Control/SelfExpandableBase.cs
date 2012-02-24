@@ -1,8 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using IQ.Core.Windows.Animation;
-using TextDashboard.Resource;
 
 namespace TextDashboard.Custom_Control
 {
@@ -161,7 +159,7 @@ namespace TextDashboard.Custom_Control
                 "TileIconSize",
                 typeof(double),
                 typeof(SelfExpandableControl),
-                new PropertyMetadata(50.0));
+                new PropertyMetadata(60.0));
 
         public double TileIconSize
         {
@@ -176,9 +174,9 @@ namespace TextDashboard.Custom_Control
                 typeof(SelfExpandableControl),
                 new PropertyMetadata(TileSize.Single));
 
-        public double Size
+        public TileSize Size
         {
-            get { return (double)GetValue(SizeProperty); }
+            get { return (TileSize)GetValue(SizeProperty); }
             set { SetValue(SizeProperty, value); }
         }
 

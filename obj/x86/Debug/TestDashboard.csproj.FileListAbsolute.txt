@@ -17,10 +17,8 @@ C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\UserControls\Animation
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\App.baml
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\MainWindow.g.cs
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\UserControls\AnimationWhiteboard.g.cs
-C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\UserControls\SearchDeviceView.g.cs
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\UserControls\PortInEligibilityView.g.cs
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\UserControls\FindExisitngAccountView.g.cs
-C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\UserControls\SelfExpandablePanel.g.cs
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\UserControls\UpgradeEligibilityView.g.cs
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\App.g.cs
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
@@ -29,10 +27,8 @@ C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\TextDashboard_MarkupCo
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\MainWindow.baml
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\Resource\SelfExpandableControlTemplates.baml
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\Resource\SelfExpandableControlStyles.baml
-C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\UserControls\SearchDeviceView.baml
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\UserControls\PortInEligibilityView.baml
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\UserControls\FindExisitngAccountView.baml
-C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\UserControls\SelfExpandablePanel.baml
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\UserControls\UpgradeEligibilityView.baml
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\TextDashboard.g.resources
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\TextDashboard.Properties.Resources.resources
@@ -41,3 +37,7 @@ C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\GenerateResource.write
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\TextDashboard.exe
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\TextDashboard.pdb
 C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\Resource\Generic.baml
+C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\UserControls\CoverageView.g.cs
+C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\UserControls\CoverageView.baml
+C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\Custom Control\SelfExpandablePanel.g.cs
+C:\Users\mina.sabbagian\git\SprintDashboard\obj\x86\Debug\Custom Control\SelfExpandablePanel.baml

@@ -5,9 +5,10 @@
     xmlns:UserControls="clr-namespace:TextDashboard.UserControls"
     xmlns:Custom_Control="clr-namespace:TextDashboard.Custom_Control"
     Title="MainWindow"
-    Height="700"
-    Width="760"
     Name="Main">
 
-    <UserControls:SelfExpandablePanel />
+    <Border Padding="5">
+         <UserControls:SelfExpandablePanel BaseTileSize="200" />
+    </Border>
+    
 </Window>

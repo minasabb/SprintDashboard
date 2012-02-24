@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
-    x:Class="TextDashboard.UserControls.SearchDeviceView"
+    x:Class="TextDashboard.UserControls.CoverageView"
     x:Name="vDeviceSearchView"
     mc:Ignorable="d">
     <Grid>
@@ -17,19 +17,58 @@
             Style="{DynamicResource SmallLoadingIndicatorStyle}" />
 
         <Border
+            Width="250"
             x:Name="ScanDeviceBorder"
             Background="{Binding Path=ContentBackgroundColor,ElementName=vDeviceSearchView}">
             <StackPanel
                 Margin="5"
                 x:Name="ScanDeviceStackPanel">
-                <TextBlock
-                    Style="{StaticResource HeaderTextBlockStyle}"
-                    Text="Scan Device" />
-
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="Zip *" />
                 <TextBox
-                    Style="{DynamicResource StandardTextBoxStyle}"
+                    x:Name="field"
+                    Style="{StaticResource StandardTextBoxStyle}"
+                    Width="170"
+                    Text="97204"
+                    HorizontalAlignment="Left" />
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="Street Address 1 *" />
+                <TextBox
+                    x:Name="field2"
+                    Text="1121 SW 5th Ave"
+                    Style="{StaticResource StandardTextBoxStyle}"
                     Width="170"
                     HorizontalAlignment="Left" />
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="Street Address 2" />
+                <TextBox
+                    x:Name="field3"
+                    Style="{StaticResource StandardTextBoxStyle}"
+                    Width="170"
+                    HorizontalAlignment="Left" />
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="City *" />
+                <TextBox
+                    x:Name="field4"
+                    Style="{StaticResource StandardTextBoxStyle}"
+                    Width="170"
+                    Text="Portland"
+                    HorizontalAlignment="Left" />
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="State *" />
+                <ComboBox
+                    Width="170"
+                    HorizontalAlignment="Left"
+                    x:Name="cboState"
+                    IsReadOnly="True"
+                    SelectedIndex="0">
+                    <ComboBoxItem>Oregon</ComboBoxItem>
+                </ComboBox>
                 <StackPanel
                     Orientation="Horizontal">
                     <Button
@@ -58,31 +97,38 @@
                         Margin="10"
                         x:Name="StackPanelSearchResult"
                         Visibility="Collapsed">
+                        <TextBlock
+                            Text="Coverage Status"
+                            Foreground="Gray"
+                            Style="{StaticResource HeaderTextBlockStyle}"
+                            Margin="0,5"></TextBlock>
+
 
                         <Label
+                            Foreground="Black"
                             Style="{StaticResource FieldLabelStyle}"
-                            Content="This is a very long text which requires more space in this view" />
+                            Content="3G Coverage Found"
+                            Margin="0" />
                         <Label
+                            Foreground="Black"
                             Style="{StaticResource FieldLabelStyle}"
-                            Content="This is a very long text which requires more space in this view" />
+                            Content="EVDO Coverage Found"
+                            Margin="0" />
                         <Label
+                            Foreground="Black"
                             Style="{StaticResource FieldLabelStyle}"
-                            Content="This is a very long text which requires more space in this view" />
+                            Content="CDMA Coverage: Fair"
+                            Margin="0" />
                         <Label
+                            Foreground="Black"
                             Style="{StaticResource FieldLabelStyle}"
-                            Content="This is a very long text which requires more space in this view" />
+                            Content="Digital Roaming OK"
+                            Margin="0" />
                         <Label
+                            Foreground="Black"
                             Style="{StaticResource FieldLabelStyle}"
-                            Content="This is a very long text which requires more space in this view" />
-                        <Label
-                            Style="{StaticResource FieldLabelStyle}"
-                            Content="This is a very long text which requires more space in this view" />
-                        <Label
-                            Style="{StaticResource FieldLabelStyle}"
-                            Content="This is a very long text which requires more space in this view" />
-                        <Label
-                            Style="{StaticResource FieldLabelStyle}"
-                            Content="This is a very long text which requires more space in this view" />
+                            Content="Analog Roaming OK"
+                            Margin="0" />
 
                     </StackPanel>
                 </Grid>

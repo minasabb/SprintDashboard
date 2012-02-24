@@ -45,6 +45,7 @@
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\git\Enterprise\Source\Packages\Caliburn.Micro.1.2.0\lib\Net40\System.Windows.Interactivity.dll</HintPath>
@@ -73,12 +74,12 @@
     <Compile Include="Custom Control\SelfExpandableBase.cs" />
     <Compile Include="Custom Control\SelfExpandableControl.cs" />
     <Compile Include="Resource\Events.cs" />
-    <Compile Include="Resource\Enums.cs" />
+    <Compile Include="Custom Control\Enums.cs" />
     <Compile Include="UserControls\AnimationWhiteboard.xaml.cs">
       <DependentUpon>AnimationWhiteboard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SearchDeviceView.xaml.cs">
-      <DependentUpon>SearchDeviceView.xaml</DependentUpon>
+    <Compile Include="UserControls\CoverageView.xaml.cs">
+      <DependentUpon>CoverageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PortInEligibilityView.xaml.cs">
       <DependentUpon>PortInEligibilityView.xaml</DependentUpon>
@@ -86,7 +87,7 @@
     <Compile Include="UserControls\FindExisitngAccountView.xaml.cs">
       <DependentUpon>FindExisitngAccountView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SelfExpandablePanel.xaml.cs">
+    <Compile Include="Custom Control\SelfExpandablePanel.xaml.cs">
       <DependentUpon>SelfExpandablePanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UpgradeEligibilityView.xaml.cs">
@@ -121,7 +122,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\SearchDeviceView.xaml">
+    <Page Include="UserControls\CoverageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -133,7 +134,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\SelfExpandablePanel.xaml">
+    <Page Include="Custom Control\SelfExpandablePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

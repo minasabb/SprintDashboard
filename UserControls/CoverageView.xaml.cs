@@ -8,13 +8,13 @@ using TextDashboard.Resource;
 namespace TextDashboard.UserControls
 {
     /// <summary>
-    /// Interaction logic for SearchDeviceView.xaml
+    /// Interaction logic for CoverageView.xaml
     /// </summary>
-    public partial class SearchDeviceView : SelfExpandableControl
+    public partial class CoverageView : SelfExpandableControl
     {
 
 
-        public SearchDeviceView()
+        public CoverageView()
         {
             InitializeComponent();
         }

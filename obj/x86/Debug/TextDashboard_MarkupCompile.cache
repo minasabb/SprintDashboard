@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\mina.sabbagian\git\SprintDashboard\App.xaml
-10178661880
+10-1931108140
 
-17-636985185
-18-1797320235
-MainWindow.xaml;Resource\Generic.xaml;Resource\SelfExpandableControlTemplates.xaml;Resource\SelfExpandableControlStyles.xaml;UserControls\AnimationWhiteboard.xaml;UserControls\SearchDeviceView.xaml;UserControls\PortInEligibilityView.xaml;UserControls\FindExisitngAccountView.xaml;UserControls\SelfExpandablePanel.xaml;UserControls\UpgradeEligibilityView.xaml;
+17-111049759
+19-1751267161
+MainWindow.xaml;Resource\Generic.xaml;Resource\SelfExpandableControlTemplates.xaml;Resource\SelfExpandableControlStyles.xaml;UserControls\AnimationWhiteboard.xaml;UserControls\CoverageView.xaml;UserControls\PortInEligibilityView.xaml;UserControls\FindExisitngAccountView.xaml;Custom Control\SelfExpandablePanel.xaml;UserControls\UpgradeEligibilityView.xaml;
 
 False
 

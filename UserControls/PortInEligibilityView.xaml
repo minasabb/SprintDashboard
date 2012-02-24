@@ -51,15 +51,15 @@
                         Content="Check Upgrade Eligibility" />
 
                 </StackPanel>
-                <Grid>
+                <!--<Grid>
                     <ContentControl
                         Visibility="Collapsed"
                         x:Name="LoadingResult"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
-                        Style="{DynamicResource SmallLoadingIndicatorStyle}" />
+                        Style="{DynamicResource SmallLoadingIndicatorStyle}" />-->
                     <StackPanel
-                        Margin="10"
+                        Margin="0,10,5,10"
                         x:Name="StackPanelSearchResult"
                         Visibility="Collapsed">
 
@@ -67,6 +67,7 @@
                             ItemsSource="{Binding PortInNumbers}"
                             x:Name="PortInListView"
                             Style="{StaticResource ListViewStyle}"
+                            HorizontalAlignment="Left"
                             ItemContainerStyle="{StaticResource ListViewItemContainerStyle}">
                             <ListView.View>
                                 <GridView
@@ -159,7 +160,7 @@
                             </Button>
 
                     </StackPanel>
-                </Grid>
+                <!--</Grid>-->
 
             </StackPanel>
         </Border>

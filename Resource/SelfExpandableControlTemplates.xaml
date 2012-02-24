@@ -238,7 +238,7 @@
                                 Value="{StaticResource ButtonNormalBackground}" />
                             <Setter
                                 Property="Foreground"
-                                Value="DarkGray" />
+                                Value="#FF5A5A5A" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -273,9 +273,9 @@
 
                                     <TemplateBinding.ConverterParameter>
                                         <x:Array
-                                            Type="{x:Type Resource:State}">
-                                            <Resource:State>Normal</Resource:State>
-                                            <Resource:State>Deactivated</Resource:State>
+                                            Type="{x:Type Custom_Control:State}">
+                                            <Custom_Control:State>Normal</Custom_Control:State>
+                                            <Custom_Control:State>Deactivated</Custom_Control:State>
                                         </x:Array>
                                     </TemplateBinding.ConverterParameter>
 
@@ -313,8 +313,8 @@
                                     Converter="{x:Static Converter:StateToVisibilityConverter.Instance}">
                                     <TemplateBinding.ConverterParameter>
                                         <x:Array
-                                            Type="{x:Type Resource:State}">
-                                            <Resource:State>Activated</Resource:State>
+                                            Type="{x:Type Custom_Control:State}">
+                                            <Custom_Control:State>Activated</Custom_Control:State>
                                         </x:Array>
                                     </TemplateBinding.ConverterParameter>
                                 </TemplateBinding>

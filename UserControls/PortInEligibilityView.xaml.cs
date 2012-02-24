@@ -23,7 +23,7 @@ namespace TextDashboard.UserControls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LoadingResult.Visibility = Visibility.Visible;
+            //LoadingResult.Visibility = Visibility.Visible;
             StackPanelSearchResult.Visibility = Visibility.Hidden;
             StackPanelSearchResult.Opacity = 0;
             StackPanelSearchResult.Visibility = Visibility.Visible;
@@ -36,7 +36,7 @@ namespace TextDashboard.UserControls
 
         void StackPanelSearchResultFadeInAnimationCompleted(object sender, EventArgs e)
         {
-            LoadingResult.Visibility = Visibility.Collapsed;
+            //LoadingResult.Visibility = Visibility.Collapsed;
             StackPanelSearchResult.Opacity = 1;
             StackPanelSearchResult.BeginAnimation(OpacityProperty, null);
         }

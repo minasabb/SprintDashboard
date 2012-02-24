@@ -21,12 +21,12 @@ namespace TextDashboard.Custom_Control
         double _currentYoffSet;
         double _currentScrollbarExtentWidth;
         double _currentScrollbarExtentHeight;
-        const int AnimationWidthGrowTimeSpan =1600 ;
+        const int AnimationWidthGrowTimeSpan =1000 ;
         const int AnimationHeightGrowTimeSpan = 700;
         const int AnimationWidthShrinkTimeSpan = 400;
-        const int AnimationHeightShrinkTimeSpan = 800;
+        const int AnimationHeightShrinkTimeSpan = 400;
         const int AnimationTranformNegativeValueTimeSpan = 800;
-        const int AnimationTranformPositiveValueTimeSpan = 600;
+        const int AnimationTranformPositiveValueTimeSpan = 400;
         const int AnimationStandardTimeSpan = 300;
         const double InactiveScaleSize = 0.95;
         const int ExtraSpacing = 5;
@@ -85,9 +85,9 @@ namespace TextDashboard.Custom_Control
 
         public IEasingFunction EasingFunction { get; set; }
 
-        void EventsUpdateOriginalSizeEvent()
+        void EventsUpdateOriginalSizeEvent(double tileBaseSize)
         {
-            UpdateOrigianlSettings();
+            UpdateOrigianlSettings(tileBaseSize);
 
             var tileButton = GetTemplateChild(PartTile) as Button;
             if (tileButton != null) tileButton.Click += OnTileButtonClicked;
@@ -123,7 +123,27 @@ namespace TextDashboard.Custom_Control
 
         void ResizableContentControlLoaded(object sender, RoutedEventArgs e)
         {
-            UpdateOrigianlSettings();
+            //UpdateOrigianlSettings();
+        }
+
+        private void UpdateTileSize(double baseTileSize)
+        {
+            switch (Size)
+            {
+                case TileSize.Double:
+                    MinWidth = baseTileSize * 2;
+                    MinHeight = baseTileSize;
+                    break;
+                case TileSize.Quad:
+                    MinWidth = baseTileSize * 2;
+                    MinHeight = baseTileSize * 2;
+                    break;
+                default:
+                    MinWidth = baseTileSize;
+                    MinHeight = baseTileSize;
+                    break;
+
+            }
         }
 
         static void OnNewWidthChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
@@ -153,6 +173,7 @@ namespace TextDashboard.Custom_Control
                 return;
             }
 
+            var beginTimeDelay = AnimationStandardTimeSpan;
             var animationTimeSpan = AnimationWidthGrowTimeSpan;
             double animationTranformTimeSpan=AnimationTranformNegativeValueTimeSpan;
             KeySpline toKeySpline;
@@ -171,16 +192,17 @@ namespace TextDashboard.Custom_Control
                 animationTranformTimeSpan = AnimationTranformPositiveValueTimeSpan;
                 valueChange = GetPositiveChange(ParentWidth, _currentXoffSet, NewWidth, OriginalPoint.X);
                 toKeySpline = new KeySpline(0.38, 0.38, 0.15, 0.98);
+                beginTimeDelay = 0;
             }
                                
             _currentXoffSet = _currentXoffSet + valueChange;
 
-            ResizeWidth(animationTimeSpan, toKeySpline, null);
+            ResizeWidth(animationTimeSpan, toKeySpline, null, beginTimeDelay);
 
             //var widthChangeAnimation = AnimationFactory.CreateDoubleAnimation(this, WidthProperty, toKeySpline, NewWidth, ActualWidth, durationSpan: TimeSpan.FromMilliseconds(animationTimeSpan));
             //widthChangeAnimation.Completed += WidthChangeAnimationCompleted;
 
-            var positionAnimation = AnimationFactory.CreateDoubleAnimation(this, TranslateTransform.XProperty, -_currentXoffSet, durationSpan: TimeSpan.FromMilliseconds(animationTranformTimeSpan), easingFuction: EasingFunction,beginTimeSpan: TimeSpan.FromMilliseconds(50));
+            var positionAnimation = AnimationFactory.CreateDoubleAnimation(this, TranslateTransform.XProperty, -_currentXoffSet, durationSpan: TimeSpan.FromMilliseconds(animationTranformTimeSpan), easingFuction: EasingFunction);
             positionAnimation.Completed += PositionXAnimationCompleted;
             RenderTransform.BeginAnimation(TranslateTransform.XProperty, positionAnimation);
 
@@ -190,9 +212,9 @@ namespace TextDashboard.Custom_Control
             //storyboard.Begin();
         }
 
-        void ResizeWidth(double animationTimeSpan,KeySpline toKeySpline,KeySpline fromKeySpline)
+        void ResizeWidth(double animationTimeSpan, KeySpline toKeySpline, KeySpline fromKeySpline, int beginTimeDelay)
         {
-            var widthChangeAnimation = AnimationFactory.CreateDoubleAnimation(this, WidthProperty, toKeySpline, NewWidth, ActualWidth, fromKeySpline, durationSpan: TimeSpan.FromMilliseconds(animationTimeSpan));
+            var widthChangeAnimation = AnimationFactory.CreateDoubleAnimation(this, WidthProperty, toKeySpline, NewWidth, ActualWidth, fromKeySpline, durationSpan: TimeSpan.FromMilliseconds(animationTimeSpan), beginTimeSpan: TimeSpan.FromMilliseconds(beginTimeDelay));
             widthChangeAnimation.Completed += WidthChangeAnimationCompleted;
             BeginAnimation(WidthProperty, widthChangeAnimation);
         }
@@ -378,10 +400,14 @@ namespace TextDashboard.Custom_Control
             return -currentTransformValue;
         }
 
-        private void UpdateOrigianlSettings()
+        private void UpdateOrigianlSettings(double baseTileSize)
         {
             var positionInParent = GetPositionInParent();
             OriginalPoint = positionInParent;
+            
+            //Update Tile size
+            UpdateTileSize(baseTileSize);
+
             CurrentMinWidth = ActualWidth;
             CurrentMinHeight = ActualHeight;
 
