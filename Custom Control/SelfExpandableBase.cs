@@ -1,7 +1,8 @@
-﻿
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using IQ.Core.Windows.Animation;
+using TextDashboard.Resource;
 
 namespace TextDashboard.Custom_Control
 {
@@ -155,43 +156,55 @@ namespace TextDashboard.Custom_Control
             set { SetValue(TitleProperty, value); }
         }
 
-
-        public static readonly DependencyProperty TileSizeProperty =
+        public static readonly DependencyProperty TileIconSizeProperty =
             DependencyProperty.Register(
-                "TileSize",
+                "TileIconSize",
                 typeof(double),
                 typeof(SelfExpandableControl),
-                new PropertyMetadata(0.0));
+                new PropertyMetadata(50.0));
 
-        public double TileSize
+        public double TileIconSize
         {
-            get { return (double)GetValue(TileSizeProperty); }
-            set { SetValue(TileSizeProperty, value); }
+            get { return (double)GetValue(TileIconSizeProperty); }
+            set { SetValue(TileIconSizeProperty, value); }
+        }
+
+        public static readonly DependencyProperty SizeProperty =
+            DependencyProperty.Register(
+                "Size",
+                typeof(TileSize),
+                typeof(SelfExpandableControl),
+                new PropertyMetadata(TileSize.Single));
+
+        public double Size
+        {
+            get { return (double)GetValue(SizeProperty); }
+            set { SetValue(SizeProperty, value); }
         }
 
         public static readonly DependencyProperty TileBackgroundColorProperty =
             DependencyProperty.Register(
                 "TileBackgroundColor",
-                typeof(SolidColorBrush),
+                typeof(Brush),
                 typeof(SelfExpandableControl),
                 new PropertyMetadata(new SolidColorBrush(Colors.White)));
 
-        public SolidColorBrush TileBackgroundColor
+        public Brush TileBackgroundColor
         {
-            get { return (SolidColorBrush)GetValue(TileBackgroundColorProperty); }
+            get { return (Brush)GetValue(TileBackgroundColorProperty); }
             set { SetValue(TileBackgroundColorProperty, value); }
         }
 
         public static readonly DependencyProperty ContentBackgroundColorProperty =
             DependencyProperty.Register(
                 "ContentBackgroundColor",
-                typeof(SolidColorBrush),
+                typeof(Brush),
                 typeof(SelfExpandableControl),
                 new PropertyMetadata(new SolidColorBrush(Colors.White)));
 
-        public SolidColorBrush ContentBackgroundColor
+        public Brush ContentBackgroundColor
         {
-            get { return (SolidColorBrush)GetValue(ContentBackgroundColorProperty); }
+            get { return (Brush)GetValue(ContentBackgroundColorProperty); }
             set { SetValue(ContentBackgroundColorProperty, value); }
         }
 

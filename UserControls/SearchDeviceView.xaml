@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
     x:Class="TextDashboard.UserControls.SearchDeviceView"
+    x:Name="vDeviceSearchView"
     mc:Ignorable="d">
     <Grid>
         <ContentControl
@@ -15,29 +16,18 @@
             HorizontalAlignment="Center"
             Style="{DynamicResource SmallLoadingIndicatorStyle}" />
 
-        <!--<Button
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Margin="0"
-            x:Name="ScanDeviceButton"
-            Click="DeviceScanButton_OnClick"
-            Content="Scan Device"
-            Style="{DynamicResource DashboardButtonStyle}" />-->
-
         <Border
-            MinWidth="200"
-            MinHeight="200"
-            x:Name="ScanDeviceBorder">
+            x:Name="ScanDeviceBorder"
+            Background="{Binding Path=ContentBackgroundColor,ElementName=vDeviceSearchView}">
             <StackPanel
                 Margin="5"
-                Background="White"
                 x:Name="ScanDeviceStackPanel">
                 <TextBlock
                     Style="{StaticResource HeaderTextBlockStyle}"
                     Text="Scan Device" />
 
                 <TextBox
-                    Style="{StaticResource StandardTextBoxStyle}"
+                    Style="{DynamicResource StandardTextBoxStyle}"
                     Width="170"
                     HorizontalAlignment="Left" />
                 <StackPanel
@@ -48,13 +38,6 @@
                         Width="85"
                         Click="CloseButton_OnClick"
                         Content="Close" />
-
-                    <Button
-                        Style="{StaticResource StandardButtonStyle}"
-                        HorizontalAlignment="Left"
-                        Width="85"
-                        Click="Button_Click_1"
-                        Content="Clear" />
 
                     <Button
                         Style="{StaticResource PrimaryActionButtonStyle}"

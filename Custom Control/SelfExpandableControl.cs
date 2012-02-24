@@ -11,14 +11,12 @@ namespace TextDashboard.Custom_Control
 {
     
     [TemplatePart(Name = PartMainScrolViewer, Type = typeof(ScrollViewer))]
-    [TemplatePart(Name = PartMainGrid, Type = typeof(Grid))]
     [TemplatePart(Name = PartTile, Type = typeof(Button))]
     public class SelfExpandableControl: SelfExpandableBase
     {
 
         private const string PartMainScrolViewer = "PART_MainScrolViewer";
         private const string PartTile= "PART_Tile";
-        private const string PartMainGrid = "PART_MainGrid";
         double _currentXoffSet;
         double _currentYoffSet;
         double _currentScrollbarExtentWidth;
@@ -29,6 +27,7 @@ namespace TextDashboard.Custom_Control
         const int AnimationHeightShrinkTimeSpan = 800;
         const int AnimationTranformNegativeValueTimeSpan = 800;
         const int AnimationTranformPositiveValueTimeSpan = 600;
+        const int AnimationStandardTimeSpan = 300;
         const double InactiveScaleSize = 0.95;
         const int ExtraSpacing = 5;
 
@@ -39,7 +38,7 @@ namespace TextDashboard.Custom_Control
 
         public SelfExpandableControl()
         {
-            SetResourceReference(StyleProperty, "ResizableContentControlStyle");
+            SetResourceReference(StyleProperty, "SelfExpandableControlStyle");
             _currentXoffSet = 0;
             _currentYoffSet = 0;
             TransformGroupHelper.CreateTransformGroup(this);
@@ -91,20 +90,14 @@ namespace TextDashboard.Custom_Control
             UpdateOrigianlSettings();
 
             var tileButton = GetTemplateChild(PartTile) as Button;
-            //if (mainGrid != null)
-            //{
-            //    var tile = LogicalTreeHelper.FindLogicalNode(mainGrid, PartTile);
-            //    if (tile != null)
-            //    {
-                    //var tileButton = tile as Button;
-                    if (tileButton != null) tileButton.Click += OnTileButtonClicked;
-            //    }
-            //}
+            if (tileButton != null) tileButton.Click += OnTileButtonClicked;
         }
 
         void OnTileButtonClicked(object sender, RoutedEventArgs e)
         {
-            Events.UpdateControlState(this, State.Activated);
+            var button = sender as Button;
+ 
+            OpacityAnimation(button,0);
         }
 
         void ScrollerViewerScrollChanged(object sender, ScrollChangedEventArgs e)
@@ -117,17 +110,11 @@ namespace TextDashboard.Custom_Control
 
             GetCurrentValues();
 
-            if (Math.Abs(scrollbar.ExtentWidth - _currentScrollbarExtentWidth) > 1)
-            {  
-                Events.MoveControlToTop(this);
-                NewWidth = scrollbar.ExtentWidth + ExtraSpacing;  
-            }
+            if (Math.Abs(scrollbar.ExtentWidth - _currentScrollbarExtentWidth) > 5)
+                NewWidth = scrollbar.ExtentWidth;
 
-            if (Math.Abs(scrollbar.ExtentHeight - _currentScrollbarExtentHeight) > 1)
-            {
-                Events.MoveControlToTop(this);
-                NewHeight = scrollbar.ExtentHeight + ExtraSpacing;
-            }
+            if (Math.Abs(scrollbar.ExtentHeight - _currentScrollbarExtentHeight) > 5)
+                NewHeight = scrollbar.ExtentHeight;
 
             _currentScrollbarExtentWidth = scrollbar.ExtentWidth;
             _currentScrollbarExtentHeight = scrollbar.ExtentHeight;
@@ -137,17 +124,6 @@ namespace TextDashboard.Custom_Control
         void ResizableContentControlLoaded(object sender, RoutedEventArgs e)
         {
             UpdateOrigianlSettings();
-
-            var mainGrid = GetTemplateChild(PartMainGrid) as Grid;
-            if (mainGrid != null)
-            {
-                var tile = LogicalTreeHelper.FindLogicalNode(mainGrid, PartTile);
-                if (tile != null)
-                {
-                    var tileButton = tile as Button;
-                    if (tileButton != null) tileButton.Click += OnTileButtonClicked;
-                }
-            }
         }
 
         static void OnNewWidthChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
@@ -292,6 +268,22 @@ namespace TextDashboard.Custom_Control
             //storyboard.Begin();
         }
 
+        private void OpacityAnimation(UIElement uiElement, int toValue, int fromValue = 1)
+        {
+            var animation = AnimationFactory.CreateDoubleAnimation(uiElement, OpacityProperty, toValue, fromValue, durationSpan: TimeSpan.FromMilliseconds(AnimationStandardTimeSpan), easingFuction: EasingFunction);
+            animation.Completed += OpacityAnimationAnimationCompleted;
+            uiElement.BeginAnimation(OpacityProperty, animation);
+        }
+
+        void OpacityAnimationAnimationCompleted(object sender, EventArgs e)
+        {
+            Events.UpdateControlState(this, State.Activated);
+            var tileButton = GetTemplateChild(PartTile) as Button;
+            if (tileButton == null) return;
+            tileButton.Opacity = 1;
+            tileButton.BeginAnimation(OpacityProperty, null);
+        }
+
         private void TransformScaleAnimation(double fromValue,double toValue)
         {
             var storyboard = new Storyboard();
@@ -299,13 +291,13 @@ namespace TextDashboard.Custom_Control
             RenderTransformOrigin = new Point(0.5, 0.5);
             RenderTransform = scale;
 
-            var scaleXAnimation = AnimationFactory.CreateDoubleAnimation(this, ScaleTransform.ScaleXProperty, toValue, fromValue, durationSpan: TimeSpan.FromMilliseconds(300), easingFuction: EasingFunction);
+            var scaleXAnimation = AnimationFactory.CreateDoubleAnimation(this, ScaleTransform.ScaleXProperty, toValue, fromValue, durationSpan: TimeSpan.FromMilliseconds(AnimationStandardTimeSpan), easingFuction: EasingFunction);
             storyboard.Children.Add(scaleXAnimation);
 
             Storyboard.SetTargetProperty(scaleXAnimation, new PropertyPath("RenderTransform.ScaleX"));
             Storyboard.SetTarget(scaleXAnimation, this);
 
-            var scaleYAnimation = AnimationFactory.CreateDoubleAnimation(this, ScaleTransform.ScaleYProperty, toValue, fromValue, durationSpan: TimeSpan.FromMilliseconds(300), easingFuction: EasingFunction);
+            var scaleYAnimation = AnimationFactory.CreateDoubleAnimation(this, ScaleTransform.ScaleYProperty, toValue, fromValue, durationSpan: TimeSpan.FromMilliseconds(AnimationStandardTimeSpan), easingFuction: EasingFunction);
             storyboard.Children.Add(scaleYAnimation);
 
             Storyboard.SetTargetProperty(scaleYAnimation, new PropertyPath("RenderTransform.ScaleY"));
@@ -335,7 +327,6 @@ namespace TextDashboard.Custom_Control
 
             var scrollbar = GetTemplateChild(PartMainScrolViewer) as ScrollViewer;
             if (scrollbar != null) scrollbar.VerticalScrollBarVisibility = scrollbar.ExtentHeight - ActualHeight > ExtraSpacing ? ScrollBarVisibility.Auto : ScrollBarVisibility.Hidden;
-            Events.UpdateContent(this);
         }
 
         private void GetCurrentValues()
@@ -369,7 +360,7 @@ namespace TextDashboard.Custom_Control
             {
                 differenceValue = Math.Abs(parentValue - (endValue + differenceValue));
                 var maxNegativeChange = parentValue - currentValue;
-                if(maxNegativeChange<0)
+                if (maxNegativeChange < 0)
                     maxNegativeChange = 0;
                 return differenceValue < maxNegativeChange ? differenceValue : maxNegativeChange;
             }

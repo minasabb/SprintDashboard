@@ -1,23 +1,18 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using TextDashboard.Custom_Control;
 using TextDashboard.Resource;
 
-namespace TextDashboard.Custom_Control
+namespace TextDashboard.UserControls
 {
-    [TemplatePart(Name = PartRootPanel, Type = typeof(Canvas))]
-    public class SelfExpandablePanel: Canvas
+    /// <summary>
+    /// Interaction logic for SelfExpandablePanel.xaml
+    /// </summary>
+    public partial class SelfExpandablePanel : UserControl
     {
-        const string PartRootPanel = "PART_RootPanel";
-
-        static SelfExpandablePanel()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(SelfExpandableControl), new FrameworkPropertyMetadata(typeof(SelfExpandableControl)));
-            
-        }
-
         public SelfExpandablePanel()
         {
-            //SetResourceReference(StyleProperty, "SelfExpandablePanelStyle");
+            InitializeComponent();
             Events.UpdateControlStateEvent += OnUpdateStateEvent;
         }
 
@@ -26,13 +21,9 @@ namespace TextDashboard.Custom_Control
             var currentControl = sender as SelfExpandableControl;
             if (currentControl == null)
                 return;
-
-            var panel = GetTemplateChild(PartRootPanel) as Canvas;
-            if(panel==null)
-                return;
-            for (var index = 0; index < panel.Children.Count; index++)
+            for (var index = 0; index < RootCanvas.Children.Count; index++)
             {
-                var control = panel.Children[index] as SelfExpandableControl;
+                var control = RootCanvas.Children[index] as SelfExpandableControl;
                 if (control == null || currentControl.Name == control.Name)
                 {
                     currentControl.State = state;
@@ -45,6 +36,12 @@ namespace TextDashboard.Custom_Control
                     Panel.SetZIndex(control, 0);
                 }
             }
+        }
+
+
+        private void UpdateControls(object sender, RoutedEventArgs e)
+        {
+            Events.UpdateOriginalSize();
         }
     }
 }

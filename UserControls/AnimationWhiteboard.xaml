@@ -6,7 +6,7 @@
 	mc:Ignorable="d"
 	x:Class="TextDashboard.AnimationWhiteboard"
 	x:Name="UserControl">
-	<!--<UserControl.Resources>
+	<UserControl.Resources>
 		<Storyboard x:Key="Open">
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="rectangle">
 				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1"/>
@@ -28,13 +28,13 @@
 				<SplineDoubleKeyFrame KeyTime="0:0:1" Value="1" KeySpline="0.23,0.12,0,1"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
-	</UserControl.Resources>-->
-	<!--<UserControl.Triggers>
+	</UserControl.Resources>
+	<UserControl.Triggers>
 		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
 			<BeginStoryboard Storyboard="{StaticResource Open}"/>
 			<BeginStoryboard Storyboard="{StaticResource Close}"/>
 		</EventTrigger>
-	</UserControl.Triggers>-->
+	</UserControl.Triggers>
 
 	<Grid x:Name="LayoutRoot" Background="Yellow">
 		<Rectangle x:Name="rectangle" Fill="#FF4E4EF3" HorizontalAlignment="Left" Margin="44,169,0,205" Stroke="Black" Width="221" Height="100" RenderTransformOrigin="0,0"

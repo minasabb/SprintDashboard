@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 using IQ.Core.Windows.Animation;
 using TextDashboard.Custom_Control;
 using TextDashboard.Resource;
@@ -9,17 +9,15 @@ using TextDashboard.Resource;
 namespace TextDashboard.UserControls
 {
     /// <summary>
-    /// Interaction logic for ForthView.xaml
+    /// Interaction logic for UpgradeEligibilityView.xaml
     /// </summary>
-    public partial class ForthView : SelfExpandableControl
+    public partial class UpgradeEligibilityView : SelfExpandableControl
     {
 
-        public ForthView()
+        public UpgradeEligibilityView()
         {
             InitializeComponent();
-            SetupDesignTimeModel();
         }
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -59,51 +57,12 @@ namespace TextDashboard.UserControls
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
+            StackPanelSearchResult.Visibility = Visibility.Collapsed;
             Events.UpdateControlState(this, State.Normal);
+
         }
 
-       
-        private void SetupDesignTimeModel()
-        {
-            var portInNumbers = new ObservableCollection<PortInNumber>();
 
-            var alphaTeam = new PortInNumber("604-789-5656", "some text", "12234 -data");
-            portInNumbers.Add(alphaTeam);
-            var betaTeam = new PortInNumber("604-789-1234", "some text ...", "k890w -data");
-            portInNumbers.Add(betaTeam);
-            portInNumbers.Add(new PortInNumber("604-789-6543", "some text", "54667 -data"));
 
-            DataContext = new AllNumbers { PortInNumbers = portInNumbers };
-        }
-
-        public class PortInNumber
-        {
-            #region Construction
-
-            public PortInNumber(string id, string text, string data)
-            {
-                PhoneNumber = id;
-                Text = text;
-                Data = data;
-            }
-
-            #endregion
-
-            #region Implementation of IPersonAge
-            public string PhoneNumber { get; set; }
-            public string Text { get; set; }
-            public string Data { get; set; }
-
-            #endregion
-        }
-
-        public class AllNumbers
-        {
-            #region Properties
-
-            public ObservableCollection<PortInNumber> PortInNumbers { get; set; }
-
-            #endregion
-        }
     }
 }

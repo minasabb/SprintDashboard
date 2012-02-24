@@ -61,6 +61,7 @@ namespace TextDashboard.UserControls
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
+            StackPanelSearchResult.Visibility = Visibility.Collapsed;
             Events.UpdateControlState(this, State.Normal);
         }
 

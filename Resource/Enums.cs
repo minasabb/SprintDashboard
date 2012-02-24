@@ -9,4 +9,9 @@ namespace TextDashboard.Resource
     {
         Normal, Activated, Deactivated 
     }
+
+    public enum TileSize
+    {
+        Single, Double, Quad
+    }
 }

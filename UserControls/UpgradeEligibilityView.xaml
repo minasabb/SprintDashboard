@@ -1,10 +1,11 @@
 ﻿<Custom_Control:SelfExpandableControl
-    x:Class="TextDashboard.UserControls.ThirdView"
+    x:Class="TextDashboard.UserControls.UpgradeEligibilityView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:Custom_Control="clr-namespace:TextDashboard.Custom_Control"
+    x:Name="vUpgradeEligibility"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="300">
@@ -17,18 +18,18 @@
             HorizontalAlignment="Center"
             Style="{DynamicResource SmallLoadingIndicatorStyle}" />
         <Border
-            MinWidth="200"
-            MinHeight="200"
-            x:Name="UpgradeBorder">
+            x:Name="UpgradeBorder"
+            Background="{Binding Path=ContentBackgroundColor,ElementName=vUpgradeEligibility}">
             <StackPanel
                 Margin="5"
-                Background="White"
                 x:Name="UpgradeStackPanel">
                 <Label
                     Style="{StaticResource FieldLabelStyle}"
-                    Content="Account Number" />
+                    Content="Phone Number" />
                 <TextBox
+                    x:Name="txtPhoneNumber"
                     Style="{StaticResource StandardTextBoxStyle}"
+                    Text="555-555-5555"
                     Width="170"
                     HorizontalAlignment="Left" />
                 
@@ -40,13 +41,6 @@
                         Width="85"
                         Click="CloseButton_OnClick"
                         Content="Close" />
-                    
-                    <Button
-                        Style="{StaticResource StandardButtonStyle}"
-                        HorizontalAlignment="Left"
-                        Width="85"
-                        Click="Button_Click_1"
-                        Content="Clear" />
                     
                     <Button
                         Style="{StaticResource PrimaryActionButtonStyle}"
@@ -71,25 +65,54 @@
 
                         <TextBlock
                             Style="{StaticResource HeaderTextBlockStyle}"
-                            Text="Upgrade" />
-                        <Label
-                            Style="{StaticResource FieldLabelStyle}"
-                            Content="First Name" />
-                        <TextBox
-                            Style="{StaticResource StandardTextBoxStyle}"
-                            Width="170"
-                            HorizontalAlignment="Left" />
-                        <Label
-                            Style="{StaticResource FieldLabelStyle}"
-                            Content="Last Name" />
-                        <TextBox
-                            Style="{StaticResource StandardTextBoxStyle}"
-                            Width="170"
-                            HorizontalAlignment="Left" />
+                            Text="{Binding Text,ElementName=txtPhoneNumber,StringFormat=Eligibility For {0}}"
+                            Margin="0,0,0,10"/>
+
+                        <TextBlock
+                            Text="Todays's Eligibility"
+                            Foreground="Gray"
+                            Style="{StaticResource HeaderTextBlockStyle}"
+                            Margin="0,5"></TextBlock>
+                       
 
                         <Label
+                            Foreground="Black"
                             Style="{StaticResource FieldLabelStyle}"
-                            Content="This is a very long text which requires more space in this view" />
+                            Content="$75 with a two-year subscriber agreement"
+                            Margin="0"/>
+                        <Label
+                            Foreground="Black"
+                            Style="{StaticResource FieldLabelStyle}"
+                            Content="(or $25 with a one-year agreement)"
+                            Margin="0"/>
+                        <Label
+                            Foreground="Black"
+                            Style="{StaticResource FieldLabelStyle}"
+                            Content="As of Jan 20, 2011"
+                            Margin="0"/>
+
+                        <TextBlock
+                            Text="Future Eligibility"
+                            Foreground="Gray"
+                            Style="{StaticResource HeaderTextBlockStyle}"
+                            Margin="0,5"></TextBlock>
+                        
+                        <Label
+                            Style="{StaticResource FieldLabelStyle}"
+                            FontWeight="Bold"
+                            Foreground="Black"
+                            Content="Starting June 20, 2011"
+                            Margin="0" />
+                        <Label
+                            Foreground="Black"
+                            Style="{StaticResource FieldLabelStyle}"
+                            Content="$150 with a two-year subscriber agreement"
+                            Margin="0" />
+                        <Label
+                            Foreground="Black"
+                            Style="{StaticResource FieldLabelStyle}"
+                            Content="(or $75 with a one-year agreement)"
+                            Margin="0" />
 
                     </StackPanel>
                 </Grid>

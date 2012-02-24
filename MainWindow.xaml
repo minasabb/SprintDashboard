@@ -1,114 +1,13 @@
-﻿<Window x:Class="TextDashboard.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:UserControls="clr-namespace:TextDashboard.UserControls" Title="MainWindow" Height="700" Width="760"
-        Name="Main"
-        SizeChanged="UpdateControls"
-        Loaded="LoadControls">
+﻿<Window
+    x:Class="TextDashboard.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:UserControls="clr-namespace:TextDashboard.UserControls"
+    xmlns:Custom_Control="clr-namespace:TextDashboard.Custom_Control"
+    Title="MainWindow"
+    Height="700"
+    Width="760"
+    Name="Main">
 
-    <Canvas Name="RootCanvas"> 
-        <UserControls:SearchDeviceView
-            x:Name="v1"
-            Title="Test 1"
-            Icon="Star-full-icon.png"
-            Width="244" Height="104"/>
-        <UserControls:FindExisitngAccountView
-            x:Name="v2"
-            Width="244"
-            Height="104"
-            Title="Test 2"
-            Icon="Star-full-icon.png"
-            Canvas.Top="106" />
-        <UserControls:ForthView
-            x:Name="v3"
-            Width="244"
-            Height="104"
-            Title="Test 3"
-            Icon="Star-full-icon.png"
-            Canvas.Left="490" />
-        <UserControls:ThirdView
-            x:Name="v4"
-            Width="244"
-            Height="104"
-            Title="Test 4"
-            Icon="Star-full-icon.png"
-            Canvas.Left="245" />
-        <UserControls:ThirdView
-            Canvas.Left="245"
-            Canvas.Top="106"
-            Height="104"
-            x:Name="thirdView1"
-            Title="Test 5"
-            Icon="Star-full-icon.png"
-            Width="244" />
-        <UserControls:ForthView
-            Canvas.Left="490"
-            Canvas.Top="106"
-            Height="104"
-            x:Name="forthView1"
-            Title="Test 6"
-            Icon="Star-full-icon.png"
-            Width="244" />
-        <UserControls:SearchDeviceView
-            Canvas.Top="210"
-            Height="104"
-            x:Name="firstView1"
-            Title="Test 7"
-            Icon="Star-full-icon.png"
-            Width="244" />
-        <UserControls:FindExisitngAccountView
-            Canvas.Left="245"
-            Canvas.Top="210"
-            Height="104"
-            Title="Test 8"
-            Icon="Star-full-icon.png"
-            x:Name="secondView1"
-            Width="244" />    
-        
-        
-        <Border
-            x:Name="CurtainScreenBorder"
-            Visibility="Collapsed"
-            Width="{Binding ActualWidth,ElementName=RootCanvas}"
-            Height="{Binding ActualHeight,ElementName=RootCanvas}"
-            Background="LightGray"
-            Opacity="0.5"></Border>
-        
-        <!--<UserControls:SearchDeviceView
-            x:Name="v12"
-            Canvas.Left="309"
-            Width="100"
-            Height="50" />
-        <UserControls:SearchDeviceView
-            x:Name="v13"
-            Width="100"
-            Height="50"
-            Canvas.Left="206"
-            Canvas.Top="1" />
-        <UserControls:SearchDeviceView
-            x:Name="v14"
-            Width="105"
-            Height="50"
-            Canvas.Left="103"
-            Canvas.Top="0" />-->
-        <!--<UserControls:ThirdView
-            x:Name="v2"
-            Width="200"
-            Height="140"
-            Canvas.Left="253"
-            Canvas.Top="191" />
-        <UserControls:ForthView
-            x:Name="v3"
-            Width="240"
-            Height="140"
-            Canvas.Left="2"
-            Canvas.Top="110" />
-        <UserControls:FindExisitngAccountView 
-            x:Name="v4"
-            Width="200"
-            Height="180"
-            Canvas.Left="251"
-            Canvas.Top="3" />-->
-    </Canvas>
-
+    <UserControls:SelfExpandablePanel />
 </Window>

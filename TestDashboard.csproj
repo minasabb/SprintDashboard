@@ -72,23 +72,25 @@
     <Compile Include="Converter\StateToVisibilityConverter.cs" />
     <Compile Include="Custom Control\SelfExpandableBase.cs" />
     <Compile Include="Custom Control\SelfExpandableControl.cs" />
-    <Compile Include="Custom Control\SelfExpandablePanel.cs" />
     <Compile Include="Resource\Events.cs" />
-    <Compile Include="Resource\State.cs" />
+    <Compile Include="Resource\Enums.cs" />
     <Compile Include="UserControls\AnimationWhiteboard.xaml.cs">
       <DependentUpon>AnimationWhiteboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SearchDeviceView.xaml.cs">
       <DependentUpon>SearchDeviceView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ForthView.xaml.cs">
-      <DependentUpon>ForthView.xaml</DependentUpon>
+    <Compile Include="UserControls\PortInEligibilityView.xaml.cs">
+      <DependentUpon>PortInEligibilityView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\FindExisitngAccountView.xaml.cs">
       <DependentUpon>FindExisitngAccountView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ThirdView.xaml.cs">
-      <DependentUpon>ThirdView.xaml</DependentUpon>
+    <Compile Include="UserControls\SelfExpandablePanel.xaml.cs">
+      <DependentUpon>SelfExpandablePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UpgradeEligibilityView.xaml.cs">
+      <DependentUpon>UpgradeEligibilityView.xaml</DependentUpon>
     </Compile>
     <Compile Include="WidthPercentageConverter.cs" />
     <Page Include="MainWindow.xaml">
@@ -104,6 +106,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Resource\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\SelfExpandableControlTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\SelfExpandableControlStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,7 +125,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\ForthView.xaml">
+    <Page Include="UserControls\PortInEligibilityView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -123,7 +133,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\ThirdView.xaml">
+    <Page Include="UserControls\SelfExpandablePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UpgradeEligibilityView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -157,6 +171,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Star-full-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Telephone-icon.png" />
+    <Resource Include="Resource\User-icon.png" />
+    <Resource Include="Resource\Wheels-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

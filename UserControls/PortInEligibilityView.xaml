@@ -1,0 +1,170 @@
+﻿<Custom_Control:SelfExpandableControl
+    x:Class="TextDashboard.UserControls.PortInEligibilityView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    x:Name="vPortInEligibility"
+    xmlns:Custom_Control="clr-namespace:TextDashboard.Custom_Control">
+
+    <Grid>
+        <ContentControl
+            Visibility="Collapsed"
+            x:Name="Loading"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Style="{DynamicResource SmallLoadingIndicatorStyle}" />
+
+        <Border
+            Background="{Binding Path=ContentBackgroundColor,ElementName=vPortInEligibility}"
+            x:Name="CheckNumberBorder">
+            <StackPanel
+                Margin="5"
+                x:Name="CheckNumberStackPanel">
+                <TextBlock
+                    Style="{StaticResource HeaderTextBlockStyle}"
+                    Text="Phone Number" />
+                <Label
+                    Style="{StaticResource FieldLabelStyle}"
+                    Content="Phone Number" />
+                <TextBox
+                    x:Name="field"
+                    Style="{StaticResource StandardTextBoxStyle}"
+                    Width="160"
+                    HorizontalAlignment="Left" />
+                <StackPanel
+                    Orientation="Horizontal">  
+                    <Button
+                        Style="{StaticResource StandardButtonStyle}"
+                        HorizontalAlignment="Left"
+                        Width="85"
+                        Click="CloseButton_OnClick"
+                        Content="Close" /> 
+                    
+                    <Button
+                        Style="{StaticResource PrimaryActionButtonStyle}"
+                        HorizontalAlignment="Left"
+                        Click="Button_Click"
+                        Content="Check Upgrade Eligibility" />
+
+                </StackPanel>
+                <Grid>
+                    <ContentControl
+                        Visibility="Collapsed"
+                        x:Name="LoadingResult"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Style="{DynamicResource SmallLoadingIndicatorStyle}" />
+                    <StackPanel
+                        Margin="10"
+                        x:Name="StackPanelSearchResult"
+                        Visibility="Collapsed">
+
+                        <ListView
+                            ItemsSource="{Binding PortInNumbers}"
+                            x:Name="PortInListView"
+                            Style="{StaticResource ListViewStyle}"
+                            ItemContainerStyle="{StaticResource ListViewItemContainerStyle}">
+                            <ListView.View>
+                                <GridView
+                                    ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle}">
+                                    <GridViewColumn
+                                        Header="Phone Number">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Border
+                                                    Width="120"
+                                                    BorderBrush="Gray"
+                                                    Height="100"
+                                                    BorderThickness="0,0,1,0">
+                                                    <TextBlock
+                                                        x:Name="tbPortInPhoneNumber"
+                                                        Text="555-555-5555" />
+                                                </Border>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+
+                                    <GridViewColumn
+                                        Header="Current Provider">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Border
+                                                    Width="200"
+                                                    BorderBrush="Gray"
+                                                    Height="100"
+                                                    BorderThickness="0,0,1,0">
+                                                    <StackPanel>
+                                                        <TextBlock
+                                                            x:Name="tbPortInProviderName"
+                                                            Text="Name of provider" />
+
+                                                        <TextBlock
+                                                            x:Name="tbPortInProviderId"
+                                                            Text="Provider ID" />
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+
+                                    <GridViewColumn
+                                        Header="Eligibility">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Border
+                                                    Width="100"
+                                                    Height="100"
+                                                    BorderBrush="Gray"
+                                                    BorderThickness="0,0,1,0">
+                                                    <StackPanel>
+                                                        <TextBlock
+                                                            x:Name="tbPortInCdmaEligibilityResult"
+                                                            Text="Yes: CDMA" />
+                                                        <TextBlock
+                                                            x:Name="tbPortInIdenEligibilityResult"
+                                                            Text="Yes: iDEN"/>
+                                                        <TextBlock
+                                                            x:Name="tbPortInAirraveEligibilityResult"
+                                                            Text="Yes: AirRave" />
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+
+                                    <GridViewColumn
+                                        Header="Anticipated Port Date"
+                                        Width="150">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock
+                                                    x:Name="tbPortInAnticipatedPortInDate"
+                                                    Margin="-3,3"
+                                                    Text="Aug 29,2012" />
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                            <Button
+                                x:Name="btnRequestThisNumberForPortIn"
+                                Content="Request"
+                                Style="{StaticResource PrimaryActionButtonStyle}"
+                                >
+                            </Button>
+
+                    </StackPanel>
+                </Grid>
+
+            </StackPanel>
+        </Border>
+
+    </Grid>
+
+   
+</Custom_Control:SelfExpandableControl>
