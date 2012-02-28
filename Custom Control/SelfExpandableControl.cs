@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -29,7 +30,7 @@ namespace TextDashboard.Custom_Control
         const int AnimationTranformPositiveValueTimeSpan = 400;
         const int AnimationStandardTimeSpan = 300;
         const double InactiveScaleSize = 0.95;
-        const int ExtraSpacing = 5;
+        const int ExtraSpacing = 1;
 
         static SelfExpandableControl()
         {
@@ -105,16 +106,19 @@ namespace TextDashboard.Custom_Control
             var scrollbar = sender as ScrollViewer;
             if (scrollbar == null) return;
 
-            scrollbar.HorizontalScrollBarVisibility=ScrollBarVisibility.Hidden;
-            scrollbar.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
-
             GetCurrentValues();
 
             if (Math.Abs(scrollbar.ExtentWidth - _currentScrollbarExtentWidth) > 5)
+            {
+                scrollbar.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
                 NewWidth = scrollbar.ExtentWidth;
+            }
 
             if (Math.Abs(scrollbar.ExtentHeight - _currentScrollbarExtentHeight) > 5)
+            {
+                scrollbar.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
                 NewHeight = scrollbar.ExtentHeight;
+            }
 
             _currentScrollbarExtentWidth = scrollbar.ExtentWidth;
             _currentScrollbarExtentHeight = scrollbar.ExtentHeight;
@@ -161,18 +165,20 @@ namespace TextDashboard.Custom_Control
 
         private void UpdateXTransform()
         {
-            if (NewWidth > CurrentMaxWidth)
+            if (CurrentMaxWidth > CurrentMinWidth)
             {
-                NewWidth = CurrentMaxWidth;
-                return;
-            }
+                if (NewWidth > CurrentMaxWidth)
+                {
+                    NewWidth = CurrentMaxWidth;
+                    return;
+                }
 
-            if (NewWidth < CurrentMinWidth && State != State.Deactivated)
-            {
-                NewWidth = CurrentMinWidth;
-                return;
+                if (NewWidth < CurrentMinWidth && State != State.Deactivated)
+                {
+                    NewWidth = CurrentMinWidth;
+                    return;
+                }
             }
-
             var beginTimeDelay = AnimationStandardTimeSpan;
             var animationTimeSpan = AnimationWidthGrowTimeSpan;
             double animationTranformTimeSpan=AnimationTranformNegativeValueTimeSpan;
@@ -194,7 +200,10 @@ namespace TextDashboard.Custom_Control
                 toKeySpline = new KeySpline(0.38, 0.38, 0.15, 0.98);
                 beginTimeDelay = 0;
             }
-                               
+
+            if (_currentXoffSet + valueChange + OriginalPoint.X > CurrentMaxWidth)
+                valueChange = 0; 
+
             _currentXoffSet = _currentXoffSet + valueChange;
 
             ResizeWidth(animationTimeSpan, toKeySpline, null, beginTimeDelay);
@@ -235,23 +244,26 @@ namespace TextDashboard.Custom_Control
             BeginAnimation(WidthProperty, null);
 
             var scrollbar = GetTemplateChild(PartMainScrolViewer) as ScrollViewer;
-            if (scrollbar != null) scrollbar.HorizontalScrollBarVisibility = scrollbar.ExtentWidth - ActualWidth > ExtraSpacing ? ScrollBarVisibility.Auto : ScrollBarVisibility.Hidden;
+            if (scrollbar != null) scrollbar.HorizontalScrollBarVisibility = CurrentMaxWidth - ActualWidth < ExtraSpacing ? ScrollBarVisibility.Auto : ScrollBarVisibility.Hidden;
         }
 
         private void UpdateYTransform()
         {
-            if (NewHeight > CurrentMaxHeight)
-            {
-                NewHeight = CurrentMaxHeight;
-                return;
-            }
 
-            if (NewHeight < CurrentMinHeight && State != State.Deactivated)
+            if (CurrentMaxHeight > CurrentMinHeight)
             {
-                NewHeight = CurrentMinHeight;
-                return;
-            }
+                if (NewHeight > CurrentMaxHeight)
+                {
+                    NewHeight = CurrentMaxHeight;
+                    return;
+                }
 
+                if (NewHeight < CurrentMinHeight && State != State.Deactivated)
+                {
+                    NewHeight = CurrentMinHeight;
+                    return;
+                }
+            }
             var diffValue = NewHeight - ActualHeight ;
             var animationTimeSpan = AnimationHeightGrowTimeSpan;
             double animationTranformTimeSpan = AnimationTranformNegativeValueTimeSpan;
@@ -272,6 +284,10 @@ namespace TextDashboard.Custom_Control
                 fromKeySpline = new KeySpline(0.38, 0.38, 0.15, 0.98);
                 toKeySpline = new KeySpline(0.23, 0.12, 0, 1);
             }
+            Debug.WriteLine(_currentYoffSet + valueChange + OriginalPoint.Y + " and " + CurrentMaxHeight);
+
+            if (_currentYoffSet + valueChange + OriginalPoint.Y > CurrentMaxHeight)
+                valueChange = 0;
 
             _currentYoffSet = _currentYoffSet + valueChange;
 
@@ -348,7 +364,7 @@ namespace TextDashboard.Custom_Control
             BeginAnimation(HeightProperty, null);
 
             var scrollbar = GetTemplateChild(PartMainScrolViewer) as ScrollViewer;
-            if (scrollbar != null) scrollbar.VerticalScrollBarVisibility = scrollbar.ExtentHeight - ActualHeight > ExtraSpacing ? ScrollBarVisibility.Auto : ScrollBarVisibility.Hidden;
+            if (scrollbar != null) scrollbar.VerticalScrollBarVisibility = CurrentMaxHeight - ActualHeight < ExtraSpacing ? ScrollBarVisibility.Auto : ScrollBarVisibility.Hidden;
         }
 
         private void GetCurrentValues()
@@ -360,8 +376,7 @@ namespace TextDashboard.Custom_Control
             ParentWidth = (double)Parent.GetValue(ActualWidthProperty);
             ParentHeight = (double)Parent.GetValue(ActualHeightProperty);
             CurrentMaxWidth = ParentWidth - Margin.Left - Margin.Right;
-            CurrentMaxHeight = ParentHeight - Margin.Top - Margin.Bottom;
-
+            CurrentMaxHeight = ParentHeight - Margin.Top - Margin.Bottom; 
         }
 
         private Point GetPositionInParent()
