@@ -28,6 +28,21 @@
                 <StackPanel
                     Margin="5"
                     x:Name="CheckNumberStackPanel">
+                    <DockPanel
+                        Margin="0,5">
+                        <TextBlock
+                            DockPanel.Dock="Left"
+                            Style="{StaticResource HeaderTextBlockStyle}"
+                            Text="Port In Eligibility" />
+                        <Button
+                            DockPanel.Dock="Right"
+                            HorizontalAlignment="Right"
+                            Style="{StaticResource CrossButtonStyle}"
+                            Click="CloseButton_OnClick" />
+                    </DockPanel>
+                    <Border
+                        BorderBrush="LightGray"
+                        BorderThickness="0,0,0,1" />
                     <TextBlock
                         Style="{StaticResource HeaderTextBlockStyle}"
                         Text="Phone Number" />
@@ -41,12 +56,12 @@
                         HorizontalAlignment="Left" />
                     <StackPanel
                         Orientation="Horizontal">
-                        <Button
+                        <!--<Button
                             Style="{StaticResource StandardButtonStyle}"
                             HorizontalAlignment="Left"
                             Width="85"
                             Click="CloseButton_OnClick"
-                            Content="Close" />
+                            Content="Close" />-->
 
                         <Button
                             Style="{StaticResource PrimaryActionButtonStyle}"

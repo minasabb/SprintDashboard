@@ -78,6 +78,12 @@
     <Compile Include="UserControls\AnimationWhiteboard.xaml.cs">
       <DependentUpon>AnimationWhiteboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\NewIndividualAccountView.xaml.cs">
+      <DependentUpon>NewIndividualAccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NewBusinessAccountView.xaml.cs">
+      <DependentUpon>NewBusinessAccountView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\CoverageView.xaml.cs">
       <DependentUpon>CoverageView.xaml</DependentUpon>
     </Compile>
@@ -119,6 +125,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\AnimationWhiteboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\NewIndividualAccountView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\NewBusinessAccountView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

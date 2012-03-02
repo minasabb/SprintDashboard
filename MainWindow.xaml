@@ -7,9 +7,18 @@
     Title="MainWindow"
     Name="Main">
 
-    <Border Padding="5">
-         <UserControls:SelfExpandablePanel BaseTileSize="200" />
-        <!--<TextDashboard:AnimationWhiteboard />-->
-    </Border>
+    <ScrollViewer
+        HorizontalScrollBarVisibility="Auto"
+        VerticalScrollBarVisibility="Auto">
+        <Border
+            MinWidth="820"
+            MinHeight="420"
+            Padding="5">
+            <UserControls:SelfExpandablePanel
+                BaseTileSize="200" />
+            <!--<TextDashboard:AnimationWhiteboard />-->
+        </Border>
+    </ScrollViewer>
+        
     
 </Window>

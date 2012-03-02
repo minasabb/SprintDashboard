@@ -27,6 +27,21 @@
                 <StackPanel
                     Margin="5"
                     x:Name="UpgradeStackPanel">
+                    <DockPanel Margin="0,5">
+                        <TextBlock
+                            DockPanel.Dock="Left"
+                            Style="{StaticResource HeaderTextBlockStyle}"
+                            Text="Check Upgrade Eligibility" />
+                        <Button
+                            DockPanel.Dock="Right"
+                            HorizontalAlignment="Right"
+                            Style="{StaticResource CrossButtonStyle}"
+                            Click="CloseButton_OnClick"/>
+                    </DockPanel>
+                    <Border
+                        BorderBrush="LightGray"
+                        BorderThickness="0,0,0,1" />
+
                     <Label
                         Style="{StaticResource FieldLabelStyle}"
                         Content="Phone Number" />
@@ -39,12 +54,12 @@
 
                     <StackPanel
                         Orientation="Horizontal">
-                        <Button
+                        <!--<Button
                             Style="{StaticResource StandardButtonStyle}"
                             HorizontalAlignment="Left"
                             Width="85"
                             Click="CloseButton_OnClick"
-                            Content="Close" />
+                            Content="Close" />-->
 
                         <Button
                             Style="{StaticResource PrimaryActionButtonStyle}"
@@ -64,59 +79,65 @@
                             Style="{DynamicResource SmallLoadingIndicatorStyle}" />
                         <StackPanel
                             Margin="10"
+                            Orientation="Horizontal"
                             x:Name="StackPanelSearchResult"
                             Visibility="Collapsed">
 
-                            <TextBlock
+                            <!--<TextBlock
                                 Style="{StaticResource HeaderTextBlockStyle}"
                                 Text="{Binding Text,ElementName=txtPhoneNumber,StringFormat=Eligibility For {0}}"
-                                Margin="0,0,0,10" />
+                                Margin="0,0,0,10" />-->
+                            <StackPanel Margin="5">
+                                <TextBlock
+                                    Text="Todays's Eligibility"
+                                    Foreground="Gray"
+                                    Style="{StaticResource HeaderTextBlockStyle}"
+                                    Margin="0,5"></TextBlock>
 
-                            <TextBlock
-                                Text="Todays's Eligibility"
-                                Foreground="Gray"
-                                Style="{StaticResource HeaderTextBlockStyle}"
-                                Margin="0,5"></TextBlock>
 
+                                <Label
+                                    Foreground="Black"
+                                    Style="{StaticResource FieldLabelStyle}"
+                                    Content="$75 with a two-year subscriber agreement"
+                                    Margin="0" />
+                                <Label
+                                    Foreground="Black"
+                                    Style="{StaticResource FieldLabelStyle}"
+                                    Content="(or $25 with a one-year agreement)"
+                                    Margin="0" />
+                                <Label
+                                    Foreground="Black"
+                                    Style="{StaticResource FieldLabelStyle}"
+                                    Content="As of Jan 20, 2011"
+                                    Margin="0" />
+                            </StackPanel>
 
-                            <Label
-                                Foreground="Black"
-                                Style="{StaticResource FieldLabelStyle}"
-                                Content="$75 with a two-year subscriber agreement"
-                                Margin="0" />
-                            <Label
-                                Foreground="Black"
-                                Style="{StaticResource FieldLabelStyle}"
-                                Content="(or $25 with a one-year agreement)"
-                                Margin="0" />
-                            <Label
-                                Foreground="Black"
-                                Style="{StaticResource FieldLabelStyle}"
-                                Content="As of Jan 20, 2011"
-                                Margin="0" />
+                            <StackPanel
+                                Margin="5">
+                                <TextBlock
+                                    Text="Future Eligibility"
+                                    Foreground="Gray"
+                                    Style="{StaticResource HeaderTextBlockStyle}"
+                                    Margin="0,5"></TextBlock>
 
-                            <TextBlock
-                                Text="Future Eligibility"
-                                Foreground="Gray"
-                                Style="{StaticResource HeaderTextBlockStyle}"
-                                Margin="0,5"></TextBlock>
-
-                            <Label
-                                Style="{StaticResource FieldLabelStyle}"
-                                FontWeight="Bold"
-                                Foreground="Black"
-                                Content="Starting June 20, 2011"
-                                Margin="0" />
-                            <Label
-                                Foreground="Black"
-                                Style="{StaticResource FieldLabelStyle}"
-                                Content="$150 with a two-year subscriber agreement"
-                                Margin="0" />
-                            <Label
-                                Foreground="Black"
-                                Style="{StaticResource FieldLabelStyle}"
-                                Content="(or $75 with a one-year agreement)"
-                                Margin="0" />
+                                <Label
+                                    Style="{StaticResource FieldLabelStyle}"
+                                    FontWeight="Bold"
+                                    Foreground="Black"
+                                    Content="Starting June 20, 2011"
+                                    Margin="0" />
+                                <Label
+                                    Foreground="Black"
+                                    Style="{StaticResource FieldLabelStyle}"
+                                    Content="$150 with a two-year subscriber agreement"
+                                    Margin="0" />
+                                <Label
+                                    Foreground="Black"
+                                    Style="{StaticResource FieldLabelStyle}"
+                                    Content="(or $75 with a one-year agreement)"
+                                    Margin="0" />
+                            </StackPanel>
+                            
 
                         </StackPanel>
                     </Grid>

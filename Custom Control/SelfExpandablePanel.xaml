@@ -8,36 +8,58 @@
 
     <Canvas
         Name="RootCanvas">
-        <UserControls:CoverageView
-            x:Name="v1"
-            Title="Coverage"
-            Icon="Star-full-icon.png"
-            TileBackgroundColor="{StaticResource PrimaryActionButtonBackground}"
-            ContentBackgroundColor="White"
-            Size="Single"/>
+        
         <UserControls:FindExisitngAccountView
             x:Name="v2"
             ContentBackgroundColor="White"
             Title="Find Existing Account"
             Icon="Wheels-icon.png"
             TileBackgroundColor="{StaticResource PrimaryActionButtonBackground}"
-            Canvas.Top="200"
             Size="Double"/>
-        <UserControls:PortInEligibilityView
-            x:Name="v3"
-            TileBackgroundColor="{StaticResource PrimaryActionButtonBackground}"
-            Title="Port-In Eligibility"
-            Icon="Telephone-icon.png"
-            Canvas.Left="400"
-            Size="Quad"/>
         <UserControls:UpgradeEligibilityView
             x:Name="v4"
             ContentBackgroundColor="White"
             TileBackgroundColor="{StaticResource PrimaryActionButtonBackground}"
             Title="Upgrade Eligibility"
             Icon="User-icon.png"
-            Canvas.Left="200"
+            Canvas.Top="200"
+            Size="Double" />
+        <UserControls:NewIndividualAccountView
+            x:Name="v5"
+            Title="New Individual Account"
+            Icon="Star-full-icon.png"
+            TileBackgroundColor="{StaticResource PrimaryActionButtonBackground}"
+            ContentBackgroundColor="White"
+            Canvas.Left="400"
+            Canvas.Top="200"
+            Size="Single" />
+
+        <UserControls:NewBusinessAccountView
+            x:Name="v6"
+            Title="New Business Account"
+            Icon="Star-full-icon.png"
+            TileBackgroundColor="{StaticResource PrimaryActionButtonBackground}"
+            ContentBackgroundColor="White"
+            Canvas.Left="400"
+            Size="Single" />
+        
+        <UserControls:CoverageView
+            x:Name="v1"
+            Title="Coverage"
+            Icon="Star-full-icon.png"
+            TileBackgroundColor="{StaticResource PrimaryActionButtonBackground}"
+            ContentBackgroundColor="White"
+            Canvas.Left="600"
+            Canvas.Top="200"
+            Size="Single" />
+        <UserControls:PortInEligibilityView
+            x:Name="v3"
+            TileBackgroundColor="{StaticResource PrimaryActionButtonBackground}"
+            Title="Port-In Eligibility"
+            Icon="Telephone-icon.png"
+            Canvas.Left="600"
             Size="Single"/>
+        
 
     </Canvas>
 </UserControl>

@@ -24,7 +24,7 @@ namespace IQ.Core.Windows.Animation
         public static void CreateTransformGroup(UIElement element)
         {
             var transformGroup = new TransformGroup();
-            transformGroup.Children.Add(new TranslateTransform());
+            transformGroup.Children.Add(new TranslateTransform(0,0));
             transformGroup.Children.Add(new ScaleTransform(1,1));
             transformGroup.Children.Add(new SkewTransform());
             transformGroup.Children.Add(new RotateTransform());

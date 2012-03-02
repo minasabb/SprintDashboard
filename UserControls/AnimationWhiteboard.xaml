@@ -1,11 +1,6 @@
-﻿<UserControl
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	mc:Ignorable="d"
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
 	x:Class="TextDashboard.AnimationWhiteboard"
-	x:Name="UserControl">
+	x:Name="UserControl" mc:Ignorable="d">
 	<UserControl.Resources>
 		<Storyboard x:Key="Open">
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="rectangle">
@@ -68,6 +63,7 @@
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
+		
 	</UserControl.Resources>
 	<UserControl.Triggers>
 		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
@@ -91,7 +87,7 @@
 		</EventTrigger>
 	</UserControl.Triggers>
 
-	<Grid x:Name="LayoutRoot" Background="Yellow" Width="700" Height="700" RenderTransformOrigin="1,1">
+	<Grid x:Name="LayoutRoot"  Width="700" Height="700" RenderTransformOrigin="1,1">
 		<Grid.RenderTransform>
 			<TransformGroup>
 				<ScaleTransform/>
@@ -101,8 +97,8 @@
 			</TransformGroup>
 		</Grid.RenderTransform>
 		<Rectangle x:Name="rectangle" Fill="#FF4E4EF3"  Stroke="Black" Height="100" RenderTransformOrigin="0.5,0.5"
-            MouseEnter="rectangle_MouseEnter"
-            MouseLeave="rectangle_MouseLeave" Margin="246,34,233,0" VerticalAlignment="Top" d:LayoutOverrides="Height">
+			MouseEnter="rectangle_MouseEnter"
+			MouseLeave="rectangle_MouseLeave" Margin="246,34,233,0" VerticalAlignment="Top" d:LayoutOverrides="Height">
 			<Rectangle.RenderTransform>
 				<TransformGroup>
 					<ScaleTransform/>
@@ -124,7 +120,7 @@
 				</TransformGroup>
 			</Rectangle.RenderTransform>
 		</Rectangle>
-		<Rectangle x:Name="rectangle_Copy1" Fill="#FF4E4EF3"  Stroke="Black" Height="100" RenderTransformOrigin="1,1"
+		<Rectangle x:Name="rectangle_Copy1" Fill="#FF4E4EF3"  Stroke="Black" Height="100" RenderTransformOrigin="1.5,1.5"
 			MouseEnter="rectangle_MouseEnter"
 			MouseLeave="rectangle_MouseLeave" Margin="246,138,233,0" VerticalAlignment="Top" d:LayoutOverrides="Height">
 			<Rectangle.RenderTransform>
@@ -160,5 +156,6 @@
 				</TransformGroup>
 			</Rectangle.RenderTransform>
 		</Rectangle>
+		<Button Content="Button" HorizontalAlignment="Left" Height="36" Margin="41,0,0,269" VerticalAlignment="Bottom" Width="42" Style="{DynamicResource CrossButtonStyle}"/>
 	</Grid>
 </UserControl>

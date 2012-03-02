@@ -255,7 +255,7 @@
             <Border 
                 Background="White"
                 BorderThickness="1"
-                BorderBrush="#44BDBCBC">
+                BorderBrush="LightGray">
                 <ScrollViewer
                     x:Name="PART_MainScrolViewer"
                     HorizontalScrollBarVisibility="Hidden"
@@ -266,6 +266,8 @@
                         <Button
                             x:Name="PART_Tile"
                             Margin="0"
+                            Width="{TemplateBinding MinWidth}"
+                            Height="{TemplateBinding MinHeight}"
                             Style="{StaticResource DashboardButtonStyle}">
 
                             <Button.Visibility>
@@ -302,6 +304,9 @@
                                     Grid.Row="1"
                                     VerticalAlignment="Bottom"
                                     HorizontalAlignment="Left"
+                                    TextWrapping="Wrap"
+                                    MaxWidth="{Binding Path=ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                    MaxHeight="{Binding Path=ActualHeight, RelativeSource={RelativeSource TemplatedParent}}"
                                     Text="{Binding Path=Title, RelativeSource={RelativeSource TemplatedParent}}" />
                             </Grid>
                         </Button>

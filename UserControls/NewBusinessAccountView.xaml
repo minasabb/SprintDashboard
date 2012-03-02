@@ -1,5 +1,5 @@
 ﻿<Custom_Control:SelfExpandableControl
-    x:Class="TextDashboard.UserControls.FindExisitngAccountView"
+    x:Class="TextDashboard.UserControls.NewBusinessAccountView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="300"
-    x:Name="vFindExistingAccountView">
+    x:Name="vNewBusinessAccountView">
 
     <Grid>
         <ContentControl
@@ -26,45 +26,71 @@
                 HorizontalScrollBarVisibility="Auto"
                 VerticalScrollBarVisibility="Auto">
                 <StackPanel
+                    Width="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                    Height="{Binding ActualHeight,RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                     Margin="5"
                     x:Name="FindAccountStackPanel">
-                    <DockPanel
-                        Margin="0,5">
-                        <TextBlock
-                            DockPanel.Dock="Left"
-                            Style="{StaticResource HeaderTextBlockStyle}"
-                            Text="Find an Exisitng Customer" />
-                        <Button
-                            DockPanel.Dock="Right"
-                            HorizontalAlignment="Right"
-                            Style="{StaticResource CrossButtonStyle}"
-                            Click="CloseButton_OnClick" />
-                    </DockPanel>
+                    <TextBlock
+                        Style="{StaticResource HeaderTextBlockStyle}"
+                        Text="New Business Account" />
                     <Border
                         BorderBrush="LightGray"
                         BorderThickness="0,0,0,1" />
                     
                     <Label
                         Style="{StaticResource FieldLabelStyle}"
-                        Content="Account Access Information" />
-                    <ComboBox
+                        Content="Name" />
+                    <TextBox
+                        x:Name="Name"
+                        Style="{StaticResource StandardTextBoxStyle}"
                         Width="170"
-                        HorizontalAlignment="Left"
-                        x:Name="cboAccount"
-                        IsReadOnly="True"
-                        SelectedIndex="0">
-                        <ComboBoxItem>Phone Number</ComboBoxItem>
-                        <ComboBoxItem>Name</ComboBoxItem>
-                        <ComboBoxItem>Equipment ID</ComboBoxItem>
-                    </ComboBox>
+                        HorizontalAlignment="Left" />
                     <Label
                         Style="{StaticResource FieldLabelStyle}"
-                        Content="{Binding ElementName=cboAccount, Path=SelectionBoxItem}" />
+                        Content="Zip *" />
                     <TextBox
                         x:Name="field"
                         Style="{StaticResource StandardTextBoxStyle}"
                         Width="170"
+                        Text="97204"
                         HorizontalAlignment="Left" />
+                    <Label
+                        Style="{StaticResource FieldLabelStyle}"
+                        Content="Street Address 1 *" />
+                    <TextBox
+                        x:Name="field2"
+                        Text="1121 SW 5th Ave"
+                        Style="{StaticResource StandardTextBoxStyle}"
+                        Width="170"
+                        HorizontalAlignment="Left" />
+                    <Label
+                        Style="{StaticResource FieldLabelStyle}"
+                        Content="Street Address 2" />
+                    <TextBox
+                        x:Name="field3"
+                        Style="{StaticResource StandardTextBoxStyle}"
+                        Width="170"
+                        HorizontalAlignment="Left" />
+                    <Label
+                        Style="{StaticResource FieldLabelStyle}"
+                        Content="City *" />
+                    <TextBox
+                        x:Name="field4"
+                        Style="{StaticResource StandardTextBoxStyle}"
+                        Width="170"
+                        Text="Portland"
+                        HorizontalAlignment="Left" />
+                    <Label
+                        Style="{StaticResource FieldLabelStyle}"
+                        Content="State *" />
+                    <ComboBox
+                        Width="170"
+                        HorizontalAlignment="Left"
+                        x:Name="cboState"
+                        IsReadOnly="True"
+                        SelectedIndex="0">
+                        <ComboBoxItem>Oregon</ComboBoxItem>
+                    </ComboBox>
                     <StackPanel
                         Orientation="Horizontal">
 
@@ -73,14 +99,14 @@
                             HorizontalAlignment="Left"
                             Width="85"
                             Click="CloseButton_OnClick"
-                            Content="Close" />
+                            Content="Back" />
 
                         <Button
                             Style="{StaticResource PrimaryActionButtonStyle}"
                             HorizontalAlignment="Left"
                             Width="85"
                             Click="Button_Click"
-                            Content="Find" />
+                            Content="Next" />
 
                     </StackPanel>
                     <Grid>
@@ -91,11 +117,13 @@
                             HorizontalAlignment="Center"
                             Style="{DynamicResource SmallLoadingIndicatorStyle}" />
                         <StackPanel
+                            Width="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                            Height="{Binding ActualHeight,RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                             Margin="10"
                             x:Name="StackPanelSearchResult"
                             Visibility="Collapsed">
 
-                            <DataGrid
+                            <DataGrid  Visibility="Collapsed"
                                 Margin="0,30,0,0"
                                 x:Name="PlainDataGridSprintStyle"
                                 Style="{StaticResource PlainDataGridSprintStyle}"

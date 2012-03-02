@@ -11,11 +11,11 @@ namespace TextDashboard.UserControls
     /// <summary>
     /// Interaction logic for FindExisitngAccountView.xaml
     /// </summary>
-    public partial class FindExisitngAccountView : SelfExpandableControl
+    public partial class NewIndividualAccountView : SelfExpandableControl
     {
-        
 
-        public FindExisitngAccountView()
+
+        public NewIndividualAccountView()
         {
             InitializeComponent();
             SetupDesignTimeModel();
