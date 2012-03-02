@@ -20,122 +20,126 @@
             Width="250"
             x:Name="ScanDeviceBorder"
             Background="{Binding Path=ContentBackgroundColor,ElementName=vDeviceSearchView}">
-            <StackPanel
-                Margin="5"
-                x:Name="ScanDeviceStackPanel">
-                <Label
-                    Style="{StaticResource FieldLabelStyle}"
-                    Content="Zip *" />
-                <TextBox
-                    x:Name="field"
-                    Style="{StaticResource StandardTextBoxStyle}"
-                    Width="170"
-                    Text="97204"
-                    HorizontalAlignment="Left" />
-                <Label
-                    Style="{StaticResource FieldLabelStyle}"
-                    Content="Street Address 1 *" />
-                <TextBox
-                    x:Name="field2"
-                    Text="1121 SW 5th Ave"
-                    Style="{StaticResource StandardTextBoxStyle}"
-                    Width="170"
-                    HorizontalAlignment="Left" />
-                <Label
-                    Style="{StaticResource FieldLabelStyle}"
-                    Content="Street Address 2" />
-                <TextBox
-                    x:Name="field3"
-                    Style="{StaticResource StandardTextBoxStyle}"
-                    Width="170"
-                    HorizontalAlignment="Left" />
-                <Label
-                    Style="{StaticResource FieldLabelStyle}"
-                    Content="City *" />
-                <TextBox
-                    x:Name="field4"
-                    Style="{StaticResource StandardTextBoxStyle}"
-                    Width="170"
-                    Text="Portland"
-                    HorizontalAlignment="Left" />
-                <Label
-                    Style="{StaticResource FieldLabelStyle}"
-                    Content="State *" />
-                <ComboBox
-                    Width="170"
-                    HorizontalAlignment="Left"
-                    x:Name="cboState"
-                    IsReadOnly="True"
-                    SelectedIndex="0">
-                    <ComboBoxItem>Oregon</ComboBoxItem>
-                </ComboBox>
+            <ScrollViewer
+                HorizontalScrollBarVisibility="Auto"
+                VerticalScrollBarVisibility="Auto">
                 <StackPanel
-                    Orientation="Horizontal">
-                    <Button
-                        Style="{StaticResource StandardButtonStyle}"
+                    Margin="5"
+                    x:Name="ScanDeviceStackPanel">
+                    <Label
+                        Style="{StaticResource FieldLabelStyle}"
+                        Content="Zip *" />
+                    <TextBox
+                        x:Name="field"
+                        Style="{StaticResource StandardTextBoxStyle}"
+                        Width="170"
+                        Text="97204"
+                        HorizontalAlignment="Left" />
+                    <Label
+                        Style="{StaticResource FieldLabelStyle}"
+                        Content="Street Address 1 *" />
+                    <TextBox
+                        x:Name="field2"
+                        Text="1121 SW 5th Ave"
+                        Style="{StaticResource StandardTextBoxStyle}"
+                        Width="170"
+                        HorizontalAlignment="Left" />
+                    <Label
+                        Style="{StaticResource FieldLabelStyle}"
+                        Content="Street Address 2" />
+                    <TextBox
+                        x:Name="field3"
+                        Style="{StaticResource StandardTextBoxStyle}"
+                        Width="170"
+                        HorizontalAlignment="Left" />
+                    <Label
+                        Style="{StaticResource FieldLabelStyle}"
+                        Content="City *" />
+                    <TextBox
+                        x:Name="field4"
+                        Style="{StaticResource StandardTextBoxStyle}"
+                        Width="170"
+                        Text="Portland"
+                        HorizontalAlignment="Left" />
+                    <Label
+                        Style="{StaticResource FieldLabelStyle}"
+                        Content="State *" />
+                    <ComboBox
+                        Width="170"
                         HorizontalAlignment="Left"
-                        Width="85"
-                        Click="CloseButton_OnClick"
-                        Content="Close" />
-
-                    <Button
-                        Style="{StaticResource PrimaryActionButtonStyle}"
-                        HorizontalAlignment="Left"
-                        Width="85"
-                        Click="Button_Click"
-                        Content="Find" />
-
-                </StackPanel>
-                <Grid>
-                    <ContentControl
-                        Visibility="Collapsed"
-                        x:Name="LoadingResult"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Style="{DynamicResource SmallLoadingIndicatorStyle}" />
+                        x:Name="cboState"
+                        IsReadOnly="True"
+                        SelectedIndex="0">
+                        <ComboBoxItem>Oregon</ComboBoxItem>
+                    </ComboBox>
                     <StackPanel
-                        Margin="10"
-                        x:Name="StackPanelSearchResult"
-                        Visibility="Collapsed">
-                        <TextBlock
-                            Text="Coverage Status"
-                            Foreground="Gray"
-                            Style="{StaticResource HeaderTextBlockStyle}"
-                            Margin="0,5"></TextBlock>
+                        Orientation="Horizontal">
+                        <Button
+                            Style="{StaticResource StandardButtonStyle}"
+                            HorizontalAlignment="Left"
+                            Width="85"
+                            Click="CloseButton_OnClick"
+                            Content="Close" />
 
-
-                        <Label
-                            Foreground="Black"
-                            Style="{StaticResource FieldLabelStyle}"
-                            Content="3G Coverage Found"
-                            Margin="0" />
-                        <Label
-                            Foreground="Black"
-                            Style="{StaticResource FieldLabelStyle}"
-                            Content="EVDO Coverage Found"
-                            Margin="0" />
-                        <Label
-                            Foreground="Black"
-                            Style="{StaticResource FieldLabelStyle}"
-                            Content="CDMA Coverage: Fair"
-                            Margin="0" />
-                        <Label
-                            Foreground="Black"
-                            Style="{StaticResource FieldLabelStyle}"
-                            Content="Digital Roaming OK"
-                            Margin="0" />
-                        <Label
-                            Foreground="Black"
-                            Style="{StaticResource FieldLabelStyle}"
-                            Content="Analog Roaming OK"
-                            Margin="0" />
+                        <Button
+                            Style="{StaticResource PrimaryActionButtonStyle}"
+                            HorizontalAlignment="Left"
+                            Width="85"
+                            Click="Button_Click"
+                            Content="Find" />
 
                     </StackPanel>
-                </Grid>
+                    <Grid>
+                        <ContentControl
+                            Visibility="Collapsed"
+                            x:Name="LoadingResult"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Style="{DynamicResource SmallLoadingIndicatorStyle}" />
+                        <StackPanel
+                            Margin="10"
+                            x:Name="StackPanelSearchResult"
+                            Visibility="Collapsed">
+                            <TextBlock
+                                Text="Coverage Status"
+                                Foreground="Gray"
+                                Style="{StaticResource HeaderTextBlockStyle}"
+                                Margin="0,5"></TextBlock>
 
-            </StackPanel>
+
+                            <Label
+                                Foreground="Black"
+                                Style="{StaticResource FieldLabelStyle}"
+                                Content="3G Coverage Found"
+                                Margin="0" />
+                            <Label
+                                Foreground="Black"
+                                Style="{StaticResource FieldLabelStyle}"
+                                Content="EVDO Coverage Found"
+                                Margin="0" />
+                            <Label
+                                Foreground="Black"
+                                Style="{StaticResource FieldLabelStyle}"
+                                Content="CDMA Coverage: Fair"
+                                Margin="0" />
+                            <Label
+                                Foreground="Black"
+                                Style="{StaticResource FieldLabelStyle}"
+                                Content="Digital Roaming OK"
+                                Margin="0" />
+                            <Label
+                                Foreground="Black"
+                                Style="{StaticResource FieldLabelStyle}"
+                                Content="Analog Roaming OK"
+                                Margin="0" />
+
+                        </StackPanel>
+                    </Grid>
+
+                </StackPanel>
+
+            </ScrollViewer>
         </Border>
-
     </Grid>
 
 

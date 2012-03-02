@@ -22,15 +22,8 @@ namespace TextDashboard.Converter
 
             var enumValues = parameter as Array;
             var state =  value.ToString();
-            if (enumValues != null)
-            {
-                if (enumValues.Cast<object>().Any(enumValue => state == enumValue.ToString()))
-                {
-                    return Visibility.Visible;
-                }
-            }
 
-            return  Visibility.Collapsed;
+            return enumValues != null && enumValues.Cast<object>().Any(enumValue => state == enumValue.ToString()) ? Visibility.Visible : Visibility.Collapsed;
         }
 
 

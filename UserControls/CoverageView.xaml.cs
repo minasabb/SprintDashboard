@@ -39,15 +39,6 @@ namespace TextDashboard.UserControls
             StackPanelSearchResult.BeginAnimation(OpacityProperty, null);
         }
 
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            var animation = AnimationFactory.CreateDoubleAnimation(StackPanelSearchResult, OpacityProperty, 0, 1, durationSpan: TimeSpan.FromMilliseconds(200), easingFuction: EasingFunction);
-            animation.Completed += StackPanelFadeOutAnimationCompleted;
-            StackPanelSearchResult.BeginAnimation(OpacityProperty, animation);
-            Events.UpdateControlState(this, State.Activated);
-        }
-
         void StackPanelFadeOutAnimationCompleted(object sender, EventArgs e)
         {
             StackPanelSearchResult.Visibility=Visibility.Collapsed;

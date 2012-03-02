@@ -11,6 +11,7 @@
     xmlns:Custom_Control="clr-namespace:TextDashboard.Custom_Control">
 
     <Grid>
+
         <ContentControl
             Visibility="Collapsed"
             x:Name="Loading"
@@ -21,37 +22,40 @@
         <Border
             Background="{Binding Path=ContentBackgroundColor,ElementName=vPortInEligibility}"
             x:Name="CheckNumberBorder">
-            <StackPanel
-                Margin="5"
-                x:Name="CheckNumberStackPanel">
-                <TextBlock
-                    Style="{StaticResource HeaderTextBlockStyle}"
-                    Text="Phone Number" />
-                <Label
-                    Style="{StaticResource FieldLabelStyle}"
-                    Content="Phone Number" />
-                <TextBox
-                    x:Name="field"
-                    Style="{StaticResource StandardTextBoxStyle}"
-                    Width="160"
-                    HorizontalAlignment="Left" />
+            <ScrollViewer
+                HorizontalScrollBarVisibility="Auto"
+                VerticalScrollBarVisibility="Auto">
                 <StackPanel
-                    Orientation="Horizontal">  
-                    <Button
-                        Style="{StaticResource StandardButtonStyle}"
-                        HorizontalAlignment="Left"
-                        Width="85"
-                        Click="CloseButton_OnClick"
-                        Content="Close" /> 
-                    
-                    <Button
-                        Style="{StaticResource PrimaryActionButtonStyle}"
-                        HorizontalAlignment="Left"
-                        Click="Button_Click"
-                        Content="Check Upgrade Eligibility" />
+                    Margin="5"
+                    x:Name="CheckNumberStackPanel">
+                    <TextBlock
+                        Style="{StaticResource HeaderTextBlockStyle}"
+                        Text="Phone Number" />
+                    <Label
+                        Style="{StaticResource FieldLabelStyle}"
+                        Content="Phone Number" />
+                    <TextBox
+                        x:Name="field"
+                        Style="{StaticResource StandardTextBoxStyle}"
+                        Width="160"
+                        HorizontalAlignment="Left" />
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <Button
+                            Style="{StaticResource StandardButtonStyle}"
+                            HorizontalAlignment="Left"
+                            Width="85"
+                            Click="CloseButton_OnClick"
+                            Content="Close" />
 
-                </StackPanel>
-                <!--<Grid>
+                        <Button
+                            Style="{StaticResource PrimaryActionButtonStyle}"
+                            HorizontalAlignment="Left"
+                            Click="Button_Click"
+                            Content="Check Upgrade Eligibility" />
+
+                    </StackPanel>
+                    <!--<Grid>
                     <ContentControl
                         Visibility="Collapsed"
                         x:Name="LoadingResult"
@@ -127,7 +131,7 @@
                                                             Text="Yes: CDMA" />
                                                         <TextBlock
                                                             x:Name="tbPortInIdenEligibilityResult"
-                                                            Text="Yes: iDEN"/>
+                                                            Text="Yes: iDEN" />
                                                         <TextBlock
                                                             x:Name="tbPortInAirraveEligibilityResult"
                                                             Text="Yes: AirRave" />
@@ -152,20 +156,20 @@
                                 </GridView>
                             </ListView.View>
                         </ListView>
-                            <Button
-                                x:Name="btnRequestThisNumberForPortIn"
-                                Content="Request"
-                                Style="{StaticResource PrimaryActionButtonStyle}"
-                                >
-                            </Button>
+                        <Button
+                            x:Name="btnRequestThisNumberForPortIn"
+                            Content="Request"
+                            Style="{StaticResource PrimaryActionButtonStyle}">
+                        </Button>
 
                     </StackPanel>
-                <!--</Grid>-->
+                    <!--</Grid>-->
 
-            </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
         </Border>
 
     </Grid>
 
-   
+
 </Custom_Control:SelfExpandableControl>

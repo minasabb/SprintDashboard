@@ -22,13 +22,14 @@ namespace TextDashboard.Custom_Control
         double _currentYoffSet;
         double _currentScrollbarExtentWidth;
         double _currentScrollbarExtentHeight;
-        const int AnimationWidthGrowTimeSpan =1000 ;
-        const int AnimationHeightGrowTimeSpan = 700;
+        const int AnimationWidthGrowTimeSpan =900 ;
+        const int AnimationHeightGrowTimeSpan = 600;
         const int AnimationWidthShrinkTimeSpan = 400;
         const int AnimationHeightShrinkTimeSpan = 400;
         const int AnimationTranformNegativeValueTimeSpan = 800;
         const int AnimationTranformPositiveValueTimeSpan = 400;
-        const int AnimationStandardTimeSpan = 300;
+        const int AnimationBeginTimeWidthGrow =610;
+        const int AnimationStandardTimeSpan = 200;
         const double InactiveScaleSize = 0.95;
         const int ExtraSpacing = 1;
 
@@ -179,7 +180,7 @@ namespace TextDashboard.Custom_Control
                     return;
                 }
             }
-            var beginTimeDelay = AnimationStandardTimeSpan;
+            var beginTimeDelay = AnimationBeginTimeWidthGrow;
             var animationTimeSpan = AnimationWidthGrowTimeSpan;
             double animationTranformTimeSpan=AnimationTranformNegativeValueTimeSpan;
             KeySpline toKeySpline;
@@ -308,9 +309,10 @@ namespace TextDashboard.Custom_Control
 
         private void OpacityAnimation(UIElement uiElement, int toValue, int fromValue = 1)
         {
-            var animation = AnimationFactory.CreateDoubleAnimation(uiElement, OpacityProperty, toValue, fromValue, durationSpan: TimeSpan.FromMilliseconds(AnimationStandardTimeSpan), easingFuction: EasingFunction);
-            animation.Completed += OpacityAnimationAnimationCompleted;
-            uiElement.BeginAnimation(OpacityProperty, animation);
+            Events.UpdateControlState(this, State.Activated);
+            //var animation = AnimationFactory.CreateDoubleAnimation(uiElement, OpacityProperty, toValue, fromValue, durationSpan: TimeSpan.FromMilliseconds(AnimationStandardTimeSpan), easingFuction: EasingFunction);
+            //animation.Completed += OpacityAnimationAnimationCompleted;
+            //uiElement.BeginAnimation(OpacityProperty, animation);
         }
 
         void OpacityAnimationAnimationCompleted(object sender, EventArgs e)

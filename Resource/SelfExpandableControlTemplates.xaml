@@ -252,8 +252,10 @@
         TargetType="{x:Type Custom_Control:SelfExpandableControl}">
         <Border
             Padding="{TemplateBinding Margin}">
-            <Border
-                Style="{StaticResource SimpleBorderStyle}">
+            <Border 
+                Background="White"
+                BorderThickness="1"
+                BorderBrush="#44BDBCBC">
                 <ScrollViewer
                     x:Name="PART_MainScrolViewer"
                     HorizontalScrollBarVisibility="Hidden"

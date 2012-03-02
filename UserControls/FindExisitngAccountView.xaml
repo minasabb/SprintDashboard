@@ -19,230 +19,132 @@
             Style="{DynamicResource SmallLoadingIndicatorStyle}" />
 
         <Border
+           
             Background="{Binding Path=ContentBackgroundColor,ElementName=vFindExistingAccountView}"
             x:Name="FindAccountBorder">
-            <StackPanel
-                Margin="5"
-                x:Name="FindAccountStackPanel">
-                <TextBlock
-                    Style="{StaticResource HeaderTextBlockStyle}"
-                    Text="Find Account" />
-                <Label
-                    Style="{StaticResource FieldLabelStyle}"
-                    Content="Account Access Information" />
-                <ComboBox
-                    Width="170"
-                    HorizontalAlignment="Left"
-                    x:Name="cboAccount"
-                    IsReadOnly="True"
-                    SelectedIndex="0">
-                    <ComboBoxItem>Phone Number</ComboBoxItem>
-                    <ComboBoxItem>Name</ComboBoxItem>
-                    <ComboBoxItem>Equipment ID</ComboBoxItem>
-                </ComboBox>
-                <Label
-                    Style="{StaticResource FieldLabelStyle}"
-                    Content="{Binding ElementName=cboAccount, Path=SelectionBoxItem}" />
-                <TextBox
-                    x:Name="field"
-                    Style="{StaticResource StandardTextBoxStyle}"
-                    Width="170"
-                    HorizontalAlignment="Left" />
+            <ScrollViewer
+                HorizontalScrollBarVisibility="Auto"
+                VerticalScrollBarVisibility="Auto">
                 <StackPanel
-                    Orientation="Horizontal">
-
-                    <Button
-                        Style="{StaticResource StandardButtonStyle}"
+                    Margin="5"
+                    x:Name="FindAccountStackPanel">
+                    <TextBlock
+                        Style="{StaticResource HeaderTextBlockStyle}"
+                        Text="Find Account" />
+                    <Label
+                        Style="{StaticResource FieldLabelStyle}"
+                        Content="Account Access Information" />
+                    <ComboBox
+                        Width="170"
                         HorizontalAlignment="Left"
-                        Width="85"
-                        Click="CloseButton_OnClick"
-                        Content="Close" />
-
-                    <Button
-                        Style="{StaticResource PrimaryActionButtonStyle}"
-                        HorizontalAlignment="Left"
-                        Width="85"
-                        Click="Button_Click"
-                        Content="Find" />
-                    
-                </StackPanel>
-                <Grid>
-                    <ContentControl
-                        Visibility="Collapsed"
-                        x:Name="LoadingResult"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Style="{DynamicResource SmallLoadingIndicatorStyle}" />
+                        x:Name="cboAccount"
+                        IsReadOnly="True"
+                        SelectedIndex="0">
+                        <ComboBoxItem>Phone Number</ComboBoxItem>
+                        <ComboBoxItem>Name</ComboBoxItem>
+                        <ComboBoxItem>Equipment ID</ComboBoxItem>
+                    </ComboBox>
+                    <Label
+                        Style="{StaticResource FieldLabelStyle}"
+                        Content="{Binding ElementName=cboAccount, Path=SelectionBoxItem}" />
+                    <TextBox
+                        x:Name="field"
+                        Style="{StaticResource StandardTextBoxStyle}"
+                        Width="170"
+                        HorizontalAlignment="Left" />
                     <StackPanel
-                        Margin="10"
-                        x:Name="StackPanelSearchResult"
-                        Visibility="Collapsed">
+                        Orientation="Horizontal">
 
-                        <DataGrid
-                            Margin="0,30,0,0"
-                            x:Name="PlainDataGridSprintStyle"
-                            Style="{StaticResource PlainDataGridSprintStyle}"
-                            ItemsSource="{Binding Path=PortInNumbers}"
-                            HorizontalScrollBarVisibility="Disabled"
-                            MaxWidth="300"
+                        <Button
+                            Style="{StaticResource StandardButtonStyle}"
                             HorizontalAlignment="Left"
-                            CanUserAddRows="False"
-                            CanUserDeleteRows="False"
-                            CanUserResizeRows="False"
-                            CanUserSortColumns="False"
-                            AutoGenerateColumns="False">
-                            <DataGrid.ToolTip>
-                                <ToolTip
-                                    DataContext="{Binding Path=PlacementTarget,RelativeSource={x:Static RelativeSource.Self}}"
-                                    Content="{Binding Path=Name}" />
-                            </DataGrid.ToolTip>
-                            <DataGrid.Columns>
-                                <DataGridTemplateColumn
-                                    IsReadOnly="True"
-                                    Header="Phone Number"
-                                    Width="*">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock
-                                                Text="{Binding PhoneNumber}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn
-                                    IsReadOnly="True"
-                                    Header="Text"
-                                    Width="*">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock
-                                                Text="{Binding Text}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn
-                                    IsReadOnly="True"
-                                    Header="Data"
-                                    Width="*">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock
-                                                Text="{Binding Data}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                            Width="85"
+                            Click="CloseButton_OnClick"
+                            Content="Close" />
+
+                        <Button
+                            Style="{StaticResource PrimaryActionButtonStyle}"
+                            HorizontalAlignment="Left"
+                            Width="85"
+                            Click="Button_Click"
+                            Content="Find" />
 
                     </StackPanel>
-                </Grid>
+                    <Grid>
+                        <ContentControl
+                            Visibility="Collapsed"
+                            x:Name="LoadingResult"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Style="{DynamicResource SmallLoadingIndicatorStyle}" />
+                        <StackPanel
+                            Margin="10"
+                            x:Name="StackPanelSearchResult"
+                            Visibility="Collapsed">
 
-            </StackPanel>
+                            <DataGrid
+                                Margin="0,30,0,0"
+                                x:Name="PlainDataGridSprintStyle"
+                                Style="{StaticResource PlainDataGridSprintStyle}"
+                                ItemsSource="{Binding Path=PortInNumbers}"
+                                HorizontalScrollBarVisibility="Disabled"
+                                MaxWidth="300"
+                                HorizontalAlignment="Left"
+                                CanUserAddRows="False"
+                                CanUserDeleteRows="False"
+                                CanUserResizeRows="False"
+                                CanUserSortColumns="False"
+                                AutoGenerateColumns="False">
+                                <DataGrid.ToolTip>
+                                    <ToolTip
+                                        DataContext="{Binding Path=PlacementTarget,RelativeSource={x:Static RelativeSource.Self}}"
+                                        Content="{Binding Path=Name}" />
+                                </DataGrid.ToolTip>
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn
+                                        IsReadOnly="True"
+                                        Header="Phone Number"
+                                        Width="*">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock
+                                                    Text="{Binding PhoneNumber}" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn
+                                        IsReadOnly="True"
+                                        Header="Text"
+                                        Width="*">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock
+                                                    Text="{Binding Text}" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn
+                                        IsReadOnly="True"
+                                        Header="Data"
+                                        Width="*">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock
+                                                    Text="{Binding Data}" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                        </StackPanel>
+                    </Grid>
+
+                </StackPanel>
+            </ScrollViewer>
         </Border>
 
     </Grid>
-    <!--<StackPanel>
-            <TextBlock
-                Style="{StaticResource HeaderTextBlockStyle}"
-                Text="Find Account" />
-            <Label
-                Style="{StaticResource FieldLabelStyle}"
-                Content="Account Access Information" />
-            <ComboBox
-                Width="170"
-                HorizontalAlignment="Left"
-                x:Name="cboAccount"
-                IsReadOnly="True"
-                SelectedIndex="0">
-                <ComboBoxItem>Phone Number</ComboBoxItem>
-                <ComboBoxItem>Name</ComboBoxItem>
-                <ComboBoxItem>Equipment ID</ComboBoxItem>
-            </ComboBox>
-            <Label
-                Style="{StaticResource FieldLabelStyle}"
-                Content="{Binding ElementName=cboAccount, Path=SelectionBoxItem}"/>
-            <TextBox
-                x:Name="field"
-                Style="{StaticResource StandardTextBoxStyle}"
-                Width="170"
-                HorizontalAlignment="Left" />
-            <StackPanel
-                Orientation="Horizontal">
-                <Button
-                    Style="{StaticResource StandardButtonStyle}"
-                    HorizontalAlignment="Left"
-                    Width="85"
-                    Content="Find"
-                    Click="ButtonClick" />
 
-                <Button
-                    Style="{StaticResource StandardButtonStyle}"
-                    HorizontalAlignment="Left"
-                    Width="85"
-                    Content="Clear"
-                    Click="Button_Click" />
-                <ContentControl
-                    x:Name="Loading"
-                    Margin="10,0,0,0"
-                    Visibility="Collapsed"
-                    Style="{DynamicResource SmallLoadingIndicatorStyle}" />
-            </StackPanel>
-                
 
-            <DataGrid
-                Margin="0,30,0,0"
-                x:Name="PlainDataGridSprintStyle"
-                Style="{StaticResource PlainDataGridSprintStyle}"
-                ItemsSource="{Binding Path=PortInNumbers}"
-                HorizontalScrollBarVisibility="Disabled"
-                MaxWidth="300"
-                HorizontalAlignment="Left"
-                CanUserAddRows="False"
-                CanUserDeleteRows="False"
-                CanUserResizeRows="False"
-                CanUserSortColumns="False"
-                AutoGenerateColumns="False"
-                Visibility="Collapsed">
-                <DataGrid.ToolTip>
-                    <ToolTip
-                        DataContext="{Binding Path=PlacementTarget,RelativeSource={x:Static RelativeSource.Self}}"
-                        Content="{Binding Path=Name}" />
-                </DataGrid.ToolTip>
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn
-                        IsReadOnly="True"
-                        Header="Phone Number"
-                        Width="*">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock
-                                    Text="{Binding PhoneNumber}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn
-                        IsReadOnly="True"
-                        Header="Text"
-                        Width="*">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock
-                                    Text="{Binding Text}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn
-                        IsReadOnly="True"
-                        Header="Data"
-                        Width="*">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock
-                                    Text="{Binding Data}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-
-        </StackPanel>-->
 </Custom_Control:SelfExpandableControl>

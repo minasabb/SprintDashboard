@@ -28,18 +28,129 @@
 				<SplineDoubleKeyFrame KeyTime="0:0:1" Value="1" KeySpline="0.23,0.12,0,1"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
+		<Storyboard x:Key="ShrinkAll">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LayoutRoot">
+				<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.95"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LayoutRoot">
+				<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.95"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="Grow">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="rectangle_Copy1">
+				<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1.1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="rectangle_Copy1">
+				<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1.1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="Shrink">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="rectangle_Copy1">
+				<EasingDoubleKeyFrame KeyTime="0" Value="1.1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="rectangle_Copy1">
+				<EasingDoubleKeyFrame KeyTime="0" Value="1.1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="GrowAll">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LayoutRoot">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0.95"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LayoutRoot">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0.95"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
 	</UserControl.Resources>
 	<UserControl.Triggers>
 		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
-			<BeginStoryboard Storyboard="{StaticResource Open}"/>
+			<BeginStoryboard x:Name="Open_BeginStoryboard" Storyboard="{StaticResource Open}"/>
 			<BeginStoryboard Storyboard="{StaticResource Close}"/>
+			<BeginStoryboard x:Name="ShrinkAll_BeginStoryboard" Storyboard="{StaticResource ShrinkAll}"/>
+			<BeginStoryboard x:Name="Grow_BeginStoryboard" Storyboard="{StaticResource Grow}"/>
+			<BeginStoryboard x:Name="GrowAll_BeginStoryboard" Storyboard="{StaticResource GrowAll}"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="rectangle_Copy1">
+			<BeginStoryboard x:Name="ShrinkAll_BeginStoryboard1" Storyboard="{StaticResource ShrinkAll}"/>
+			<BeginStoryboard x:Name="Grow_BeginStoryboard1" Storyboard="{StaticResource Grow}"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="rectangle_Copy1">
+			<BeginStoryboard x:Name="Shrink_BeginStoryboard" Storyboard="{StaticResource Shrink}"/>
+			<BeginStoryboard x:Name="GrowAll_BeginStoryboard1" Storyboard="{StaticResource GrowAll}"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="rectangle">
+			<BeginStoryboard x:Name="ShrinkAll_BeginStoryboard2" Storyboard="{StaticResource ShrinkAll}"/>
+			<BeginStoryboard x:Name="Grow_BeginStoryboard2" Storyboard="{StaticResource Grow}"/>
 		</EventTrigger>
 	</UserControl.Triggers>
 
-	<Grid x:Name="LayoutRoot" Background="Yellow">
-		<Rectangle x:Name="rectangle" Fill="#FF4E4EF3" HorizontalAlignment="Left" Margin="44,169,0,205" Stroke="Black" Width="221" Height="100" RenderTransformOrigin="0,0"
+	<Grid x:Name="LayoutRoot" Background="Yellow" Width="700" Height="700" RenderTransformOrigin="1,1">
+		<Grid.RenderTransform>
+			<TransformGroup>
+				<ScaleTransform/>
+				<SkewTransform/>
+				<RotateTransform/>
+				<TranslateTransform/>
+			</TransformGroup>
+		</Grid.RenderTransform>
+		<Rectangle x:Name="rectangle" Fill="#FF4E4EF3"  Stroke="Black" Height="100" RenderTransformOrigin="0.5,0.5"
             MouseEnter="rectangle_MouseEnter"
-            MouseLeave="rectangle_MouseLeave">
+            MouseLeave="rectangle_MouseLeave" Margin="246,34,233,0" VerticalAlignment="Top" d:LayoutOverrides="Height">
+			<Rectangle.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Rectangle.RenderTransform>
+		</Rectangle>
+		<Rectangle x:Name="rectangle_Copy" Fill="#FF4E4EF3"  Stroke="Black" Height="100" RenderTransformOrigin="0.5,0.5"
+			MouseEnter="rectangle_MouseEnter"
+			MouseLeave="rectangle_MouseLeave" Margin="21,34,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="221" d:LayoutOverrides="Height">
+			<Rectangle.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Rectangle.RenderTransform>
+		</Rectangle>
+		<Rectangle x:Name="rectangle_Copy1" Fill="#FF4E4EF3"  Stroke="Black" Height="100" RenderTransformOrigin="1,1"
+			MouseEnter="rectangle_MouseEnter"
+			MouseLeave="rectangle_MouseLeave" Margin="246,138,233,0" VerticalAlignment="Top" d:LayoutOverrides="Height">
+			<Rectangle.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Rectangle.RenderTransform>
+		</Rectangle>
+		<Rectangle x:Name="rectangle_Copy2" Fill="#FF4E4EF3"  Stroke="Black" Height="100" RenderTransformOrigin="0.5,0.5"
+			MouseEnter="rectangle_MouseEnter"
+			MouseLeave="rectangle_MouseLeave" Margin="21,138,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="221" d:LayoutOverrides="Height">
+			<Rectangle.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Rectangle.RenderTransform>
+		</Rectangle>
+		<Rectangle x:Name="rectangle_Copy3" Fill="#FF4E4EF3" HorizontalAlignment="Left"  Stroke="Black" Width="221" Height="100" RenderTransformOrigin="0.5,0.5"
+			MouseEnter="rectangle_MouseEnter"
+			MouseLeave="rectangle_MouseLeave" Margin="21,242,0,0" VerticalAlignment="Top" d:LayoutOverrides="Height">
 			<Rectangle.RenderTransform>
 				<TransformGroup>
 					<ScaleTransform/>
