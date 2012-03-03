@@ -26,7 +26,7 @@ namespace TextDashboard.UserControls
         //    StackPanelSearchResult.Opacity = 0;
         //    StackPanelSearchResult.Visibility = Visibility.Visible;
 
-        //    var animation = AnimationFactory.CreateDoubleAnimation(StackPanelSearchResult, OpacityProperty, 1, 0, TimeSpan.FromMilliseconds(AnimationBeginTimeWidthGrow), TimeSpan.FromMilliseconds(AnimationWidthGrowTimeSpan), EasingFunction);
+        //    var animation = AnimationFactory.CreateDoubleAnimation(StackPanelSearchResult, OpacityProperty, 1, 0, TimeSpan.FromMilliseconds(AnimationBeginTimeWidthGrowMs), TimeSpan.FromMilliseconds(AnimationWidthGrowTimeMs), EasingFunction);
         //    animation.Completed += StackPanelSearchResultFadeInAnimationCompleted;
         //    StackPanelSearchResult.BeginAnimation(OpacityProperty, animation);
         //    Events.UpdateControlState(this, State.Activated);
