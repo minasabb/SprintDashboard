@@ -5,8 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
-    x:Class="TextDashboard.UserControls.PayABillView"
-    x:Name="vPayABillView"
+    x:Class="TextDashboard.UserControls.CorporateDiscountEligibilityView"
+    x:Name="vCorporateDiscountEligibilityView"
     mc:Ignorable="d">
     <Grid>
         <ContentControl
@@ -18,7 +18,7 @@
 
         <Border
             x:Name="ScanDeviceBorder"
-            Background="{Binding Path=ContentBackgroundColor,ElementName=vPayABillView}">
+            Background="{Binding Path=ContentBackgroundColor,ElementName=vCorporateDiscountEligibilityView}">
             <ScrollViewer
                 HorizontalScrollBarVisibility="Auto"
                 VerticalScrollBarVisibility="Auto">
@@ -31,7 +31,7 @@
                         <TextBlock
                             DockPanel.Dock="Left"
                             Style="{StaticResource HeaderTextBlockStyle}"
-                            Text="Pay a Bill" />
+                            Text="Corporate Discount Eligibility" />
                         <Button
                             DockPanel.Dock="Right"
                             HorizontalAlignment="Right"
@@ -41,11 +41,14 @@
                     <Border
                         BorderBrush="LightGray"
                         BorderThickness="0,0,0,1" />
-                    
+
                 </StackPanel>
 
             </ScrollViewer>
         </Border>
     </Grid>
 
+
+
+   
 </Custom_Control:SelfExpandableControl>

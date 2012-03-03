@@ -5,17 +5,40 @@
     xmlns:UserControls="clr-namespace:TextDashboard.UserControls"
     xmlns:Custom_Control="clr-namespace:TextDashboard.Custom_Control" xmlns:TextDashboard="clr-namespace:TextDashboard"
     Title="MainWindow"
+    WindowStartupLocation="CenterScreen"
+    Icon="Resource\SprintIcon2.ico"
     Name="Main">
-
+    <Window.Background>
+        <ImageBrush
+            ImageSource="Resource\RQ4_BackgroundImage.png" />
+    </Window.Background>
     <ScrollViewer
         HorizontalScrollBarVisibility="Auto"
         VerticalScrollBarVisibility="Auto">
         <Border
-            MinWidth="820"
-            MinHeight="420"
-            Padding="5">
-            <UserControls:SelfExpandablePanel
-                BaseTileSize="200" />
+            x:Name="MainBorder"
+            MinWidth="1100"
+            MinHeight="500"
+            Background="White"
+            Margin="30,30,30,80">
+
+            <DockPanel>
+                <Border 
+                    DockPanel.Dock="Top"
+                    Background="Gray" 
+                        Padding="10"
+                        Margin="0,0,0,20">
+                    <TextBlock
+                        Style="{DynamicResource HeaderTextBlockStyle}"
+                        Text="Carrier Console" />
+                </Border>
+                <UserControls:SelfExpandablePanel
+                    DockPanel.Dock="Top"
+                        BaseTileSize="200"
+                        Margin="10" />
+  
+            </DockPanel>
+            
             <!--<TextDashboard:AnimationWhiteboard />-->
         </Border>
     </ScrollViewer>

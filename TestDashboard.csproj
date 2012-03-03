@@ -78,6 +78,12 @@
     <Compile Include="UserControls\AnimationWhiteboard.xaml.cs">
       <DependentUpon>AnimationWhiteboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\CorporateDiscountEligibilityView.xaml.cs">
+      <DependentUpon>CorporateDiscountEligibilityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PayABillView.xaml.cs">
+      <DependentUpon>PayABillView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\NewIndividualAccountView.xaml.cs">
       <DependentUpon>NewIndividualAccountView.xaml</DependentUpon>
     </Compile>
@@ -125,6 +131,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\AnimationWhiteboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\CorporateDiscountEligibilityView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\PayABillView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -191,6 +205,21 @@
     <Resource Include="Resource\Telephone-icon.png" />
     <Resource Include="Resource\User-icon.png" />
     <Resource Include="Resource\Wheels-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\RQ4_BackgroundImage.png" />
+    <Resource Include="Resource\SprintIcon2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Add-user-icon.png" />
+    <Resource Include="Resource\Users-icon.png" />
+    <Resource Include="Resource\Wheel-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Accept-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Search-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

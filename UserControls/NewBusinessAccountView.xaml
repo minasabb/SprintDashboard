@@ -19,8 +19,7 @@
             Style="{DynamicResource SmallLoadingIndicatorStyle}" />
 
         <Border
-           
-            Background="{Binding Path=ContentBackgroundColor,ElementName=vFindExistingAccountView}"
+            Background="{Binding Path=ContentBackgroundColor,ElementName=vNewBusinessAccountView}"
             x:Name="FindAccountBorder">
             <ScrollViewer
                 HorizontalScrollBarVisibility="Auto"

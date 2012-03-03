@@ -10,14 +10,14 @@
         Name="RootCanvas">
         
         <UserControls:FindExisitngAccountView
-            x:Name="v2"
+            x:Name="FindExisitngAccountView"
             ContentBackgroundColor="White"
             Title="Find Existing Account"
-            Icon="Wheels-icon.png"
+            Icon="Search-icon.png"
             TileBackgroundColor="{StaticResource PrimaryActionButtonBackground}"
             Size="Double"/>
         <UserControls:UpgradeEligibilityView
-            x:Name="v4"
+            x:Name="UpgradeEligibilityView"
             ContentBackgroundColor="White"
             TileBackgroundColor="{StaticResource PrimaryActionButtonBackground}"
             Title="Upgrade Eligibility"
@@ -25,9 +25,9 @@
             Canvas.Top="200"
             Size="Double" />
         <UserControls:NewIndividualAccountView
-            x:Name="v5"
+            x:Name="NewIndividualAccountView"
             Title="New Individual Account"
-            Icon="Star-full-icon.png"
+            Icon="Add-user-icon.png"
             TileBackgroundColor="{StaticResource PrimaryActionButtonBackground}"
             ContentBackgroundColor="White"
             Canvas.Left="400"
@@ -35,16 +35,16 @@
             Size="Single" />
 
         <UserControls:NewBusinessAccountView
-            x:Name="v6"
+            x:Name="NewBusinessAccountView"
             Title="New Business Account"
-            Icon="Star-full-icon.png"
+            Icon="Wheels-icon.png"
             TileBackgroundColor="{StaticResource PrimaryActionButtonBackground}"
             ContentBackgroundColor="White"
             Canvas.Left="400"
             Size="Single" />
         
         <UserControls:CoverageView
-            x:Name="v1"
+            x:Name="CoverageView"
             Title="Coverage"
             Icon="Star-full-icon.png"
             TileBackgroundColor="{StaticResource PrimaryActionButtonBackground}"
@@ -53,13 +53,30 @@
             Canvas.Top="200"
             Size="Single" />
         <UserControls:PortInEligibilityView
-            x:Name="v3"
+            x:Name="PortInEligibilityView"
             TileBackgroundColor="{StaticResource PrimaryActionButtonBackground}"
             Title="Port-In Eligibility"
             Icon="Telephone-icon.png"
             Canvas.Left="600"
-            Size="Single"/>
-        
+            Size="Single"/>    
+
+        <UserControls:CorporateDiscountEligibilityView
+            x:Name="CorporateDiscountEligibilityView"
+            Title="Corporate Discount Eligibility"
+            Icon="Users-icon.png"
+            TileBackgroundColor="{StaticResource PrimaryActionButtonBackground}"
+            ContentBackgroundColor="White"
+            Canvas.Left="800"
+            Canvas.Top="200"
+            Size="Single" />
+        <UserControls:PayABillView
+            x:Name="PayABillView"
+            TileBackgroundColor="{StaticResource PrimaryActionButtonBackground}"
+            Title="Pay a Bill"
+            Icon="Accept-icon.png"
+            Canvas.Left="800"
+            Size="Single" />
+
 
     </Canvas>
 </UserControl>

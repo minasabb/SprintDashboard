@@ -10,11 +10,11 @@ namespace TextDashboard.UserControls
     /// <summary>
     /// Interaction logic for CoverageView.xaml
     /// </summary>
-    public partial class PayABillView : SelfExpandableControl
+    public partial class CorporateDiscountEligibilityView : SelfExpandableControl
     {
 
 
-        public PayABillView()
+        public CorporateDiscountEligibilityView()
         {
             InitializeComponent();
         }

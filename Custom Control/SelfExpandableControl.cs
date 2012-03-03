@@ -34,7 +34,7 @@ namespace TextDashboard.Custom_Control
         public const int AnimationStandardTimeSpan = 200;
         public const int  AnimationFadeInOutTime =700;
 
-        public const double InactiveScaleSize = 0.96;
+        public const double InactiveScaleSize = 0.98;
         public const int ExtraSpacing = 1;
 
         static SelfExpandableControl()
@@ -315,13 +315,16 @@ namespace TextDashboard.Custom_Control
         {
             var storyboard = new Storyboard();
             var scale = new ScaleTransform(1.0, 1.0);
-            var originX= ((ParentWidth / 2) - EndPoint.X)/ActualWidth +1;
-            var originY = ((ParentHeight / 2) - EndPoint.Y) / ActualHeight + 1;
+            var originX= ((ParentWidth / 2) - EndPoint.X)/ ActualWidth +1;
+            var originY =((ParentHeight / 2) - EndPoint.Y)/ ActualHeight +1;
+
+            Debug.WriteLine(originX + " and " + originY + " and Name" +Name);
             RenderTransformOrigin = new Point(originX,originY);
             RenderTransform = scale;
 
             var scaleXAnimation = AnimationFactory.CreateDoubleAnimation(this, ScaleTransform.ScaleXProperty, toValue, fromValue, durationSpan: TimeSpan.FromMilliseconds(AnimationStandardTimeSpan), easingFuction: EasingFunction);
             storyboard.Children.Add(scaleXAnimation);
+            scaleXAnimation.Completed+=scaleXAnimation_Completed;
 
             Storyboard.SetTargetProperty(scaleXAnimation, new PropertyPath("RenderTransform.ScaleX"));
             Storyboard.SetTarget(scaleXAnimation, this);
@@ -333,6 +336,19 @@ namespace TextDashboard.Custom_Control
             Storyboard.SetTarget(scaleYAnimation, this);
 
             storyboard.Begin();
+        }
+
+        void scaleXAnimation_Completed(object sender, EventArgs e)
+        {
+            if(RenderTransform is ScaleTransform)
+            {
+            var scale = (ScaleTransform) RenderTransform;
+            
+            if(State==State.Deactivated)
+                scale.ScaleX = InactiveScaleSize;
+            else
+                scale.ScaleX = 1;
+                }
         }
 
         private void GetCurrentValues()
