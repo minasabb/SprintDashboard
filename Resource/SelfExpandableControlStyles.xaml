@@ -16,9 +16,6 @@
         x:Key="SelfExpandableControlStyle"
         TargetType="{x:Type Custom_Control:SelfExpandableControl}">
         <Setter
-            Property="Margin"
-            Value="0,0,5,5" />
-        <Setter
             Property="Template"
             Value="{DynamicResource SelfExpandableControlTemplate}" />
 

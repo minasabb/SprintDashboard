@@ -1,39 +1,35 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:PortInEligibilityView.xaml" caret="0" fromTop="0" />
     <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FindExisitngAccountView.xaml" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Resource/f:SelfExpandableControlStyles.xaml" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Resource/f:SelfExpandableControlTemplates.xaml" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/f:App.xaml" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Resource/f:Generic.xaml" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:AnimationWhiteboard.xaml" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:SelfExpandableBase.cs" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:CoverageView.xaml" caret="1392" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:SelfExpandablePanel.xaml" caret="829" fromTop="20" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:SelfExpandablePanel.xaml.cs" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:Enums.cs" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:CoverageView.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:UpgradeEligibilityView.xaml" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:NewBusinessAccountView.xaml" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:NewIndividualAccountView.xaml" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:PayABillView.xaml" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:CorporateDiscountEligibilityView.xaml" caret="0" fromTop="0" />
     <File id="A7B3B072-38BD-474E-AF84-374148692D97/f:packages.config" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Properties/f:Settings.Designer.cs" caret="0" fromTop="0" />
-    <File id="A7B3B072-38BD-474E-AF84-374148692D97/f:AnimationFactory.cs" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Properties/f:Resources.Designer.cs" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:AnimationWhiteboard.xaml.cs" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Properties/f:AssemblyInfo.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:PayABillView.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:NewIndividualAccountView.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:CorporateDiscountEligibilityView.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:NewBusinessAccountView.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/f:App.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FindExisitngAccountView.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:UpgradeEligibilityView.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:PortInEligibilityView.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/f:MainWindow.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Resource/f:Events.cs" caret="0" fromTop="0" />
     <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/f:WidthPercentageConverter.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Properties/f:AssemblyInfo.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:AnimationWhiteboard.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Properties/f:Resources.Designer.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Properties/f:Settings.Designer.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:CoverageView.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:Enums.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:SelfExpandablePanel.xaml.cs" caret="0" fromTop="0" />
+    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:SelfExpandableBase.cs" caret="0" fromTop="0" />
     <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Converter/f:StateToVisibilityConverter.cs" caret="0" fromTop="0" />
     <File id="A7B3B072-38BD-474E-AF84-374148692D97/f:TransformGroupHelper.cs" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Resource/f:Events.cs" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/f:MainWindow.xaml.cs" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:PortInEligibilityView.xaml.cs" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:UpgradeEligibilityView.xaml.cs" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:UserControls/f:FindExisitngAccountView.xaml.cs" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/f:App.xaml.cs" caret="0" fromTop="0" />
+    <File id="A7B3B072-38BD-474E-AF84-374148692D97/f:AnimationFactory.cs" caret="0" fromTop="0" />
     <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:SelfExpandableControl.cs" caret="0" fromTop="0" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/f:MainWindow.xaml" caret="486" fromTop="14" />
   </RecentFiles>
-  <RecentEdits>
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:SelfExpandablePanel.xaml" caret="1003" fromTop="24" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/d:Custom Control/f:SelfExpandablePanel.xaml" caret="1294" fromTop="31" />
-    <File id="D5E58D6E-5307-49C7-9D28-232CE233D4E2/f:MainWindow.xaml" caret="446" fromTop="10" />
-  </RecentEdits>
+  <RecentEdits />
 </RecentFiles>

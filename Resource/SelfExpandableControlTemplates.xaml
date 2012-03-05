@@ -250,8 +250,7 @@
     <ControlTemplate
         x:Key="SelfExpandableControlTemplate"
         TargetType="{x:Type Custom_Control:SelfExpandableControl}">
-        <Border
-            Padding="{TemplateBinding Margin}">
+        <Border>
             <Border 
                 Background="White"
                 BorderThickness="1"
@@ -311,7 +310,6 @@
                             </Grid>
                         </Button>
                         <ContentPresenter
-                            Margin="5"
                             x:Name="PART_ContentPresenter"
                             Content="{TemplateBinding Content}">
                             <ContentPresenter.Visibility>

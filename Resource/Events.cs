@@ -1,4 +1,5 @@
-﻿using TextDashboard.Custom_Control;
+﻿using System.Windows;
+using TextDashboard.Custom_Control;
 
 namespace TextDashboard.Resource
 {
@@ -8,7 +9,7 @@ namespace TextDashboard.Resource
     //public delegate void ShowCurtainDelegate(object sender);
     //public delegate void HideCurtainDelegate(object sender);
 
-    public delegate void UpdateOriginalSizeDelegate(double tileBaseSize);
+    public delegate void UpdateOriginalSizeDelegate(double tileBaseSize,Thickness tileMargin);
     //public delegate void UpdateContentDelegate(object sender);
 
     public static class Events
@@ -42,10 +43,10 @@ namespace TextDashboard.Resource
         //}
 
         public static event UpdateOriginalSizeDelegate UpdateOriginalSizeEvent;
-        public static void UpdateOriginalSize(double tileBaseSize)
+        public static void UpdateOriginalSize(double tileBaseSize,Thickness tileMargin)
         {
             if (UpdateOriginalSizeEvent != null)
-                UpdateOriginalSizeEvent(tileBaseSize);
+                UpdateOriginalSizeEvent(tileBaseSize, tileMargin);
         }
 
         //public static event UpdateContentDelegate UpdateContentEvent;

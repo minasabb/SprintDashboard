@@ -35,6 +35,7 @@
                 <UserControls:SelfExpandablePanel
                     DockPanel.Dock="Top"
                         BaseTileSize="200"
+                    TileMargin="0,0,20,20"
                         Margin="10" />
   
             </DockPanel>

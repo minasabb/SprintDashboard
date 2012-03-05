@@ -31,6 +31,19 @@ namespace TextDashboard.UserControls
             set { SetValue(BaseTileSizeProperty, value); }
         }
 
+        public static readonly DependencyProperty TileMarginProperty =
+            DependencyProperty.Register(
+                "TileMargin",
+                typeof(Thickness),
+                typeof(SelfExpandablePanel),
+                new PropertyMetadata(new Thickness(0,0,0,0)));
+
+        public Thickness TileMargin
+        {
+            get { return (Thickness)GetValue(TileMarginProperty); }
+            set { SetValue(TileMarginProperty, value); }
+        }
+
 
         void OnUpdateStateEvent(object sender, State state)
         {
@@ -57,7 +70,7 @@ namespace TextDashboard.UserControls
 
         private void UpdateControls(object sender, RoutedEventArgs e)
         {
-            Events.UpdateOriginalSize(BaseTileSize);
+            Events.UpdateOriginalSize(BaseTileSize, TileMargin);
         }
     }
 }

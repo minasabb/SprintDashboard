@@ -31,10 +31,10 @@ namespace TextDashboard.Custom_Control
         public const int AnimationTranformNegativeValueTimeMs = 600;
         public const int AnimationTranformPositiveValueTimeMs = 300;
         public const int AnimationBeginTimeWidthGrowMs = 450;
-        public const int AnimationScaleTransformMs = 200;
-        public const int  AnimationFadeInOutTimeMs =700;
+        public const int AnimationScaleTransformMs = 300;
+        public const int  AnimationFadeInOutTimeMs =1000;
 
-        public const double InactiveScaleSize = 0.98;
+        public const double InactiveScaleSize = 0.95;
         private const int Delta = 5;
 
         static SelfExpandableControl()
@@ -49,7 +49,7 @@ namespace TextDashboard.Custom_Control
             _currentYoffSet = 0;
             TransformGroupHelper.CreateTransformGroup(this);
 
-            EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut };
+            EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut };
            Events.UpdateOriginalSizeEvent+=EventsUpdateOriginalSizeEvent; 
         }
 
@@ -91,9 +91,9 @@ namespace TextDashboard.Custom_Control
 
         public IEasingFunction EasingFunction { get; set; }
 
-        void EventsUpdateOriginalSizeEvent(double tileBaseSize)
+        void EventsUpdateOriginalSizeEvent(double tileBaseSize,Thickness tileMargin)
         {
-            UpdateOrigianlSettings(tileBaseSize);
+            UpdateOrigianlSettings(tileBaseSize,tileMargin);
 
             var tileButton = GetTemplateChild(PartTile) as Button;
             if (tileButton != null) tileButton.Click += OnTileButtonClicked;
@@ -147,21 +147,21 @@ namespace TextDashboard.Custom_Control
 
         }
 
-        private void UpdateTileSize(double baseTileSize)
+        private void UpdateTileSize(double baseTileSize,Thickness tileMargin)
         {
             switch (Size)
             {
                 case TileSize.Double:
-                    MinWidth = baseTileSize * 2;
-                    MinHeight = baseTileSize;
+                    MinWidth = baseTileSize * 2 - tileMargin.Left - tileMargin.Right;
+                    MinHeight = baseTileSize - tileMargin.Top - tileMargin.Bottom;
                     break;
                 case TileSize.Quad:
-                    MinWidth = baseTileSize * 2;
-                    MinHeight = baseTileSize * 2;
+                    MinWidth = baseTileSize * 2 - tileMargin.Left - tileMargin.Right;
+                    MinHeight = baseTileSize * 2 - tileMargin.Top - tileMargin.Bottom;
                     break;
                 default:
-                    MinWidth = baseTileSize;
-                    MinHeight = baseTileSize;
+                    MinWidth = baseTileSize - tileMargin.Left - tileMargin.Right;
+                    MinHeight = baseTileSize - tileMargin.Top - tileMargin.Bottom;
                     break;
 
             }
@@ -240,7 +240,7 @@ namespace TextDashboard.Custom_Control
 
             ResizeWidthAnimation(animationTimeSpan, toKeySpline, null, beginTimeDelay);
 
-            UpdateTransformXAnimation(animationTranformTimeSpan);
+            UpdateTransformXAnimation(animationTranformTimeSpan,beginTimeDelay);
 
             var content = GetTemplateChild(PartContentPresenter) as ContentPresenter;
             if (content != null && content.Opacity == 0)
@@ -255,9 +255,9 @@ namespace TextDashboard.Custom_Control
             BeginAnimation(WidthProperty, widthChangeAnimation);
         }
 
-        void UpdateTransformXAnimation(double animationTranformTimeSpan)
+        void UpdateTransformXAnimation(double animationTranformTimeSpan, int beginTimeDelay)
         {
-            var positionAnimation = AnimationFactory.CreateDoubleAnimation(this, TranslateTransform.XProperty, -_currentXoffSet, durationSpan: TimeSpan.FromMilliseconds(animationTranformTimeSpan), easingFuction: EasingFunction);
+            var positionAnimation = AnimationFactory.CreateDoubleAnimation(this, TranslateTransform.XProperty, -_currentXoffSet, durationSpan: TimeSpan.FromMilliseconds(animationTranformTimeSpan), easingFuction: EasingFunction,beginTimeSpan: TimeSpan.FromMilliseconds(beginTimeDelay));
             positionAnimation.Completed += PositionXAnimationCompleted;
             RenderTransform.BeginAnimation(TranslateTransform.XProperty, positionAnimation);
         }
@@ -270,6 +270,9 @@ namespace TextDashboard.Custom_Control
             //    BeginAnimation(TranslateTransform.XProperty, null);
             //}
             //_widthChanged = false;
+            RenderTransform = new TranslateTransform(-_currentXoffSet, -_currentYoffSet);
+            BeginAnimation(TranslateTransform.XProperty, null);
+            BeginAnimation(TranslateTransform.YProperty, null);
         }
 
         void WidthChangeAnimationCompleted(object sender, EventArgs e)
@@ -328,9 +331,9 @@ namespace TextDashboard.Custom_Control
 
         void PositionYAnimationCompleted(object sender, EventArgs e)
         {
-            RenderTransform = new TranslateTransform(-_currentXoffSet, -_currentYoffSet);
-            BeginAnimation(TranslateTransform.XProperty, null);
-            BeginAnimation(TranslateTransform.YProperty, null);
+            //RenderTransform = new TranslateTransform(-_currentXoffSet, -_currentYoffSet);
+            //BeginAnimation(TranslateTransform.XProperty, null);
+            //BeginAnimation(TranslateTransform.YProperty, null);
         }
 
         void HeightChangeAnimationCompleted(object sender, EventArgs e)
@@ -440,13 +443,13 @@ namespace TextDashboard.Custom_Control
             return -currentTransformValue;
         }
 
-        private void UpdateOrigianlSettings(double baseTileSize)
+        private void UpdateOrigianlSettings(double baseTileSize,Thickness tileMargin)
         {
             var positionInParent = GetPositionInParent();
             OriginalPoint = positionInParent;
-            
+
             //Update Tile size
-            UpdateTileSize(baseTileSize);
+            UpdateTileSize(baseTileSize,tileMargin);
 
             CurrentMinWidth = MinWidth;
             CurrentMinHeight = MinHeight;

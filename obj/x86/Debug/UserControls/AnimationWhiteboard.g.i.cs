@@ -30,6 +30,9 @@ using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
+using TextDashboard.Converter;
+using TextDashboard.Custom_Control;
+using TextDashboard.Resource;
 
 
 namespace TextDashboard {
